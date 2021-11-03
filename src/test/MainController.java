@@ -3,6 +3,8 @@ package test;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import block.Pass;
+import block.Stage;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,6 +16,8 @@ public class MainController implements Initializable{
 	
 	@FXML
 	private ImageView Mario;
+	
+	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -21,6 +25,8 @@ public class MainController implements Initializable{
             @Override
             public void handle(KeyEvent event) {
                 moveMario(event);
+                Pass pass = new Pass();
+                System.out.println(pass.blockGet(Mario.getX(), Mario.getY(), 11));
             }
         });
 	}
@@ -38,4 +44,8 @@ public class MainController implements Initializable{
             Mario.setY(Mario.getY() + 10);
         }
     }
+	
+	
+	
+	
 }
