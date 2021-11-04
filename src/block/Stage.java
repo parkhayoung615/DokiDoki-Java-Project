@@ -4,12 +4,12 @@ import javafx.scene.image.ImageView;
 
 public class Stage {
 
-	public static void shopStage() {
-		int[] shopPass = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	public Block[] shopStage() {
+		int[] shopPass = {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,
 				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0,
+				1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0,
 				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -18,11 +18,16 @@ public class Stage {
 		int i = 0;
 		for (int pass : shopPass) {
 			shop[i] = new Block(i, pass != 0, "shop");
+			i++;
 		}
+		return shop;
 	}
-//	public Boolean getPass(int block) {
-//		shopStage();
-//		
-//		
-//	}
+	public Block getPassBlock(int block, String stage) {
+		Block[] shop = shopStage();
+		if (stage.equals("shop")) {
+			return shop[block];
+		}
+		return new Block(0, false, "ERROR");
+		
+	}
 }

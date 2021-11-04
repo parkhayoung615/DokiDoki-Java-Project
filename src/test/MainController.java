@@ -18,14 +18,14 @@ public class MainController implements Initializable{
 	private ImageView Mario;
 	
 	
-
+	Pass pass = new Pass();
+	Stage s = new Stage();
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		Mario.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
                 moveMario(event);
-                Pass pass = new Pass();
                 System.out.println(pass.blockGet(Mario.getX(), Mario.getY(), 11));
             }
         });
@@ -35,16 +35,27 @@ public class MainController implements Initializable{
 	public void moveMario(KeyEvent event) {
         KeyCode keyCode = event.getCode();
         if (keyCode.equals(KeyCode.RIGHT)) {
-            Mario.setX(Mario.getX() + 10);
+        	if (!s.getPassBlock(pass.blockGet(Mario.getX()+10, Mario.getY(), 11), "shop").getPass() && Mario.getX()+10 <= 1100) {
+        		Mario.setX(Mario.getX() + 10);
+        	}
+            
         } else if (keyCode.equals(KeyCode.LEFT)) {
-            Mario.setX(Mario.getX() - 10);
+        	if (!s.getPassBlock(pass.blockGet(Mario.getX()-10, Mario.getY(), 11), "shop").getPass() && Mario.getX()-10 >= 0) {
+        		Mario.setX(Mario.getX() - 10);
+            }
+            
         } else if (keyCode.equals(KeyCode.UP)) {
-            Mario.setY(Mario.getY() - 10);
+        	if (!s.getPassBlock(pass.blockGet(Mario.getX(), Mario.getY()-10, 11), "shop").getPass() && Mario.getY()-10 >= 0 ) {
+        		Mario.setY(Mario.getY() - 10);
+            }
+            
         } else if (keyCode.equals(KeyCode.DOWN)) {
-            Mario.setY(Mario.getY() + 10);
+            if (!s.getPassBlock(pass.blockGet(Mario.getX(), Mario.getY()+10, 11), "shop").getPass() && Mario.getY() <= 1100) {
+            	Mario.setY(Mario.getY() + 10);
+            }
         }
+        System.out.println(Mario.getX() + " " + Mario.getY());
     }
-	
 	
 	
 	
