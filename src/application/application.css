@@ -3,3 +3,15 @@
 	-fx-background-color: #000;
 	-fx-text-fill: #fff;
 }
+
+/* Start 화면 */
+#StartBack {
+	-fx-background-image: url(/imgs/Start.png);
+	-fx-background-size: cover;
+	-fx-background-position: center center;
+}
+
+#StartBtn {
+	-fx-background-color: #00ff0000;
+	-fx-border-style: none;
+}
