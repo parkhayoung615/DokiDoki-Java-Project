@@ -13,9 +13,9 @@ public class JDBCUtil {
 		
 		// 일단 기능반 서버로 해둠 ...
 		// 나중에 바꾸든지 상의를 해야 할 듯
-		String connectionString = "jdbc:mysql://www.yydhsoft.com/skills07";
-		String userId = "skills07";
-		String password = "1234";
+		String connectionString = "jdbc:mysql://localhost/JavaTeamProject";
+		String userId = "root";
+		String password = "";
 		
 		Connection con = null;
 		try {
