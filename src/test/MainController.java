@@ -66,10 +66,26 @@ public class MainController implements Initializable {
 					&& Mario.getY() < 800) {
 				Mario.setY(Mario.getY() + 10);
 			}
+		} else if (keyCode.equals(KeyCode.SPACE)) {
+			mapMove(s.getPassBlock(pass.blockGet(Mario.getX(), Mario.getY() + 10, 11), "shop"));
 		}
+		
 		System.out.println(Mario.getX() + " " + Mario.getY());
 	}
 
+	public void mapMove(Block b) {
+		try {
+			if (b.getType() == 100) {
+				Parent sN = FXMLLoader.load(getClass().getResource("/layout/Index.fxml"));
+				Scene scene = new Scene(sN);
+				Stage primaryStage = (Stage) Mario.getScene().getWindow();
+				primaryStage.setScene(scene);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
+	}
 
 }
