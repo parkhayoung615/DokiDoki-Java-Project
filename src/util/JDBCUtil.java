@@ -13,7 +13,7 @@ public class JDBCUtil {
 		
 		// 일단 기능반 서버로 해둠 ...
 		// 나중에 바꾸든지 상의를 해야 할 듯
-		String connectionString = "jdbc:mysql://localhost/JavaTeamProject";
+		String connectionString = "jdbc:mysql://localhost/team_project";
 		String userId = "root";
 		String password = "";
 		

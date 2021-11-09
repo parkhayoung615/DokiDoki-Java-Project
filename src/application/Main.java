@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 
 
 public class Main extends Application {
@@ -13,7 +12,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/test/TestLayout.fxml"));
+			loader.setLocation(getClass().getResource("/layout/Login.fxml"));
 			// Start -> Login -> (로딩) -> Index
 			AnchorPane ap = (AnchorPane) loader.load();
 			Scene scene = new Scene(ap, 1100, 900);

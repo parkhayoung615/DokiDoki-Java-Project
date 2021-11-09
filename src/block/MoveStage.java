@@ -1,8 +1,6 @@
 package block;
 
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 
 public class MoveStage {
 	GridPane grid = new GridPane();

@@ -11,9 +11,9 @@
    <children>
       <Pane layoutX="282.0" layoutY="77.0" prefHeight="628.0" prefWidth="536.0">
          <children>
-            <TextField layoutX="74.0" layoutY="254.0" prefHeight="52.0" prefWidth="389.0" />
-            <TextField layoutX="74.0" layoutY="336.0" prefHeight="52.0" prefWidth="389.0" />
-            <Button layoutX="74.0" layoutY="422.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="389.0" text="로그인">
+            <TextField fx:id="userId" layoutX="74.0" layoutY="254.0" prefHeight="52.0" prefWidth="389.0" />
+            <TextField fx:id="userPw" layoutX="74.0" layoutY="336.0" prefHeight="52.0" prefWidth="389.0" />
+            <Button fx:id="loginBtn" layoutX="74.0" layoutY="422.0" mnemonicParsing="false" onAction="#loginCheck" prefHeight="52.0" prefWidth="389.0" text="로그인">
                <font>
                   <Font size="15.0" />
                </font>

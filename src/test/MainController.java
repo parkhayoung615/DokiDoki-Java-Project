@@ -1,13 +1,11 @@
 package test;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import block.Block;
 import block.MoveStage;
 import block.Pass;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,14 +15,12 @@ import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class MainController implements Initializable {
 
 	@FXML
 	private ImageView Mario;
-	private AnchorPane ap;
 
 	Pass pass = new Pass();
 	MoveStage s = new MoveStage();
@@ -40,7 +36,7 @@ public class MainController implements Initializable {
 		});
 	}
 
-	// 罹먮┃�꽣 �궎蹂대뱶 �씠�룞
+	// 키보드 이벤트
 	public void moveMario(KeyEvent event) {
 		KeyCode keyCode = event.getCode();
 		if (keyCode.equals(KeyCode.RIGHT)) {
