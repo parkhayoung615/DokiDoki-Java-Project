@@ -18,7 +18,7 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button layoutX="74.0" layoutY="497.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="389.0" text="회원가입">
+            <Button fx:id="ChangeJoinBtn" layoutX="74.0" layoutY="497.0" mnemonicParsing="false" onAction="#ChangeJoin" prefHeight="52.0" prefWidth="389.0" text="회원가입">
                <font>
                   <Font size="15.0" />
                </font>
