@@ -76,7 +76,7 @@ public class MainController implements Initializable {
 	public void mapMove(Block b) {
 		try {
 			if (b.getType() == 100) {
-				Parent sN = FXMLLoader.load(getClass().getResource("/layout/Index.fxml"));
+				Parent sN = FXMLLoader.load(getClass().getResource("/layout/Login.fxml"));
 				Scene scene = new Scene(sN);
 				Stage primaryStage = (Stage) Mario.getScene().getWindow();
 				primaryStage.setScene(scene);
