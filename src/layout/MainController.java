@@ -45,6 +45,7 @@ public class MainController implements Initializable {
 
 	}
 
+	// 화면 전환
 	public void ChangeJoin() {
 		try {
 			Parent login = FXMLLoader.load(getClass().getResource("/layout/Join.fxml"));
@@ -54,7 +55,6 @@ public class MainController implements Initializable {
 			primaryStage.setScene(scene);
 		} catch (Exception e) {
 			e.printStackTrace();
-
 		}
 	}
 	
@@ -67,7 +67,6 @@ public class MainController implements Initializable {
 			primaryStage.setScene(scene);
 		} catch (Exception e) {
 			e.printStackTrace();
-
 		}
 	}
 	
