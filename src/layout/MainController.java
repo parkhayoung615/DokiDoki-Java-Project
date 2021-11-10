@@ -29,10 +29,6 @@ public class MainController implements Initializable {
 	@FXML
 	private Button joinBtn;
 	@FXML
-	private Button GojoinBtn;
-	@FXML
-	private Button GoLoginBtn;
-	@FXML
 	private Button loginBtn;
 	@FXML
 	private TextField userId;
@@ -54,6 +50,7 @@ public class MainController implements Initializable {
 			Parent login = FXMLLoader.load(getClass().getResource("/layout/Join.fxml"));
 			Scene scene = new Scene(login);
 			Stage primaryStage = (Stage) ChangeJoinBtn.getScene().getWindow();
+			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 			primaryStage.setScene(scene);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -66,6 +63,7 @@ public class MainController implements Initializable {
 			Parent login = FXMLLoader.load(getClass().getResource("/layout/Login.fxml"));
 			Scene scene = new Scene(login);
 			Stage primaryStage = (Stage) ChangeLoginBtn.getScene().getWindow();
+			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 			primaryStage.setScene(scene);
 		} catch (Exception e) {
 			e.printStackTrace();
