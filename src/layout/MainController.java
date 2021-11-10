@@ -45,6 +45,7 @@ public class MainController implements Initializable {
 
 	}
 
+	// Start -> Login -> (로딩) -> Index
 	// 화면 전환
 	public void ChangeJoin() {
 		try {
@@ -63,6 +64,18 @@ public class MainController implements Initializable {
 			Parent login = FXMLLoader.load(getClass().getResource("/layout/Login.fxml"));
 			Scene scene = new Scene(login);
 			Stage primaryStage = (Stage) ChangeLoginBtn.getScene().getWindow();
+			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+			primaryStage.setScene(scene);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	// Start 화면에서 Login 화면으로 이동
+	public void StartChangeLogin() {
+		try {
+			Parent login = FXMLLoader.load(getClass().getResource("/layout/Login.fxml"));
+			Scene scene = new Scene(login);
+			Stage primaryStage = (Stage) StartBtn.getScene().getWindow();
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 			primaryStage.setScene(scene);
 		} catch (Exception e) {

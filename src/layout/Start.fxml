@@ -5,6 +5,6 @@
 
 <AnchorPane fx:id="StartBack" prefHeight="900.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="layout.MainController">
    <children>
-      <Button fx:id="StartBtn" layoutX="91.0" layoutY="674.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="94.0" />
+      <Button fx:id="StartBtn" layoutX="26.0" layoutY="669.0" mnemonicParsing="false" onAction="#StartChangeLogin" prefHeight="106.0" prefWidth="85.0" />
    </children>
 </AnchorPane>
