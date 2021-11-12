@@ -31,6 +31,14 @@ public class MainController implements Initializable {
 	@FXML
 	private Button loginBtn;
 	@FXML
+	private Button NewGame;
+	@FXML
+	private Button LoadGame;
+	@FXML
+	private Button Setting;
+	@FXML
+	private Button EndGame;
+	@FXML
 	private TextField userId;
 	@FXML
 	private TextField userPw;
