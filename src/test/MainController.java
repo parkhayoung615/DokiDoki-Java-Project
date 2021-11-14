@@ -33,6 +33,7 @@ public class MainController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		test();
 		Mario.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent event) {
@@ -55,12 +56,16 @@ public class MainController implements Initializable {
 			if (!s.getPassBlock(pass.blockGet(Mario.getX() + 10, Mario.getY(), 11), "shop").getPass()
 					&& Mario.getX() + 10 <= 1000) {
 				Mario.setX(Mario.getX() + 10);
+				animation.play();
+				animation.setOffsetY(96);
 			}
 
 		} else if (keyCode.equals(KeyCode.LEFT)) {
 			if (!s.getPassBlock(pass.blockGet(Mario.getX() - 10, Mario.getY(), 11), "shop").getPass()
 					&& Mario.getX() - 10 >= 0) {
 				Mario.setX(Mario.getX() - 10);
+				animation.play();
+				animation.setOffsetY(48);
 			}
 
 		} else if (keyCode.equals(KeyCode.UP)) {
@@ -68,7 +73,7 @@ public class MainController implements Initializable {
 					&& Mario.getY() - 10 >= 0) {
 				Mario.setY(Mario.getY() - 10);
 				animation.play();
-				animation.setOffsetY(150);
+				animation.setOffsetY(144);
 			}
 
 		} else if (keyCode.equals(KeyCode.DOWN)) {
@@ -79,7 +84,6 @@ public class MainController implements Initializable {
 				animation.setOffsetY(0);
 			}
 		} else if (keyCode.equals(KeyCode.SPACE)) {
-			test();
 			mapMove(s.getPassBlock(pass.blockGet(Mario.getX(), Mario.getY() + 10, 11), "shop"));
 		}
 		
@@ -104,7 +108,7 @@ public class MainController implements Initializable {
 	}
 	public void test() {
 		Mario.setImage(new Image("/imgs/avatar/yong1.png"));
-		Mario.setViewport(new Rectangle2D(0, 0, 50, 50));
+		Mario.setViewport(new Rectangle2D(0, 0, 45, 45));
 		animation = new SpriteAnimation(Mario, Duration.millis(200), 3, 4, 0, 0, 50, 50);
 	}
 
