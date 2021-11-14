@@ -109,7 +109,7 @@ public class MainController implements Initializable {
 	public void test() {
 		Mario.setImage(new Image("/imgs/avatar/yong1.png"));
 		Mario.setViewport(new Rectangle2D(0, 0, 45, 45));
-		animation = new SpriteAnimation(Mario, Duration.millis(200), 3, 4, 0, 0, 50, 50);
+		animation = new SpriteAnimation(Mario, Duration.millis(500), 3, 4, 0, 0, 50, 50);
 	}
 
 }

@@ -188,6 +188,4 @@ public class MainController implements Initializable {
 			alert.show();
 		}
 	}
-	
-
 }
