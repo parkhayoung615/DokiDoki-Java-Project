@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import util.AppUtil;
 import util.JDBCUtil;
 
 public class MainController implements Initializable {
@@ -161,6 +162,7 @@ public class MainController implements Initializable {
 					Stage primaryStage = (Stage) loginBtn.getScene().getWindow();
 					scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 					primaryStage.setScene(scene);
+					AppUtil.alert("로그인되었습니다!", null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -208,6 +210,7 @@ public class MainController implements Initializable {
 				Stage primaryStage = (Stage) joinBtn.getScene().getWindow();
 				scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 				primaryStage.setScene(scene);
+				AppUtil.alert("회원가입되었습니다!", null);
 			} catch (Exception e) {
 				e.printStackTrace();
 				alert.setTitle("오류가 있습니다!");
