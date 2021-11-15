@@ -6,11 +6,17 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
 
+<<<<<<< HEAD
+<AnchorPane fx:id="testBack" prefHeight="900.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="test.MainController">
+   <children>
+      <ImageView fx:id="Mario" fitHeight="48.0" fitWidth="48.0" focusTraversable="true" pickOnBounds="true">
+         <image>
+            <Image url="@../imgs/mario.png" />
+         </image>
+      </ImageView>
+   </children>
+=======
 <AnchorPane fx:id="testBack" prefHeight="900.0"
 	prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.171"
 	xmlns:fx="http://javafx.com/fxml/1" fx:controller="test.MainController">
@@ -114,4 +120,5 @@
 			</menus>
 		</MenuBar>
 	</children>
+>>>>>>> f14ad804618dad698898f7c0e41f4f8b54905d85
 </AnchorPane>
