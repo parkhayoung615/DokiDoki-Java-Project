@@ -6,7 +6,7 @@
 
 /* Start 화면 */
 #StartBack {
-	-fx-background-image: url(/imgs/Start.png);
+	-fx-background-image: url('/imgs/Start.png');
 	-fx-background-size: cover;
 	-fx-background-position: center center;
 }
@@ -17,7 +17,7 @@
 }
 
 #IndexBack {
-	-fx-background-image: url(/imgs/Index3.png);
+	-fx-background-image: url('/imgs/Index3.png');
 	-fx-background-size: cover;
 	-fx-background-position: center center;
 }
@@ -28,4 +28,10 @@
 	-fx-font-size: 15px;
 	-fx-font-weight: 800;
 	-fx-text-fill: #8487ff;
+}
+
+#testBack {
+	-fx-background-image: url('/imgs/BackImg/Map003.png');
+	-fx-background-size: cover;
+	-fx-background-position: center center;
 }
