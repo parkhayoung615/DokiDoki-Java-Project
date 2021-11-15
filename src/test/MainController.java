@@ -30,6 +30,9 @@ public class MainController implements Initializable {
 
 	Pass pass = new Pass();
 	MoveStage s = new MoveStage();
+	
+	private int width;
+	private int height;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -38,7 +41,7 @@ public class MainController implements Initializable {
 			@Override
 			public void handle(KeyEvent event) {
 				moveMario(event);
-				System.out.println(pass.blockGet(Mario.getX(), Mario.getY(), 11));
+				System.out.println(pass.blockGet(Mario.getX(), Mario.getY(), 22));
 			}
 		});
 		Mario.setOnKeyReleased(new EventHandler<KeyEvent>() {
@@ -53,15 +56,15 @@ public class MainController implements Initializable {
 	public void moveMario(KeyEvent event) {
 		KeyCode keyCode = event.getCode();
 		if (keyCode.equals(KeyCode.RIGHT)) {
-			if (!s.getPassBlock(pass.blockGet(Mario.getX() + 10, Mario.getY(), 11), "shop").getPass()
-					&& Mario.getX() + 10 <= 1000) {
+			if (!s.getPassBlock(pass.blockGet(Mario.getX() + 45, Mario.getY(), 22), "shop").getPass()
+					&& Mario.getX() + 45 <= 1100) {
 				Mario.setX(Mario.getX() + 10);
 				animation.play();
 				animation.setOffsetY(96);
 			}
 
 		} else if (keyCode.equals(KeyCode.LEFT)) {
-			if (!s.getPassBlock(pass.blockGet(Mario.getX() - 10, Mario.getY(), 11), "shop").getPass()
+			if (!s.getPassBlock(pass.blockGet(Mario.getX() - 10, Mario.getY(), 22), "shop").getPass()
 					&& Mario.getX() - 10 >= 0) {
 				Mario.setX(Mario.getX() - 10);
 				animation.play();
@@ -69,7 +72,7 @@ public class MainController implements Initializable {
 			}
 
 		} else if (keyCode.equals(KeyCode.UP)) {
-			if (!s.getPassBlock(pass.blockGet(Mario.getX(), Mario.getY() - 10, 11), "shop").getPass()
+			if (!s.getPassBlock(pass.blockGet(Mario.getX(), Mario.getY() - 10, 22), "shop").getPass()
 					&& Mario.getY() - 10 >= 0) {
 				Mario.setY(Mario.getY() - 10);
 				animation.play();
@@ -77,14 +80,14 @@ public class MainController implements Initializable {
 			}
 
 		} else if (keyCode.equals(KeyCode.DOWN)) {
-			if (!s.getPassBlock(pass.blockGet(Mario.getX(), Mario.getY() + 10, 11), "shop").getPass()
-					&& Mario.getY() < 800) {
+			if (!s.getPassBlock(pass.blockGet(Mario.getX(), Mario.getY() + 10, 22), "shop").getPass()
+					&& Mario.getY() + 10 < 900) {
 				Mario.setY(Mario.getY() + 10);
 				animation.play();
 				animation.setOffsetY(0);
 			}
 		} else if (keyCode.equals(KeyCode.SPACE)) {
-			mapMove(s.getPassBlock(pass.blockGet(Mario.getX(), Mario.getY() + 10, 11), "shop"));
+			mapMove(s.getPassBlock(pass.blockGet(Mario.getX(), Mario.getY(), 22), "shop"));
 		}
 		
 		System.out.println(Mario.getX() + " " + Mario.getY());
@@ -107,11 +110,13 @@ public class MainController implements Initializable {
 
 	}
 	public void test() {
-//		Mario.setImage(new Image("/imgs/avatar/yong1.png"));
-		Mario.setViewport(new Rectangle2D(0, 0, 25, 25));
-		Mario.setScaleY(0.7);
-		Mario.setScaleX(0.7);
-		animation = new SpriteAnimation(Mario, Duration.millis(500), 3, 4, 0, 0, 50, 50);
+		Mario.setImage(new Image("/imgs/avatar/yong1.png"));
+//		Mario.setImage(new Image("./imgs/200x200(px)/TypeScript.png"));
+		
+		Mario.setScaleY(1.2);
+		Mario.setScaleX(1.2);
+		animation = new SpriteAnimation(Mario, Duration.millis(500), 3, 4, 0, 0, 48, 48);
+
 	}
 
 }
