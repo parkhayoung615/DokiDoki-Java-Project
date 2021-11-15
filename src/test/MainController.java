@@ -15,18 +15,23 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.MenuBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class MainController implements Initializable {
-	
+
 	private HashMap<KeyCode, Boolean> keys = new HashMap<>();
 	@FXML
 	private ImageView Mario;
+	@FXML
+	private AnchorPane testBack;
 
 	Pass pass = new Pass();
 	MoveStage s = new MoveStage();
@@ -37,6 +42,13 @@ public class MainController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		test();
+		testBack.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
+		    public void handle(KeyEvent event) {
+		        if (event.getCode() == KeyCode.I) {
+		            KeyInventory(event);
+		        }
+		    }
+		});
 		Mario.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent event) {
@@ -89,10 +101,10 @@ public class MainController implements Initializable {
 		} else if (keyCode.equals(KeyCode.SPACE)) {
 			mapMove(s.getPassBlock(pass.blockGet(Mario.getX(), Mario.getY(), 22), "shop"));
 		}
-		
+
 		System.out.println(Mario.getX() + " " + Mario.getY());
 	}
-	
+
 	SpriteAnimation animation;
 
 	public void mapMove(Block b) {
@@ -103,12 +115,13 @@ public class MainController implements Initializable {
 				Stage primaryStage = (Stage) Mario.getScene().getWindow();
 				primaryStage.setScene(scene);
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 	}
+
 	public void test() {
 		Mario.setImage(new Image("/imgs/avatar/yong1.png"));
 //		Mario.setImage(new Image("./imgs/200x200(px)/TypeScript.png"));
@@ -117,6 +130,27 @@ public class MainController implements Initializable {
 		Mario.setScaleX(1.2);
 		animation = new SpriteAnimation(Mario, Duration.millis(500), 3, 4, 0, 0, 48, 48);
 
+	}
+
+	public void GoInventory() {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("popup.fxml"));
+			Parent root = (Parent) loader.load();
+			Stage stage = new Stage();
+			stage.setTitle("Inventory");
+			stage.setScene(new Scene(root));
+			stage.show(); // popup.show(primaryStage, anchorX, anchorY); 지정된 좌표에서 실행
+		} catch (Exception e) {
+
+		}
+	}
+
+	public void KeyInventory(KeyEvent event) {
+		KeyCode keyCode = event.getCode();
+		if (keyCode.equals(KeyCode.I)) {
+			System.out.println("인벤토리창 이동");
+			GoInventory();
+		}
 	}
 
 }
