@@ -107,9 +107,11 @@ public class MainController implements Initializable {
 
 	}
 	public void test() {
-		Mario.setImage(new Image("/imgs/avatar/yong1.png"));
-		Mario.setViewport(new Rectangle2D(0, 0, 45, 45));
-		animation = new SpriteAnimation(Mario, Duration.millis(500), 3, 4, 0, 0, 100, 100);
+//		Mario.setImage(new Image("/imgs/avatar/yong1.png"));
+		Mario.setViewport(new Rectangle2D(0, 0, 25, 25));
+		Mario.setScaleY(0.7);
+		Mario.setScaleX(0.7);
+		animation = new SpriteAnimation(Mario, Duration.millis(500), 3, 4, 0, 0, 50, 50);
 	}
 
 }

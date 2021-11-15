@@ -10,7 +10,7 @@
 
 <AnchorPane fx:id="testBack" prefHeight="900.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="test.MainController">
    <children>
-      <ImageView fx:id="Mario" fitHeight="99.0" fitWidth="107.0" focusTraversable="true" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Mario" fitHeight="70.0" fitWidth="70.0" focusTraversable="true" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../imgs/mario.png" />
          </image>
