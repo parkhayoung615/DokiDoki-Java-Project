@@ -42,6 +42,16 @@ public class MainController implements Initializable {
 	@FXML
 	private Button NewGame;
 	@FXML
+	private Button EndProgram;
+	@FXML
+	private Button commentH;
+	@FXML
+	private Button commentG;
+	@FXML
+	private Button commentI;
+	@FXML
+	private Button commentK;
+	@FXML
 	private Button LoadGame;
 	@FXML
 	private Button Setting;
@@ -55,8 +65,7 @@ public class MainController implements Initializable {
 	private TextField joinId;
 	@FXML
 	private TextField joinPw;
-	
-	
+
 	@FXML
 	private MediaView mediaView;
 	@FXML
@@ -85,7 +94,7 @@ public class MainController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void ChangeLogin() {
 		try {
 			Parent login = FXMLLoader.load(getClass().getResource("/layout/Login.fxml"));
@@ -97,6 +106,7 @@ public class MainController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+
 	// Start 화면에서 Login 화면으로 이동
 	public void StartChangeLogin() {
 		try {
@@ -109,10 +119,36 @@ public class MainController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	
+
+	// EndGame 누르면 Start 화면으로 이동
+	public void ChangeStart() {
+		try {
+			Parent login = FXMLLoader.load(getClass().getResource("/layout/Start.fxml"));
+			Scene scene = new Scene(login);
+			Stage primaryStage = (Stage) EndGame.getScene().getWindow();
+			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+			primaryStage.setScene(scene);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void commentH() {
+		try {
+			Alert alert = new Alert(AlertType.CONFIRMATION);
+			alert.setTitle("개발자 코멘트");
+			alert.setHeaderText("나그냥울어야겠당");
+			alert.setContentText("질질짤게요그냥너무힘들엇구어쩌구이렇게살아도되나싶구어쩌구");
+			alert.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	// 로그인
 	public String userN;
 	public String AuserID;
+
 	public void loginCheck() {
 		JDBCUtil db = new JDBCUtil();
 		Connection con = db.getConnection();
@@ -139,16 +175,14 @@ public class MainController implements Initializable {
 			if (rs.next()) {
 				// login에서 loading으로 화면 전환*****
 				try {
-						Parent login = FXMLLoader.load(getClass().getResource("/layout/Loading.fxml"));
-						Scene scene = new Scene(login);
-						Stage primaryStage = (Stage) loginBtn.getScene().getWindow();
-						scene.getStylesheets()
-								.add(getClass().getResource("/application/application.css").toExternalForm());
-						primaryStage.setScene(scene);
-						
-						//loadMp4();    // loadMp4 실행(미디어뷰)
-						
-						
+					Parent login = FXMLLoader.load(getClass().getResource("/layout/Loading.fxml"));
+					Scene scene = new Scene(login);
+					Stage primaryStage = (Stage) loginBtn.getScene().getWindow();
+					scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+					primaryStage.setScene(scene);
+
+					// loadMp4(); // loadMp4 실행(미디어뷰)
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -211,8 +245,7 @@ public class MainController implements Initializable {
 			alert.show();
 		}
 	}
-	
-	
+
 	// 로딩 소스 재생
 	public void loadMp4() {
 		// 미디어 객체를 소스 폴더의 video.mp4를 이용해만들어 줍니다.
@@ -247,40 +280,53 @@ public class MainController implements Initializable {
 		mediaPlayer.setOnPaused(() -> {
 			loginBtn.setDisable(false);
 		});
-		
-		//비디오가 끝났을 경우의 처리
-		//booEnd 변수에  true 를 넣어  재생 버튼을 눌렀을 때
-		//처음 부터 실행 할것인지를 결정 하게 한다.
-		
+
+		// 비디오가 끝났을 경우의 처리
+		// booEnd 변수에 true 를 넣어 재생 버튼을 눌렀을 때
+		// 처음 부터 실행 할것인지를 결정 하게 한다.
+
 		/*
-		mediaPlayer.setOnEndOfMedia(() -> {
-			booEnd = true;
-			loginBtn.setDisable(false);
-		});
-		mediaPlayer.setOnStopped(() -> {
-			mediaPlayer.seek(mediaPlayer.getStartTime());
-			loginBtn.setDisable(false);
-		});
+		 * mediaPlayer.setOnEndOfMedia(() -> { booEnd = true;
+		 * loginBtn.setDisable(false); }); mediaPlayer.setOnStopped(() -> {
+		 * mediaPlayer.seek(mediaPlayer.getStartTime()); loginBtn.setDisable(false); });
 		 */
-		
-		
+
 		// 버튼 ActionEvent 처리
 		loginBtn.setOnAction(event -> {
-			
-			//플레이 버튼을 눌렀을때 
-			//동영상이 끝날상태 즉 booEnd 에 true  가 들어 가있을 경우에는 
-			//종료하고 처음으로 재생시점을 이동한다.
-			//그리고 다시booEnd에 false 를 대입해 지금 동영상이 
-			//끝이 아니라는 것을 알려준다.
-			if (booEnd) {  
+
+			// 플레이 버튼을 눌렀을때
+			// 동영상이 끝날상태 즉 booEnd 에 true 가 들어 가있을 경우에는
+			// 종료하고 처음으로 재생시점을 이동한다.
+			// 그리고 다시booEnd에 false 를 대입해 지금 동영상이
+			// 끝이 아니라는 것을 알려준다.
+			if (booEnd) {
 				mediaPlayer.stop();
-				//mediaPlayer.seek(mediaPlayer.getStartTime());
-				
-				
+				// mediaPlayer.seek(mediaPlayer.getStartTime());
+
 			}
-			//mediaPlayer.play();
-			//booEnd = false;
+			// mediaPlayer.play();
+			// booEnd = false;
 		});
-		
+
+	}
+
+	// 창 닫기
+	public void closeProgram() { // 현재의 스테이지를 받아서 close를 해주어야 함
+		Stage pop = (Stage) EndProgram.getScene().getWindow(); // 버튼을 통해서 현재 스테이지를 알아냄
+		pop.close();
+	}
+
+//		게임 시작 (새 게임 버튼 눌렀을 때부터)
+
+	public void StartGame() {
+		try {
+			Parent login = FXMLLoader.load(getClass().getResource("/test/TestLayout.fxml"));
+			Scene scene = new Scene(login);
+			Stage primaryStage = (Stage) NewGame.getScene().getWindow();
+			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+			primaryStage.setScene(scene);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
