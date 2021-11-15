@@ -6,7 +6,7 @@
 
 <AnchorPane fx:id="IndexBack" prefHeight="900.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="layout.MainController">
    <children>
-      <Button fx:id="NewGame" layoutX="38.0" layoutY="350.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="158.0" text="새 게임">
+      <Button fx:id="NewGame" layoutX="38.0" layoutY="350.0" mnemonicParsing="false" onAction="#StartGame" prefHeight="38.0" prefWidth="158.0" text="새 게임">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -16,7 +16,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="EndGame" layoutX="38.0" layoutY="536.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="158.0" text="게임 종료">
+      <Button fx:id="EndGame" layoutX="38.0" layoutY="536.0" mnemonicParsing="false" onAction="#ChangeStart" prefHeight="38.0" prefWidth="158.0" text="게임 종료">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

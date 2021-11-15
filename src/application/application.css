@@ -11,9 +11,14 @@
 	-fx-background-position: center center;
 }
 
-#StartBtn {
+#StartBtn, #EndProgram, #commentH, #commentG, #commentK, #commentI {
 	-fx-background-color: #00ff0000;
 	-fx-border-style: none;
+}
+#EndProgram {
+	-fx-background-image: url('/imgs/window.png');
+	-fx-background-size: cover;
+	-fx-background-position: center center;
 }
 
 #IndexBack {
