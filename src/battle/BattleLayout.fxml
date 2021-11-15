@@ -10,29 +10,30 @@
    <children>
       <Pane layoutX="16.0" layoutY="524.0" prefHeight="315.0" prefWidth="1069.0" style="-fx-background-color: gray;">
          <children>
-            <Label layoutX="14.0" layoutY="56.0" prefHeight="63.0" prefWidth="990.0" text="테스트" textFill="WHITE">
+            <Label fx:id="Txt1" layoutX="14.0" layoutY="56.0" prefHeight="63.0" prefWidth="990.0" text="테스트" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="31.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="126.0" prefHeight="63.0" prefWidth="990.0" text="테스트2" textFill="WHITE">
+            <Label fx:id="Txt2" layoutX="14.0" layoutY="126.0" prefHeight="63.0" prefWidth="990.0" text="테스트2" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="31.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="196.0" prefHeight="63.0" prefWidth="990.0" text="테스트3" textFill="WHITE">
+            <Label fx:id="Txt3" layoutX="14.0" layoutY="196.0" prefHeight="63.0" prefWidth="990.0" text="테스트3" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="31.0" />
                </font>
             </Label>
-            <Button fx:id="Btn2" layoutX="535.0" layoutY="28.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="223.0" text="버튼2" />
-            <Button fx:id="Btn4" layoutX="535.0" layoutY="132.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="223.0" text="버튼4" />
-            <Button fx:id="Btn3" layoutX="253.0" layoutY="132.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="223.0" text="버튼3" />
-            <Button fx:id="Btn1" layoutX="253.0" layoutY="28.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="223.0" text="버튼1" />
-            <Button fx:id="BtnBattle" layoutX="293.0" layoutY="56.0" mnemonicParsing="false" prefHeight="126.0" prefWidth="432.0" text="싸운다" />
+            <Button fx:id="Btn2" layoutX="535.0" layoutY="28.0" mnemonicParsing="false" onAction="#skillTw" prefHeight="72.0" prefWidth="223.0" text="버튼2" />
+            <Button fx:id="Btn4" layoutX="535.0" layoutY="132.0" mnemonicParsing="false" onAction="#skillF" prefHeight="72.0" prefWidth="223.0" text="버튼4" />
+            <Button fx:id="Btn3" layoutX="253.0" layoutY="132.0" mnemonicParsing="false" onAction="#skillT" prefHeight="72.0" prefWidth="223.0" text="버튼3" />
+            <Button fx:id="Btn1" layoutX="253.0" layoutY="28.0" mnemonicParsing="false" onAction="#skillO" prefHeight="72.0" prefWidth="223.0" text="버튼1" />
+            <Button fx:id="BtnBattle" layoutX="293.0" layoutY="56.0" mnemonicParsing="false" onAction="#battle" prefHeight="126.0" prefWidth="432.0" text="싸운다" />
             <Button fx:id="BtnBag" layoutX="293.0" layoutY="220.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="108.0" text="가방" />
             <Button fx:id="BtnRun" layoutX="455.0" layoutY="238.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="108.0" text="도망간다" />
             <Button fx:id="BtnChg" layoutX="617.0" layoutY="220.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="108.0" text="포켓몬" />
+            <Button fx:id="BtnChat" mnemonicParsing="false" onAction="#nextChat" prefHeight="315.0" prefWidth="1069.0" styleClass="btn" />
          </children>
       </Pane>
    </children>
