@@ -30,8 +30,8 @@ public class MainController implements Initializable {
 	private HashMap<KeyCode, Boolean> keys = new HashMap<>();
 	@FXML
 	private ImageView Mario;
-	@FXML
-	private AnchorPane testBack;
+//	@FXML
+//	private AnchorPane testBack;
 
 	Pass pass = new Pass();
 	MoveStage s = new MoveStage();
@@ -42,13 +42,13 @@ public class MainController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		test();
-		testBack.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
-		    public void handle(KeyEvent event) {
-		        if (event.getCode() == KeyCode.I) {
-		            KeyInventory(event);
-		        }
-		    }
-		});
+//		testBack.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
+//		    public void handle(KeyEvent event) {
+//		        if (event.getCode() == KeyCode.I) {
+//		            KeyInventory(event);
+//		        }
+//		    }
+//		});
 		Mario.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent event) {
