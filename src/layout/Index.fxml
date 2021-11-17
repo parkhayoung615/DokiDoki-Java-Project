@@ -11,7 +11,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="LoadGame" layoutX="342.0" layoutY="821.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="158.0" text="게임 불러오기">
+      <Button fx:id="LoadGame" layoutX="342.0" layoutY="821.0" mnemonicParsing="false" onAction="#LoadGame" prefHeight="38.0" prefWidth="158.0" text="게임 불러오기">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
