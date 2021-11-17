@@ -114,6 +114,11 @@ public class MainController implements Initializable {
 				Scene scene = new Scene(sN);
 				Stage primaryStage = (Stage) Mario.getScene().getWindow();
 				primaryStage.setScene(scene);
+			} else if (b.getType() == 101) {
+				Parent sN = FXMLLoader.load(getClass().getResource("/battle/BattleLayout.fxml"));
+				Scene scene = new Scene(sN);
+				Stage primaryStage = (Stage) Mario.getScene().getWindow();
+				primaryStage.setScene(scene);
 			}
 
 		} catch (Exception e) {

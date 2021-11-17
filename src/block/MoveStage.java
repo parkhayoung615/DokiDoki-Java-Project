@@ -28,7 +28,11 @@ public class MoveStage {
 		Block[] shop = new Block[shopPass.length];
 		int i = 0;
 		for (int type : shopPass) {
-			int pass = type;
+			int pass = 0;
+			if (type == 1) {
+				pass = 1;
+			} else if (type == 100) {
+			}
 			shop[i] = new Block(i, pass != 0, "shop", type);
 			i++;
 		}
