@@ -18,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.MediaView;
@@ -60,11 +61,11 @@ public class MainController implements Initializable {
 	@FXML
 	private TextField userId;
 	@FXML
-	private TextField userPw;
+	private PasswordField userPw;
 	@FXML
 	private TextField joinId;
 	@FXML
-	private TextField joinPw;
+	private PasswordField joinPw;
 
 	@FXML
 	private MediaView mediaView;
@@ -175,7 +176,7 @@ public class MainController implements Initializable {
 			if (rs.next()) {
 				// login에서 loading으로 화면 전환*****
 				try {
-					Parent login = FXMLLoader.load(getClass().getResource("/layout/Loading.fxml"));
+					Parent login = FXMLLoader.load(getClass().getResource("/layout/Index.fxml"));
 					Scene scene = new Scene(login);
 					Stage primaryStage = (Stage) loginBtn.getScene().getWindow();
 					scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
@@ -285,11 +286,11 @@ public class MainController implements Initializable {
 		// booEnd 변수에 true 를 넣어 재생 버튼을 눌렀을 때
 		// 처음 부터 실행 할것인지를 결정 하게 한다.
 
-		/*
-		 * mediaPlayer.setOnEndOfMedia(() -> { booEnd = true;
-		 * loginBtn.setDisable(false); }); mediaPlayer.setOnStopped(() -> {
-		 * mediaPlayer.seek(mediaPlayer.getStartTime()); loginBtn.setDisable(false); });
-		 */
+		
+		mediaPlayer.setOnEndOfMedia(() -> { booEnd = true;
+		loginBtn.setDisable(false); }); mediaPlayer.setOnStopped(() -> {
+		mediaPlayer.seek(mediaPlayer.getStartTime()); loginBtn.setDisable(false); });
+		
 
 		// 버튼 ActionEvent 처리
 		loginBtn.setOnAction(event -> {
@@ -301,14 +302,15 @@ public class MainController implements Initializable {
 			// 끝이 아니라는 것을 알려준다.
 			if (booEnd) {
 				mediaPlayer.stop();
-				// mediaPlayer.seek(mediaPlayer.getStartTime());
+				 mediaPlayer.seek(mediaPlayer.getStartTime());
 
 			}
-			// mediaPlayer.play();
-			// booEnd = false;
+			 mediaPlayer.play();
+			 booEnd = false;
 		});
 
 	}
+	
 
 	// 창 닫기
 	public void closeProgram() { // 현재의 스테이지를 받아서 close를 해주어야 함

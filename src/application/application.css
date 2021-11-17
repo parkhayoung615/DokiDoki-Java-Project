@@ -22,17 +22,15 @@
 }
 
 #IndexBack {
-	-fx-background-image: url('/imgs/Index3.png');
+	-fx-background-image: url('/imgs/Index.png');
 	-fx-background-size: cover;
 	-fx-background-position: center center;
 }
 
 #NewGame, #LoadGame, #Setting, #EndGame {
 	-fx-border-style: none;
-	-fx-background-color: #00ff0000;
-	-fx-font-size: 15px;
-	-fx-font-weight: 800;
-	-fx-text-fill: #8487ff;
+	-fx-background-color: #000;
+	-fx-text-fill: #fff;
 }
 
 #testBack {
