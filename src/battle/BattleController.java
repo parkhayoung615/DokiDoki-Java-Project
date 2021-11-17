@@ -1,8 +1,15 @@
 package battle;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
+import util.JDBCUtil;
 
 public class BattleController {
 	
@@ -36,6 +43,46 @@ public class BattleController {
 	@FXML
 	private Button BtnChat;
 	
+	private Language lang = new Language();
+	public void loadBattle() {
+		JDBCUtil db = new JDBCUtil();
+		Connection con = db.getConnection();
+		PreparedStatement pstmt = null;
+		Alert alert = new Alert(AlertType.WARNING);
+		String sql = "SELECT * FROM `language` WHERE `id` = ?";
+		ResultSet rs = null;
+
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, 1);
+			rs = pstmt.executeQuery();
+			int hp;
+			int[] skills = new int[4];
+			if (rs.next()) {
+				hp = rs.getInt("hp");
+				skills[0] = rs.getInt("skillfi");
+				skills[1] = rs.getInt("skillse");
+				skills[2] = rs.getInt("skillth");
+				skills[3] = rs.getInt("skillfo");
+				sql = "SELECT * FOM `skills` WHERE `id` = ?";
+				try {
+					for (int i : skills) {
+						pstmt = con.prepareStatement(sql);
+						pstmt.setInt(1, i);
+						rs = pstmt.executeQuery();
+						if (rs.next()) {
+//							lang.setSkills({new Skill(rs.getInt("id")), new Skill(rs.getString("name")), new Skill(rs.getInt("dmg"))]);
+						}
+					}
+					
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
 	
 	@FXML
 	public void battle() {
