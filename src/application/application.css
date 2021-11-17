@@ -41,3 +41,64 @@
 .btn {
 	-fx-background-color: transparent;
 }
+
+#Level1Back {
+	-fx-background-image: url('/imgs/BackImg/Map007.png');
+	-fx-background-size: cover;
+	-fx-background-position: center center;
+}
+
+#Level2Back {
+	-fx-background-image: url('/imgs/BackImg/Map006.png');
+	-fx-background-size: cover;
+	-fx-background-position: center center;
+}
+
+#Level3Back {
+	-fx-background-image: url('/imgs/BackImg/Map012.png');
+	-fx-background-size: cover;
+	-fx-background-position: center center;
+}
+
+#BasicBack {
+	-fx-background-image: url('/imgs/BackImg/Map003.png');
+	-fx-background-size: cover;
+	-fx-background-position: center center;
+}
+
+#DeepBack {
+	-fx-background-image: url('/imgs/BackImg/Map001.png');
+	-fx-background-size: cover;
+	-fx-background-position: center center;
+}
+
+#SkillsLBack {
+	-fx-background-image: url('/imgs/BackImg/Map011.png');
+	-fx-background-size: cover;
+	-fx-background-position: center center;
+}
+
+#SkillsMBack {
+	-fx-background-image: url('/imgs/BackImg/Map008.png');
+	-fx-background-size: cover;
+	-fx-background-position: center center;
+}
+
+#SkillsRBack {
+	-fx-background-image: url('/imgs/BackImg/Map002.png');
+	-fx-background-size: cover;
+	-fx-background-position: center center;
+}
+
+#SkillsHWBack {
+	-fx-background-image: url('/imgs/BackImg/Map010.png');
+	-fx-background-size: cover;
+	-fx-background-position: center center;
+}
+
+#StartMapBack {
+	-fx-background-color: #000;
+	-fx-background-image: url('/imgs/battle/Min.png');
+	-fx-background-size: cover;
+	-fx-background-position: center center;
+}
