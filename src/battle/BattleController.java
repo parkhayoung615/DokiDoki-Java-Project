@@ -44,34 +44,36 @@ public class BattleController {
 	private Button BtnChat;
 	
 	private Language lang = new Language();
-	public void loadBattle() {
+	public void loadBattle(int langId) {
 		JDBCUtil db = new JDBCUtil();
 		Connection con = db.getConnection();
 		PreparedStatement pstmt = null;
 		Alert alert = new Alert(AlertType.WARNING);
 		String sql = "SELECT * FROM `language` WHERE `id` = ?";
 		ResultSet rs = null;
-
+		int hp = 0;
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, 1);
+			pstmt.setInt(1, langId);
 			rs = pstmt.executeQuery();
-			int hp;
-			int[] skills = new int[4];
+			int[] skillId = new int[4];
+			Skill[] skills = new Skill[4];
 			if (rs.next()) {
 				hp = rs.getInt("hp");
-				skills[0] = rs.getInt("skillfi");
-				skills[1] = rs.getInt("skillse");
-				skills[2] = rs.getInt("skillth");
-				skills[3] = rs.getInt("skillfo");
-				sql = "SELECT * FOM `skills` WHERE `id` = ?";
+				skillId[0] = rs.getInt("skillfi");
+				skillId[1] = rs.getInt("skillse");
+				skillId[2] = rs.getInt("skillth");
+				skillId[3] = rs.getInt("skillfo");
+				sql = "SELECT * FOM `skill` WHERE `id` = ?";
+				int j = 0;
 				try {
-					for (int i : skills) {
+					for (int i : skillId) {
 						pstmt = con.prepareStatement(sql);
 						pstmt.setInt(1, i);
 						rs = pstmt.executeQuery();
 						if (rs.next()) {
-//							lang.setSkills({new Skill(rs.getInt("id")), new Skill(rs.getString("name")), new Skill(rs.getInt("dmg"))]);
+							skills[j] = new Skill(i, rs.getString("name"), rs.getInt("dmg"));
+							j++;
 						}
 					}
 					
@@ -79,6 +81,9 @@ public class BattleController {
 					// TODO: handle exception
 				}
 			}
+			lang.setSkills(skills);
+			lang.setId(1);
+			lang.setHp(hp);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
