@@ -3,6 +3,7 @@ package battle;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -13,10 +14,7 @@ import util.JDBCUtil;
 
 public class BattleController {
 	
-	@FXML
-	public void initialize() {
-		chat();
-	}
+	
 	
 	@FXML
 	private Button Btn1;
@@ -35,62 +33,87 @@ public class BattleController {
 	@FXML
 	private Button BtnRun;
 	@FXML
-	private Label Txt1;
+	private Label Txt;
 	@FXML
-	private Label Txt2;
+	private Label Hp1;
 	@FXML
-	private Label Txt3;
+	private Label Hp2;
+
 	@FXML
 	private Button BtnChat;
 	
+	
+	@FXML
+	public void initialize() {
+		chat("start");
+		loadBattle(1, "lang");
+		loadBattle(2, "enemy");
+	}
+	
+	private int idx = 0;
 	private Language lang = new Language();
-	public void loadBattle(int langId) {
+	private Language enemy = new Language();
+	private ArrayList<String> list = new ArrayList<String>();
+	
+
+	public void loadBattle(int langId, String type) {
 		JDBCUtil db = new JDBCUtil();
 		Connection con = db.getConnection();
 		PreparedStatement pstmt = null;
 		Alert alert = new Alert(AlertType.WARNING);
-		String sql = "SELECT * FROM `language` WHERE `id` = ?";
+		String sql = "SELECT * FROM `object` WHERE `id` = ?";
 		ResultSet rs = null;
-		int hp = 0;
+		int maxHP = 0;
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, langId);
 			rs = pstmt.executeQuery();
-			int[] skillId = new int[4];
 			Skill[] skills = new Skill[4];
+			Button[] skillButtons = {Btn1, Btn2, Btn3, Btn4};
 			if (rs.next()) {
-				hp = rs.getInt("hp");
-				skillId[0] = rs.getInt("skillfi");
-				skillId[1] = rs.getInt("skillse");
-				skillId[2] = rs.getInt("skillth");
-				skillId[3] = rs.getInt("skillfo");
-				sql = "SELECT * FOM `skill` WHERE `id` = ?";
+				maxHP = rs.getInt("maxHP");
+				sql = "SELECT * FROM skills s, object o WHERE o.id = s.object_id = ? AND s.id = ?";
 				int j = 0;
 				try {
-					for (int i : skillId) {
+					for (int i = 1; i < 5; i++) {
 						pstmt = con.prepareStatement(sql);
-						pstmt.setInt(1, i);
+						pstmt.setInt(1, langId);
+						pstmt.setInt(2, i);
 						rs = pstmt.executeQuery();
 						if (rs.next()) {
-							skills[j] = new Skill(i, rs.getString("name"), rs.getInt("dmg"));
+							skills[j] = new Skill(i, rs.getString("s.name"), rs.getInt("s.dmg"));
 							j++;
 						}
 					}
 					
 				} catch (Exception e) {
-					// TODO: handle exception
+					System.out.println("오류1");
 				}
 			}
-			lang.setSkills(skills);
-			lang.setId(1);
-			lang.setHp(hp);
+			if (type.equals("lang")) {
+				lang.setSkills(skills);
+				lang.setId(1);
+				lang.setHp(maxHP);
+				skillButtons[0].setText(lang.getSkills()[0].getName());
+				skillButtons[1].setText(lang.getSkills()[1].getName());
+				skillButtons[2].setText(lang.getSkills()[2].getName());
+				skillButtons[3].setText(lang.getSkills()[3].getName());
+				Hp2.setText("HP : " + maxHP + " / " + maxHP );
+			} else {
+				enemy.setSkills(skills);
+				enemy.setId(1);
+				enemy.setHp(maxHP);
+				Hp1.setText("HP : " + maxHP + " / " + maxHP );
+			}
+			
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println("오류2");
 		}
 	}
 	
+	
 	@FXML
-	public void battle() {
+	public void gobattle() {
 		disBtn(BtnBattle);
 		asBtn(Btn1);
 		asBtn(Btn2);
@@ -101,20 +124,51 @@ public class BattleController {
 	@FXML
 	public void skillO() {
 		chat();
+		System.out.println(lang.getSkills()[0].getName());
 	}
 	@FXML
 	public void skillTw() {
 		chat();
+		System.out.println(lang.getSkills()[1].getName());
 	}
 	@FXML
 	public void skillT() {
 		chat();
+		System.out.println(lang.getSkills()[2].getName());
 	}
 	@FXML
 	public void skillF() {
 		chat();
+		System.out.println(lang.getSkills()[3].getName());
 	}
-	public void chat() {
+	public void chatLoad(String battle) {
+		if (battle.equals("start")) {
+			JDBCUtil db = new JDBCUtil();
+			Connection con = db.getConnection();
+			PreparedStatement pstmt = null;
+			Alert alert = new Alert(AlertType.WARNING);
+			String sql = "SELECT * FROM `script` WHERE `char_id` = ? AND `scene_id` = ? ORDER BY `id` DESC";
+			ResultSet rs = null;
+			try {
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, "S-02");
+				pstmt.setString(2, "test");
+				rs = pstmt.executeQuery();
+				while (rs.next()) {
+					list.add(rs.getString("script_data"));
+				}
+					
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		} else if (battle.equals("battle")) {
+			
+		} else if (battle.equals("end")) {
+			
+		}
+		
+	}
+	public void chat(String battle) {
 		disBtn(Btn1);
 		disBtn(Btn2);
 		disBtn(Btn3);
@@ -126,21 +180,31 @@ public class BattleController {
 		asLabel();
 		BtnChat.setDisable(false);
 		BtnChat.setVisible(true);
+		Txt.setText("");
+		
+		chatLoad(battle);
 		
 	}
 	public void nextChat() {
-		BtnChat.setDisable(true);
-		Btn1.setVisible(true);
-		Btn2.setVisible(true);
-		Btn3.setVisible(true);
-		Btn4.setVisible(true);
-		asBtn(BtnChat);
-		asBtn(BtnRun);
-		asBtn(BtnChg);
-		asBtn(BtnBag);
-		asBtn(BtnBattle);
-		disBtn(BtnChat);
-		disLabel();
+
+		if (idx < list.size()) {
+			Txt.setText(list.get(idx));
+			idx++;
+		} else {
+			BtnChat.setDisable(true);
+			Btn1.setVisible(true);
+			Btn2.setVisible(true);
+			Btn3.setVisible(true);
+			Btn4.setVisible(true);
+			asBtn(BtnChat);
+			asBtn(BtnRun);
+			asBtn(BtnChg);
+			asBtn(BtnBag);
+			asBtn(BtnBattle);
+			disBtn(BtnChat);
+			disLabel();
+		}
+		
 	}
 	
 	public void disBtn(Button Btn) {
@@ -152,19 +216,11 @@ public class BattleController {
 		Btn.setDisable(false);
 	}
 	public void disLabel() {
-		Txt1.setVisible(false);
-		Txt1.setDisable(true);
-		Txt2.setVisible(false);
-		Txt2.setDisable(true);
-		Txt3.setVisible(false);
-		Txt3.setDisable(true);
+		Txt.setVisible(false);
+		Txt.setDisable(true);
 	}
 	public void asLabel() {
-		Txt1.setVisible(true);
-		Txt1.setDisable(false);
-		Txt2.setVisible(true);
-		Txt2.setDisable(false);
-		Txt3.setVisible(true);
-		Txt3.setDisable(false);
+		Txt.setVisible(true);
+		Txt.setDisable(false);
 	}
 }
