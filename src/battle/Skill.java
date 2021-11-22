@@ -1,18 +1,18 @@
 package battle;
 
 public class Skill {
-	private int id;
+	private String id;
 	private String name;
 	private int dmg;
-	public Skill(int id, String name, int dmg) {
+	public Skill(String id, String name, int dmg) {
 		this.id = id;
 		this.name = name;
 		this.dmg = dmg;
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getName() {
