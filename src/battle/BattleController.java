@@ -10,6 +10,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.Alert.AlertType;
 import util.JDBCUtil;
 
@@ -39,10 +42,16 @@ public class BattleController {
 	private Label Hp1;
 	@FXML
 	private Label Hp2;
-
+	@FXML
+	private ProgressBar hpBar2;
+	@FXML
+	private ProgressBar hpBar1;
 	@FXML
 	private Button BtnChat;
-	
+	@FXML
+	private ImageView langImg;
+	@FXML
+	private ImageView enemyImg;
 	
 	@FXML
 	public void initialize() {
@@ -76,7 +85,7 @@ public class BattleController {
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				langName = rs.getString("name");
-				maxHP = rs.getInt("maxHP");
+				maxHP = rs.getInt("hp");
 				name = rs.getString("name");
 			}
 		} catch (Exception e) {
@@ -113,19 +122,24 @@ public class BattleController {
 				lang.setHp(maxHP);
 				lang.setMaxHp(maxHP);
 				lang.setName(name);
+				langImg.setImage(new Image("/imgs/200x200(px)/" + name + ".png"));
 				skillButtons[0].setText(lang.getSkills()[0].getName());
 				skillButtons[1].setText(lang.getSkills()[1].getName());
 				skillButtons[2].setText(lang.getSkills()[2].getName());
 				skillButtons[3].setText(lang.getSkills()[3].getName());
 				System.out.println(12121);
 				Hp2.setText("HP : " + maxHP + " / " + maxHP);
+				setBar("lang");
+				
 			} else if (type.equals("enemy")){
 				enemy.setSkills(skills);
 				enemy.setId(langId);
 				enemy.setHp(maxHP);
 				enemy.setMaxHp(maxHP);
 				enemy.setName(name);
+				enemyImg.setImage(new Image("/imgs/200x200(px)/" + name + ".png"));
 				Hp1.setText("HP : " + maxHP + " / " + maxHP);
+				setBar("enemy");
 			}
 		} catch (Exception e) {
 			System.out.println("zz");
@@ -148,21 +162,34 @@ public class BattleController {
 		langSkill = num;
 		try {
 			Random r = new Random();
-			System.out.println(1);
 			enemySkill = r.nextInt(4);
 			System.out.println(enemySkill);
 			enemy.setHp(enemy.getHp() - lang.getSkills()[num].getDmg());
-			System.out.println(3);
 			lang.setHp(lang.getHp()  - enemy.getSkills()[enemySkill].getDmg());
-			System.out.println(4);	
+			
+			if (lang.getHp() <= 0 && enemy.getHp() <= 0) {
+				lang.setHp(0);
+				enemy.setHp(0);
+			} else if (lang.getHp() <= 0) {
+				lang.setHp(0);
+			} else if (enemy.getHp() <= 0) {
+				enemy.setHp(0);
+			} else {
+				
+			}
+			setBar("lang");
+			setBar("enemy");
 			Hp1.setText("HP : " + enemy.getHp() + " / " + enemy.getMaxHp() );
-			System.out.println(5);
 			Hp2.setText("HP : " + lang.getHp() + " / " + lang.getMaxHp() );
-			System.out.println(6);
 			chat("battle");
+			
 		} catch (Exception e) {
+			
 			// TODO: handle exception
 		}
+		
+	}
+	public void win() {
 		
 	}
 	@FXML
@@ -184,6 +211,15 @@ public class BattleController {
 	public void skillF() {
 		System.out.println(lang.getSkills()[3].getName());
 		battle(3);
+	}
+	public void setBar(String type) {
+		if (type.equals("lang")) {
+			hpBar2.setProgress(((double) (int) ((double)lang.getHp() / (double)lang.getMaxHp() * 1000)) / 1000);
+		} else if (type.equals("enemy")) {
+			hpBar1.setProgress(((double) (int) ((double)enemy.getHp() / (double)enemy.getMaxHp() * 1000)) / 1000);
+		}
+		
+		
 	}
 	public void chatLoad(String battle) {
 		if (battle.equals("start")) {

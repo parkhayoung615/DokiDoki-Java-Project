@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -26,7 +28,19 @@
             <Button fx:id="BtnChat" mnemonicParsing="false" onAction="#nextChat" prefHeight="315.0" prefWidth="1069.0" styleClass="btn" />
          </children>
       </Pane>
-      <Label fx:id="Hp2" layoutX="832.0" layoutY="428.0" prefHeight="22.0" prefWidth="108.0" text="HP : 0" />
-      <Label fx:id="Hp1" layoutX="117.0" layoutY="129.0" prefHeight="22.0" prefWidth="108.0" text="HP : 0" />
+      <Pane layoutX="718.0" layoutY="347.0" prefHeight="154.0" prefWidth="332.0" style="-fx-background-color: lightgray;">
+         <children>
+            <ProgressBar fx:id="hpBar2" layoutX="104.0" layoutY="68.0" prefWidth="200.0" progress="0.0" />
+            <Label fx:id="Hp2" layoutX="150.0" layoutY="86.0" prefHeight="22.0" prefWidth="108.0" text="HP : 0" />
+         </children>
+      </Pane>
+      <Pane layoutX="16.0" layoutY="37.0" prefHeight="154.0" prefWidth="332.0" style="-fx-background-color: lightgray;">
+         <children>
+            <ProgressBar fx:id="hpBar1" layoutX="48.0" layoutY="66.0" prefWidth="200.0" progress="0.0" style="-fx-accent: red;" />
+            <Label fx:id="Hp1" layoutX="94.0" layoutY="84.0" prefHeight="22.0" prefWidth="108.0" text="HP : 0" />
+         </children>
+      </Pane>
+      <ImageView fx:id="langImg" fitHeight="200.0" fitWidth="200.0" layoutX="148.0" layoutY="301.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="enemyImg" fitHeight="200.0" fitWidth="200.0" layoutX="718.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
