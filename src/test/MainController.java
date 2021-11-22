@@ -42,6 +42,8 @@ public class MainController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		test();
+		Mario.setX(910);
+		Mario.setY(300);
 //		testBack.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
 //		    public void handle(KeyEvent event) {
 //		        if (event.getCode() == KeyCode.I) {
