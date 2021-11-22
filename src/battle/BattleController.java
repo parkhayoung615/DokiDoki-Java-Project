@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -121,25 +122,36 @@ public class BattleController {
 		asBtn(Btn4);
 		 	
 	}
+	public void battle(int num) {
+		Random r = new Random();
+		int enemySkill = r.nextInt(3);
+		
+		int enemyHp = enemy.getHp() - lang.getSkills()[num].getDmg();
+		int langHp = lang.getHp() - enemy.getSkills()[enemySkill].getDmg();
+		System.out.println(langHp);
+		Hp1.setText("HP : " + enemyHp + " / " + 100 );
+		Hp2.setText("HP : " + langHp + " / " + 100 );
+		chat("start");
+	}
 	@FXML
 	public void skillO() {
-		chat();
 		System.out.println(lang.getSkills()[0].getName());
+		battle(0);
 	}
 	@FXML
 	public void skillTw() {
-		chat();
 		System.out.println(lang.getSkills()[1].getName());
+		battle(1);
 	}
 	@FXML
 	public void skillT() {
-		chat();
 		System.out.println(lang.getSkills()[2].getName());
+		battle(2);
 	}
 	@FXML
 	public void skillF() {
-		chat();
 		System.out.println(lang.getSkills()[3].getName());
+		battle(3);
 	}
 	public void chatLoad(String battle) {
 		if (battle.equals("start")) {
