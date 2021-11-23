@@ -101,7 +101,7 @@ public class MainController implements Initializable {
 				animation.setOffsetY(0);
 			}
 		} else if (keyCode.equals(KeyCode.SPACE)) {
-			mapMove(s.getPassBlock(pass.blockGet(Mario.getX(), Mario.getY(), 22), "shop"));
+			mapMove(s.getPassBlock(pass.blockGet(Mario.getX(), Mario.getY() + 20, 22), "shop"));
 		}
 
 		System.out.println(Mario.getX() + " " + Mario.getY());
