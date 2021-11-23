@@ -30,6 +30,8 @@ public class MainController implements Initializable {
 	private HashMap<KeyCode, Boolean> keys = new HashMap<>();
 	@FXML
 	private ImageView Mario;
+	@FXML
+	private ImageView Mario2;
 //	@FXML
 //	private AnchorPane testBack;
 
@@ -38,6 +40,7 @@ public class MainController implements Initializable {
 	
 	private int width;
 	private int height;
+	private String view = null;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -66,6 +69,7 @@ public class MainController implements Initializable {
 		});
 	}
 
+		
 	// 키보드 이벤트
 	public void moveMario(KeyEvent event) {
 		KeyCode keyCode = event.getCode();
@@ -73,33 +77,39 @@ public class MainController implements Initializable {
 			if (!s.getPassBlock(pass.blockGet(Mario.getX() + 48, Mario.getY() +48, 22), "shop").getPass() && !s.getPassBlock(pass.blockGet(Mario.getX() + 48, Mario.getY() + 5, 22), "shop").getPass()
 					&& Mario.getX() + 0 <= 1100) {
 				Mario.setX(Mario.getX() + 5);
-				animation.play();
-				animation.setOffsetY(96);
+				
 			}
-
+			animation.play();
+			animation.setOffsetY(96);
+			view = "right";
 		} else if (keyCode.equals(KeyCode.LEFT)) {
 			if (!s.getPassBlock(pass.blockGet(Mario.getX() - 5, Mario.getY() + 48, 22), "shop").getPass() && !s.getPassBlock(pass.blockGet(Mario.getX() - 5, Mario.getY() + 5, 22), "shop").getPass()
 					&& Mario.getX() - 0 >= 0) {
 				Mario.setX(Mario.getX() - 5);
-				animation.play();
-				animation.setOffsetY(48);
+				
 			}
+			animation.play();
+			animation.setOffsetY(48);
+			view = "left";
 
 		} else if (keyCode.equals(KeyCode.UP)) {
 			if (!s.getPassBlock(pass.blockGet(Mario.getX() +38, Mario.getY() - 5, 22), "shop").getPass() && !s.getPassBlock(pass.blockGet(Mario.getX() +0, Mario.getY() - 5, 22), "shop").getPass()
 					&& Mario.getY() - 5 >= 0) {
 				Mario.setY(Mario.getY() - 5);
-				animation.play();
-				animation.setOffsetY(144);
+				
 			}
-
+			animation.play();
+			animation.setOffsetY(144);
+			view = "up";
 		} else if (keyCode.equals(KeyCode.DOWN)) {
 			if (!s.getPassBlock(pass.blockGet(Mario.getX() + 38, Mario.getY() + 55, 22), "shop").getPass() && !s.getPassBlock(pass.blockGet(Mario.getX() + 0, Mario.getY() + 55, 22), "shop").getPass()
 					&& Mario.getY() + 48 < 900) {
 				Mario.setY(Mario.getY() + 5);
-				animation.play();
-				animation.setOffsetY(0);
+				
 			}
+			animation.play();
+			animation.setOffsetY(0);
+			view = "down";
 		} else if (keyCode.equals(KeyCode.SPACE)) {
 			mapMove(s.getPassBlock(pass.blockGet(Mario.getX(), Mario.getY() + 20, 22), "shop"));
 		}
@@ -121,6 +131,12 @@ public class MainController implements Initializable {
 				Scene scene = new Scene(sN);
 				Stage primaryStage = (Stage) Mario.getScene().getWindow();
 				primaryStage.setScene(scene);
+			} else if (b.getType() == 3 && view == "right") {
+				Parent sN = FXMLLoader.load(getClass().getResource("/battle/BattleLayout.fxml"));
+				Scene scene = new Scene(sN);
+				Stage primaryStage = (Stage) Mario.getScene().getWindow();
+				scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+				primaryStage.setScene(scene);
 			}
 
 		} catch (Exception e) {
@@ -136,6 +152,11 @@ public class MainController implements Initializable {
 		Mario.setScaleY(1.2);
 		Mario.setScaleX(1.2);
 		animation = new SpriteAnimation(Mario, Duration.millis(500), 3, 4, 0, 0, 48, 48);
+		
+		Mario2.setImage(new Image("/imgs/avatar/h2.png"));
+		Mario2.setScaleX(1.2);
+		Mario2.setScaleY(1.2);
+		Mario2.setViewport(new Rectangle2D(48, 48, 48, 48));
 
 	}
 

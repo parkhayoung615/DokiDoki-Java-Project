@@ -485,7 +485,16 @@ public class BattleController {
 		if (!enemys[enemyIdx].getName().equals("null") && enemys[enemyIdx].getHp() > 0) {
 			loadBattle(enemys[enemyIdx].getId(), "enemy");
 		} else {
-			System.out.println("너 이김");
+			try {
+				Parent win = FXMLLoader.load(getClass().getResource("/test/TestLayout.fxml"));
+				Scene scene = new Scene(win);
+				Stage primaryStage = (Stage) BtnChat.getScene().getWindow();
+				scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+				primaryStage.setScene(scene);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			
 		}
 	}
 	@FXML
