@@ -4,6 +4,10 @@
 	-fx-text-fill: #fff;
 }
 
+#NarrationBack {
+	-fx-background-color: #000;
+}
+
 /* Start 화면 */
 #StartBack {
 	-fx-background-image: url('/imgs/Start.png');
@@ -62,6 +66,11 @@
 
 #BasicBack {
 	-fx-background-image: url('/imgs/BackImg/Map003.png');
+	-fx-background-size: cover;
+	-fx-background-position: center center;
+}
+#StartIllustBack {
+	-fx-background-image: url('/imgs/Start.jpg');
 	-fx-background-size: cover;
 	-fx-background-position: center center;
 }

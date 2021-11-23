@@ -322,7 +322,7 @@ public class MainController implements Initializable {
 
 	public void StartGame() {
 		try {
-			Parent login = FXMLLoader.load(getClass().getResource("/layout/map/Start.fxml"));
+			Parent login = FXMLLoader.load(getClass().getResource("/layout/map/Start_Narration.fxml"));
 			Scene scene = new Scene(login);
 			Stage primaryStage = (Stage) NewGame.getScene().getWindow();
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
