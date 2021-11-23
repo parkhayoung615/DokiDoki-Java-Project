@@ -24,20 +24,75 @@
             <Button fx:id="BtnBattle" layoutX="293.0" layoutY="56.0" mnemonicParsing="false" onAction="#gobattle" prefHeight="126.0" prefWidth="432.0" text="싸운다" />
             <Button fx:id="BtnBag" layoutX="293.0" layoutY="220.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="108.0" text="가방" />
             <Button fx:id="BtnRun" layoutX="455.0" layoutY="238.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="108.0" text="도망간다" />
-            <Button fx:id="BtnChg" layoutX="617.0" layoutY="220.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="108.0" text="포켓몬" />
+            <Button fx:id="BtnChg" layoutX="617.0" layoutY="220.0" mnemonicParsing="false" onAction="#loadMyLangs" prefHeight="63.0" prefWidth="108.0" text="포켓몬" />
             <Button fx:id="BtnChat" mnemonicParsing="false" onAction="#nextChat" prefHeight="315.0" prefWidth="1069.0" styleClass="btn" />
+            <Pane fx:id="myLangs" disable="true" layoutX="288.0" layoutY="9.0" prefHeight="298.0" prefWidth="759.0" visible="false">
+               <children>
+                  <Pane fx:id="lang1" disable="true" layoutX="14.0" layoutY="14.0" prefHeight="63.0" prefWidth="223.0" visible="false">
+                     <children>
+                        <ImageView fx:id="langImg1" fitHeight="50.0" fitWidth="50.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="nameLang1" layoutX="64.0" layoutY="14.0" prefHeight="15.0" prefWidth="108.0" text="이름" />
+                        <Label fx:id="langHp1" layoutX="64.0" layoutY="32.0" prefHeight="15.0" prefWidth="108.0" text="HP" />
+                        <Button fx:id="langBtn1" disable="true" layoutY="1.0" mnemonicParsing="false" onAction="#langsel1" prefHeight="63.0" prefWidth="223.0" style="-fx-background-color: transparent;" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="lang2" disable="true" layoutX="256.0" layoutY="14.0" prefHeight="63.0" prefWidth="223.0" visible="false">
+                     <children>
+                        <ImageView fx:id="langImg2" fitHeight="50.0" fitWidth="50.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="nameLang2" layoutX="64.0" layoutY="14.0" prefHeight="15.0" prefWidth="108.0" text="이름" />
+                        <Label fx:id="langHp2" layoutX="64.0" layoutY="32.0" prefHeight="15.0" prefWidth="108.0" text="HP" />
+                        <Button fx:id="langBtn2" disable="true" mnemonicParsing="false" onAction="#langsel2" prefHeight="63.0" prefWidth="223.0" style="-fx-background-color: transparent;" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="lang3" disable="true" layoutX="14.0" layoutY="118.0" prefHeight="63.0" prefWidth="223.0" visible="false">
+                     <children>
+                        <ImageView fx:id="langImg3" fitHeight="50.0" fitWidth="50.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="nameLang3" layoutX="64.0" layoutY="14.0" prefHeight="15.0" prefWidth="108.0" text="이름" />
+                        <Label fx:id="langHp3" layoutX="64.0" layoutY="32.0" prefHeight="15.0" prefWidth="108.0" text="HP" />
+                        <Button fx:id="langBtn3" disable="true" layoutY="1.0" mnemonicParsing="false" onAction="#langsel3" prefHeight="63.0" prefWidth="223.0" style="-fx-background-color: transparent;" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="lang4" disable="true" layoutX="256.0" layoutY="118.0" prefHeight="63.0" prefWidth="223.0" visible="false">
+                     <children>
+                        <ImageView fx:id="langImg4" fitHeight="50.0" fitWidth="50.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="nameLang4" layoutX="64.0" layoutY="14.0" prefHeight="15.0" prefWidth="108.0" text="이름" />
+                        <Label fx:id="langHp4" layoutX="64.0" layoutY="32.0" prefHeight="15.0" prefWidth="108.0" text="HP" />
+                        <Button fx:id="langBtn4" disable="true" layoutY="1.0" mnemonicParsing="false" onAction="#langsel4" prefHeight="63.0" prefWidth="223.0" style="-fx-background-color: transparent;" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="lang5" disable="true" layoutX="14.0" layoutY="221.0" prefHeight="63.0" prefWidth="223.0" visible="false">
+                     <children>
+                        <ImageView fx:id="langImg5" fitHeight="50.0" fitWidth="50.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="nameLang5" layoutX="64.0" layoutY="14.0" prefHeight="15.0" prefWidth="108.0" text="이름" />
+                        <Label fx:id="langHp5" layoutX="64.0" layoutY="32.0" prefHeight="15.0" prefWidth="108.0" text="HP" />
+                        <Button fx:id="langBtn5" disable="true" layoutY="1.0" mnemonicParsing="false" onAction="#langsel5" prefHeight="63.0" prefWidth="223.0" style="-fx-background-color: transparent;" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="lang6" disable="true" layoutX="256.0" layoutY="221.0" prefHeight="63.0" prefWidth="223.0" visible="false">
+                     <children>
+                        <ImageView fx:id="langImg6" fitHeight="50.0" fitWidth="50.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="nameLang6" layoutX="64.0" layoutY="14.0" prefHeight="15.0" prefWidth="108.0" text="이름" />
+                        <Label fx:id="langHp6" layoutX="64.0" layoutY="32.0" prefHeight="15.0" prefWidth="108.0" text="HP" />
+                        <Button fx:id="langBtn6" disable="true" mnemonicParsing="false" onAction="#langsel6" prefHeight="63.0" prefWidth="223.0" style="-fx-background-color: transparent;" />
+                     </children>
+                  </Pane>
+                  <Button layoutX="605.0" layoutY="241.0" mnemonicParsing="false" onAction="#backBattle" prefHeight="43.0" prefWidth="140.0" text="돌아가기" />
+               </children>
+            </Pane>
          </children>
       </Pane>
       <Pane layoutX="718.0" layoutY="347.0" prefHeight="154.0" prefWidth="332.0" style="-fx-background-color: lightgray;">
          <children>
             <ProgressBar fx:id="hpBar2" layoutX="104.0" layoutY="68.0" prefWidth="200.0" progress="0.0" />
             <Label fx:id="Hp2" layoutX="150.0" layoutY="86.0" prefHeight="22.0" prefWidth="108.0" text="HP : 0" />
+            <Label fx:id="name2" layoutX="196.0" layoutY="38.0" prefHeight="22.0" prefWidth="108.0" text="이름" />
          </children>
       </Pane>
       <Pane layoutX="16.0" layoutY="37.0" prefHeight="154.0" prefWidth="332.0" style="-fx-background-color: lightgray;">
          <children>
             <ProgressBar fx:id="hpBar1" layoutX="48.0" layoutY="66.0" prefWidth="200.0" progress="0.0" style="-fx-accent: red;" />
             <Label fx:id="Hp1" layoutX="94.0" layoutY="84.0" prefHeight="22.0" prefWidth="108.0" text="HP : 0" />
+            <Label fx:id="name1" layoutX="48.0" layoutY="31.0" prefHeight="22.0" prefWidth="108.0" text="이름" />
          </children>
       </Pane>
       <ImageView fx:id="langImg" fitHeight="200.0" fitWidth="200.0" layoutX="148.0" layoutY="301.0" pickOnBounds="true" preserveRatio="true" />
