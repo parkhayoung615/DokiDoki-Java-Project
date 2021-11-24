@@ -181,10 +181,7 @@ public class MoveStage {
 			}
 			return shop;
 		}
-		
-	
-		
-	
+								
 	public Block[] mainStage() {
 		int[] shopPass = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,

@@ -32,12 +32,12 @@ public class MainController implements Initializable {
 	private ImageView Mario;
 	@FXML
 	private ImageView Mario2;
-//	@FXML
-//	private AnchorPane testBack;
+	@FXML
+	private GridPane testBack;
 
 	Pass pass = new Pass();
 	MoveStage s = new MoveStage();
-	
+
 	private int width;
 	private int height;
 	private String view = null;
@@ -47,13 +47,7 @@ public class MainController implements Initializable {
 		test();
 		Mario.setX(550);
 		Mario.setY(600);
-//		testBack.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
-//		    public void handle(KeyEvent event) {
-//		        if (event.getCode() == KeyCode.I) {
-//		            KeyInventory(event);
-//		        }
-//		    }
-//		});
+
 		Mario.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent event) {
@@ -69,70 +63,86 @@ public class MainController implements Initializable {
 		});
 	}
 
-		
 	// 키보드 이벤트
 	public void moveMario(KeyEvent event) {
 		KeyCode keyCode = event.getCode();
 		if (keyCode.equals(KeyCode.RIGHT)) {
-			if (!s.getPassBlock(pass.blockGet(Mario.getX() + 48, Mario.getY() +48, 22), "shop").getPass() && !s.getPassBlock(pass.blockGet(Mario.getX() + 48, Mario.getY() + 5, 22), "shop").getPass()
+			if (!s.getPassBlock(pass.blockGet(Mario.getX() + 48, Mario.getY() + 48, 22), "shop").getPass()
+					&& !s.getPassBlock(pass.blockGet(Mario.getX() + 48, Mario.getY() + 5, 22), "shop").getPass()
 					&& Mario.getX() + 0 <= 1100) {
 				Mario.setX(Mario.getX() + 5);
-				
+
 			}
-			if (!s.getPassBlock(pass.blockGet(Mario.getX() + 48, Mario.getY() +48, 22), "shop").getPass() && !s.getPassBlock(pass.blockGet(Mario.getX() + 48, Mario.getY() + 5, 22), "shop").getPass()
+			if (!s.getPassBlock(pass.blockGet(Mario.getX() + 48, Mario.getY() + 48, 22), "shop").getPass()
+					&& !s.getPassBlock(pass.blockGet(Mario.getX() + 48, Mario.getY() + 5, 22), "shop").getPass()
 					&& Mario.getX() + 0 <= 1100) {
 				Mario.setX(Mario.getX() + 5);
-				
+
 			}
 			animation.play();
 			animation.setOffsetY(96);
 			view = "right";
 		} else if (keyCode.equals(KeyCode.LEFT)) {
-			if (!s.getPassBlock(pass.blockGet(Mario.getX() - 5, Mario.getY() + 48, 22), "shop").getPass() && !s.getPassBlock(pass.blockGet(Mario.getX() - 5, Mario.getY() + 5, 22), "shop").getPass()
+			if (!s.getPassBlock(pass.blockGet(Mario.getX() - 5, Mario.getY() + 48, 22), "shop").getPass()
+					&& !s.getPassBlock(pass.blockGet(Mario.getX() - 5, Mario.getY() + 5, 22), "shop").getPass()
 					&& Mario.getX() - 0 >= 0) {
 				Mario.setX(Mario.getX() - 5);
-				
+
 			}
-			if (!s.getPassBlock(pass.blockGet(Mario.getX() - 5, Mario.getY() + 48, 22), "shop").getPass() && !s.getPassBlock(pass.blockGet(Mario.getX() - 5, Mario.getY() + 5, 22), "shop").getPass()
+			if (!s.getPassBlock(pass.blockGet(Mario.getX() - 5, Mario.getY() + 48, 22), "shop").getPass()
+					&& !s.getPassBlock(pass.blockGet(Mario.getX() - 5, Mario.getY() + 5, 22), "shop").getPass()
 					&& Mario.getX() - 0 >= 0) {
 				Mario.setX(Mario.getX() - 5);
-				
+
 			}
 			animation.play();
 			animation.setOffsetY(48);
 			view = "left";
 
 		} else if (keyCode.equals(KeyCode.UP)) {
-			if (!s.getPassBlock(pass.blockGet(Mario.getX() +38, Mario.getY() - 5, 22), "shop").getPass() && !s.getPassBlock(pass.blockGet(Mario.getX() +0, Mario.getY() - 5, 22), "shop").getPass()
+			if (!s.getPassBlock(pass.blockGet(Mario.getX() + 38, Mario.getY() - 5, 22), "shop").getPass()
+					&& !s.getPassBlock(pass.blockGet(Mario.getX() + 0, Mario.getY() - 5, 22), "shop").getPass()
 					&& Mario.getY() - 5 >= 0) {
 				Mario.setY(Mario.getY() - 5);
-				
+
 			}
-			if (!s.getPassBlock(pass.blockGet(Mario.getX() +38, Mario.getY() - 5, 22), "shop").getPass() && !s.getPassBlock(pass.blockGet(Mario.getX() +0, Mario.getY() - 5, 22), "shop").getPass()
+			if (!s.getPassBlock(pass.blockGet(Mario.getX() + 38, Mario.getY() - 5, 22), "shop").getPass()
+					&& !s.getPassBlock(pass.blockGet(Mario.getX() + 0, Mario.getY() - 5, 22), "shop").getPass()
 					&& Mario.getY() - 5 >= 0) {
 				Mario.setY(Mario.getY() - 5);
-				
+
 			}
 			animation.play();
 			animation.setOffsetY(144);
 			view = "up";
 		} else if (keyCode.equals(KeyCode.DOWN)) {
-			if (!s.getPassBlock(pass.blockGet(Mario.getX() + 38, Mario.getY() + 55, 22), "shop").getPass() && !s.getPassBlock(pass.blockGet(Mario.getX() + 0, Mario.getY() + 55, 22), "shop").getPass()
+			if (!s.getPassBlock(pass.blockGet(Mario.getX() + 38, Mario.getY() + 55, 22), "shop").getPass()
+					&& !s.getPassBlock(pass.blockGet(Mario.getX() + 0, Mario.getY() + 55, 22), "shop").getPass()
 					&& Mario.getY() + 48 < 900) {
 				Mario.setY(Mario.getY() + 5);
-				
+
 			}
-			if (!s.getPassBlock(pass.blockGet(Mario.getX() + 38, Mario.getY() + 55, 22), "shop").getPass() && !s.getPassBlock(pass.blockGet(Mario.getX() + 0, Mario.getY() + 55, 22), "shop").getPass()
+			if (!s.getPassBlock(pass.blockGet(Mario.getX() + 38, Mario.getY() + 55, 22), "shop").getPass()
+					&& !s.getPassBlock(pass.blockGet(Mario.getX() + 0, Mario.getY() + 55, 22), "shop").getPass()
 					&& Mario.getY() + 48 < 900) {
 				Mario.setY(Mario.getY() + 5);
-				
+
 			}
-			
+
 			animation.play();
 			animation.setOffsetY(0);
 			view = "down";
 		} else if (keyCode.equals(KeyCode.SPACE)) {
 			mapMove(s.getPassBlock(pass.blockGet(Mario.getX(), Mario.getY() + 20, 22), "shop"));
+		} else if (keyCode.equals(KeyCode.I)) {
+			System.out.println("인벤토리창 이동");
+			GoInventory();
+		} else if (keyCode.equals(KeyCode.Q)) {
+			System.out.println("상점창 이동");
+			GoStore();
+		} else if (keyCode.equals(KeyCode.E)) {
+			System.out.println("도움말창 이동");
+			GoGuide();
 		}
 
 		System.out.println(Mario.getX() + " " + Mario.getY());
@@ -169,11 +179,11 @@ public class MainController implements Initializable {
 	public void test() {
 		Mario.setImage(new Image("/imgs/avatar/yong1.png"));
 //		Mario.setImage(new Image("./imgs/200x200(px)/TypeScript.png"));
-		
+
 		Mario.setScaleY(1.2);
 		Mario.setScaleX(1.2);
 		animation = new SpriteAnimation(Mario, Duration.millis(500), 3, 4, 0, 0, 48, 48);
-		
+
 		Mario2.setImage(new Image("/imgs/avatar/h2.png"));
 		Mario2.setScaleX(1.2);
 		Mario2.setScaleY(1.2);
@@ -194,11 +204,29 @@ public class MainController implements Initializable {
 		}
 	}
 
-	public void KeyInventory(KeyEvent event) {
-		KeyCode keyCode = event.getCode();
-		if (keyCode.equals(KeyCode.I)) {
-			System.out.println("인벤토리창 이동");
-			GoInventory();
+	public void GoStore() {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("popup1.fxml"));
+			Parent root = (Parent) loader.load();
+			Stage stage = new Stage();
+			stage.setTitle("Store");
+			stage.setScene(new Scene(root));
+			stage.show(); // popup.show(primaryStage, anchorX, anchorY); 지정된 좌표에서 실행
+		} catch (Exception e) {
+
+		}
+	}
+
+	public void GoGuide() {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("popup2.fxml"));
+			Parent root = (Parent) loader.load();
+			Stage stage = new Stage();
+			stage.setTitle("Guide");
+			stage.setScene(new Scene(root));
+			stage.show(); // popup.show(primaryStage, anchorX, anchorY); 지정된 좌표에서 실행
+		} catch (Exception e) {
+
 		}
 	}
 

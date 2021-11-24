@@ -23,9 +23,7 @@ import javafx.scene.control.Alert.AlertType;
 import util.JDBCUtil;
 
 public class BattleController {
-	
-	
-	
+
 	@FXML
 	private Button Btn1;
 	@FXML
@@ -124,6 +122,7 @@ public class BattleController {
 	private Button langBtn5;
 	@FXML
 	private Button langBtn6;
+
 	@FXML
 	public void initialize() {
 		chat("start");
@@ -133,7 +132,8 @@ public class BattleController {
 		int k = 0;
 		for (Integer a : langList) {
 			loadBattle(a, "lang");
-			Language langh = new Language(lang.getName(), lang.getId(), lang.getHp(), lang.getMaxHp(), lang.getSkills());
+			Language langh = new Language(lang.getName(), lang.getId(), lang.getHp(), lang.getMaxHp(),
+					lang.getSkills());
 			langs[k] = langh;
 			k++;
 		}
@@ -141,7 +141,8 @@ public class BattleController {
 		k = 0;
 		for (Integer a : enemyList) {
 			loadBattle(a, "enemy");
-			Language enemyh = new Language(enemy.getName(), enemy.getId(), enemy.getHp(), enemy.getMaxHp(), enemy.getSkills());
+			Language enemyh = new Language(enemy.getName(), enemy.getId(), enemy.getHp(), enemy.getMaxHp(),
+					enemy.getSkills());
 			enemys[k] = enemyh;
 			k++;
 		}
@@ -149,7 +150,7 @@ public class BattleController {
 		loadBattle(enemys[0].getId(), "enemy");
 		rstGame = "game";
 	}
-	
+
 	private int langIdx = 0;
 	private int enemyIdx = 0;
 	private int idx = 0;
@@ -172,7 +173,7 @@ public class BattleController {
 		String sql = "SELECT * FROM `object` WHERE `id` = ?";
 		ResultSet rs = null;
 		Skill[] skills = new Skill[4];
-		Button[] skillButtons = {Btn1, Btn2, Btn3, Btn4};
+		Button[] skillButtons = { Btn1, Btn2, Btn3, Btn4 };
 		int maxHP = 0;
 		String langName = null;
 		String name = null;
@@ -205,12 +206,12 @@ public class BattleController {
 					System.out.println(rs.getString("s.name"));
 					j++;
 				}
-				
+
 			}
 			System.out.println(j);
 
 		} catch (Exception e) {
-			System.out.println("오류1");
+			System.out.println("�삤瑜�1");
 		}
 		try {
 			if (type.equals("lang")) {
@@ -227,8 +228,8 @@ public class BattleController {
 				System.out.println(12121);
 				Hp2.setText("HP : " + maxHP + " / " + maxHP);
 				setBar("lang");
-				
-			} else if (type.equals("enemy")){
+
+			} else if (type.equals("enemy")) {
 				enemy.setSkills(skills);
 				enemy.setId(langId);
 				enemy.setHp(maxHP);
@@ -241,10 +242,9 @@ public class BattleController {
 		} catch (Exception e) {
 			System.out.println("zz");
 		}
-		
-		
+
 	}
-	
+
 	public void loadEnemy(String a_id) {
 		JDBCUtil db = new JDBCUtil();
 		Connection con = db.getConnection();
@@ -263,6 +263,7 @@ public class BattleController {
 			// TODO: handle exception
 		}
 	}
+
 	public void loadLang(String u_id) {
 		JDBCUtil db = new JDBCUtil();
 		Connection con = db.getConnection();
@@ -281,7 +282,7 @@ public class BattleController {
 			// TODO: handle exception
 		}
 	}
-	
+
 	@FXML
 	public void gobattle() {
 		disBtn(BtnBattle);
@@ -289,8 +290,9 @@ public class BattleController {
 		asBtn(Btn2);
 		asBtn(Btn3);
 		asBtn(Btn4);
-		 	
+
 	}
+
 	public void battle(int num) {
 		langSkill = num;
 		try {
@@ -298,7 +300,7 @@ public class BattleController {
 			enemySkill = r.nextInt(4);
 			System.out.println(enemySkill);
 			enemy.setHp(enemy.getHp() - lang.getSkills()[num].getDmg());
-			lang.setHp(lang.getHp()  - enemy.getSkills()[enemySkill].getDmg());
+			lang.setHp(lang.getHp() - enemy.getSkills()[enemySkill].getDmg());
 			System.out.println(enemy.getHp());
 			if (lang.getHp() <= 0 && enemy.getHp() <= 0) {
 				lang.setHp(0);
@@ -311,62 +313,70 @@ public class BattleController {
 				enemy.setHp(0);
 				rstGame = "turnWin";
 			} else {
-				
+
 			}
 			langs[langIdx].setHp(lang.getHp());
 			enemys[enemyIdx].setHp(enemy.getHp());
 			setBar("lang");
 			setBar("enemy");
-			Hp1.setText("HP : " + enemy.getHp() + " / " + enemy.getMaxHp() );
-			Hp2.setText("HP : " + lang.getHp() + " / " + lang.getMaxHp() );
+			Hp1.setText("HP : " + enemy.getHp() + " / " + enemy.getMaxHp());
+			Hp2.setText("HP : " + lang.getHp() + " / " + lang.getMaxHp());
 			chat("battle");
-			
+
 		} catch (Exception e) {
-			
+
 			// TODO: handle exception
 		}
-		
+
 	}
+
 	public void win() {
-		
+
 	}
+
 	@FXML
 	public void skillO() {
 		System.out.println(lang.getSkills()[0].getName());
 		battle(0);
 	}
+
 	@FXML
 	public void skillTw() {
 		System.out.println(lang.getSkills()[1].getName());
 		battle(1);
 	}
+
 	@FXML
 	public void skillT() {
 		System.out.println(lang.getSkills()[2].getName());
 		battle(2);
 	}
+
 	@FXML
 	public void skillF() {
 		System.out.println(lang.getSkills()[3].getName());
 		battle(3);
 	}
+
 	public void setBar(String type) {
 		if (type.equals("lang")) {
-			hpBar2.setProgress(((double) (int) ((double)lang.getHp() / (double)lang.getMaxHp() * 1000)) / 1000);
+			hpBar2.setProgress(((double) (int) ((double) lang.getHp() / (double) lang.getMaxHp() * 1000)) / 1000);
 		} else if (type.equals("enemy")) {
-			hpBar1.setProgress(((double) (int) ((double)enemy.getHp() / (double)enemy.getMaxHp() * 1000)) / 1000);
+			hpBar1.setProgress(((double) (int) ((double) enemy.getHp() / (double) enemy.getMaxHp() * 1000)) / 1000);
 		}
-		
-		
+
 	}
+
 	public void loadAll() {
 		for (int i = 0; i < 6; i++) {
-			Skill[] skills = {new Skill (null, null, 0), new Skill (null, null, 0), new Skill (null, null, 0), new Skill (null, null, 0)};
+			Skill[] skills = { new Skill(null, null, 0), new Skill(null, null, 0), new Skill(null, null, 0),
+					new Skill(null, null, 0) };
 			langs[i] = new Language("null", 1, 0, 0, skills);
 			enemys[i] = new Language("null", 1, 0, 0, skills);
-			
+
 		}
 	}
+
 	public void chatLoad(String battle) {
 		if (battle.equals("start")) {
 			JDBCUtil db = new JDBCUtil();
@@ -382,24 +392,26 @@ public class BattleController {
 				while (rs.next()) {
 					list.add(rs.getString("script_data"));
 				}
-					
+
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
 		} else if (battle.equals("battle")) {
 			String s = lang.getName();
 			String e = enemy.getName();
-			list.add("'배인영'의 " + s + "은(는) " + e + "에게 \n" + lang.getSkills()[langSkill].getName() + "을(를) 사용했다.");
-			list.add(s + "은(는) " + e + "에게 " + lang.getSkills()[langSkill].getDmg() + "데미지를 입혔다.");
-			list.add(e + "은(는) " + s + "에게 \n" + enemy.getSkills()[enemySkill].getName() + "을(를) 사용했다.");
-			list.add(e + "은(는) " + s + "에게 " + enemy.getSkills()[enemySkill].getDmg() + "데미지를 입혔다.");
+			list.add("'諛곗씤�쁺'�쓽 " + s + "��(�뒗) " + e + "�뿉寃� \n" + lang.getSkills()[langSkill].getName()
+					+ "�쓣(瑜�) �궗�슜�뻽�떎.");
+			list.add(s + "��(�뒗) " + e + "�뿉寃� " + lang.getSkills()[langSkill].getDmg() + "�뜲誘몄�瑜� �엯�삍�떎.");
+			list.add(e + "��(�뒗) " + s + "�뿉寃� \n" + enemy.getSkills()[enemySkill].getName() + "�쓣(瑜�) �궗�슜�뻽�떎.");
+			list.add(e + "��(�뒗) " + s + "�뿉寃� " + enemy.getSkills()[enemySkill].getDmg() + "�뜲誘몄�瑜� �엯�삍�떎.");
 		} else if (battle.equals("end")) {
 			if (rstGame.equals("win")) {
-				list.add("'배인영'은 " + enemy.getName() + "을 쓰러트렸다.");
+				list.add("'諛곗씤�쁺'�� " + enemy.getName() + "�쓣 �벐�윭�듃�졇�떎.");
 			}
 		}
-		
+
 	}
+
 	public void chat(String battle) {
 		disBtn(Btn1);
 		disBtn(Btn2);
@@ -413,10 +425,11 @@ public class BattleController {
 		BtnChat.setDisable(false);
 		BtnChat.setVisible(true);
 		Txt.setText("");
-		
+
 		chatLoad(battle);
-		
+
 	}
+
 	@FXML
 	public void nextChat() {
 		if (idx < list.size()) {
@@ -439,8 +452,8 @@ public class BattleController {
 				idx = 0;
 				list.clear();
 			} else if (rstGame.equals("end")) {
-			
-			} else if (rstGame.equals("turnWin")){
+
+			} else if (rstGame.equals("turnWin")) {
 				enemyIdx++;
 				nextEnemy();
 				rstGame = "game";
@@ -453,14 +466,16 @@ public class BattleController {
 				disLabel();
 				idx = 0;
 				list.clear();
-				
+
 			} else if (rstGame.equals("turnLose")) {
-				if (langs[0].getHp() <= 0 && langs[1].getHp() <= 0 && langs[2].getHp() <= 0 && langs[3].getHp() <= 0 && langs[4].getHp() <= 0 && langs[5].getHp() <= 0 && langs[6].getHp() <= 0) {
+				if (langs[0].getHp() <= 0 && langs[1].getHp() <= 0 && langs[2].getHp() <= 0 && langs[3].getHp() <= 0
+						&& langs[4].getHp() <= 0 && langs[5].getHp() <= 0 && langs[6].getHp() <= 0) {
 					try {
 						Parent over = FXMLLoader.load(getClass().getResource("/layout/Gover.fxml"));
 						Scene scene = new Scene(over);
 						Stage primaryStage = (Stage) BtnChat.getScene().getWindow();
-						scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+						scene.getStylesheets()
+								.add(getClass().getResource("/application/application.css").toExternalForm());
 						primaryStage.setScene(scene);
 					} catch (Exception e) {
 						e.printStackTrace();
@@ -474,12 +489,13 @@ public class BattleController {
 					idx = 0;
 					list.clear();
 				}
-				
+
 			}
-			
+
 		}
-		
+
 	}
+
 	public void nextEnemy() {
 		if (!enemys[enemyIdx].getName().equals("null") && enemys[enemyIdx].getHp() > 0) {
 			loadBattle(enemys[enemyIdx].getId(), "enemy");
@@ -493,9 +509,10 @@ public class BattleController {
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-			
+
 		}
 	}
+
 	@FXML
 	public void langsel1() {
 		if (langs[0].getHp() > 0 && !langs[0].getName().equals("null")) {
@@ -517,9 +534,9 @@ public class BattleController {
 			myLangs.setDisable(true);
 			loadBattle(langs[0].getId(), "lang");
 		}
-		
-		
+
 	}
+
 	@FXML
 	public void langsel2() {
 		if (langs[1].getHp() > 0 && !langs[1].getName().equals("null")) {
@@ -541,8 +558,9 @@ public class BattleController {
 			myLangs.setDisable(true);
 			loadBattle(langs[1].getId(), "lang");
 		}
-		
+
 	}
+
 	@FXML
 	public void langsel3() {
 		if (langs[2].getHp() > 0 && !langs[2].getName().equals("null")) {
@@ -565,6 +583,7 @@ public class BattleController {
 			loadBattle(langs[2].getId(), "lang");
 		}
 	}
+
 	@FXML
 	public void langsel4() {
 		if (langs[3].getHp() > 0 && !langs[3].getName().equals("null")) {
@@ -587,6 +606,7 @@ public class BattleController {
 			loadBattle(langs[3].getId(), "lang");
 		}
 	}
+
 	@FXML
 	public void langsel5() {
 		if (langs[4].getHp() > 0 && !langs[4].getName().equals("null")) {
@@ -609,6 +629,7 @@ public class BattleController {
 			loadBattle(langs[4].getId(), "lang");
 		}
 	}
+
 	@FXML
 	public void langsel6() {
 		if (langs[5].getHp() > 0 && !langs[5].getName().equals("null")) {
@@ -631,7 +652,7 @@ public class BattleController {
 			loadBattle(langs[5].getId(), "lang");
 		}
 	}
-	
+
 	@FXML
 	public void loadMyLangs() {
 		disBattleBtn();
@@ -686,6 +707,7 @@ public class BattleController {
 			langImg6.setImage(new Image("/imgs/200x200(px)/" + langs[5].getName() + ".png"));
 		}
 	}
+
 	@FXML
 	public void backBattle() {
 		if (rstGame.equals("turnLose")) {
@@ -710,9 +732,9 @@ public class BattleController {
 			myLangs.setVisible(false);
 			myLangs.setDisable(true);
 		}
-		
+
 	}
-	
+
 	public void disBattleBtn() {
 		disBtn(Btn1);
 		disBtn(Btn2);
@@ -724,20 +746,24 @@ public class BattleController {
 		disBtn(BtnRun);
 		disBtn(BtnChat);
 		disLabel();
-		
+
 	}
+
 	public void disBtn(Button Btn) {
 		Btn.setVisible(false);
 		Btn.setDisable(true);
 	}
+
 	public void asBtn(Button Btn) {
 		Btn.setVisible(true);
 		Btn.setDisable(false);
 	}
+
 	public void disLabel() {
 		Txt.setVisible(false);
 		Txt.setDisable(true);
 	}
+
 	public void asLabel() {
 		Txt.setVisible(true);
 		Txt.setDisable(false);
