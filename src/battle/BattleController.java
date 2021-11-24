@@ -372,7 +372,6 @@ public class BattleController {
 			JDBCUtil db = new JDBCUtil();
 			Connection con = db.getConnection();
 			PreparedStatement pstmt = null;
-			Alert alert = new Alert(AlertType.WARNING);
 			String sql = "SELECT * FROM `script` WHERE `char_id` = ? AND `scene_id` = ? ORDER BY `id` DESC";
 			ResultSet rs = null;
 			try {
