@@ -12,10 +12,10 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			// UTF-8 로 개발
+			// UTF-8 濡� 媛쒕컻
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/test/TestLayout.fxml"));
-			// Start -> Login -> (로딩) -> Index
+			// Start -> Login -> (濡쒕뵫) -> Index
 			AnchorPane ap = (AnchorPane) loader.load();
 			Scene scene = new Scene(ap, 1100, 900);
 			
