@@ -25,6 +25,8 @@ public class MainController implements Initializable {
 	private Label NStartName;
 	@FXML
 	private Label NarraLabel;
+	@FXML
+	private Button Next;
 
 	private int idx = 0;
 	private ArrayList<String> list = new ArrayList<String>();
@@ -32,6 +34,18 @@ public class MainController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		chatLoad("StartNRS");
+	}
+	@FXML
+	public void next1() {
+		try {
+			Parent login = FXMLLoader.load(getClass().getResource("/test/TestLayout.fxml"));
+			Scene scene = new Scene(login);
+			Stage primaryStage = (Stage) Next.getScene().getWindow();
+			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+			primaryStage.setScene(scene);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void chatLoad(String point) {
