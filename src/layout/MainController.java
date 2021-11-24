@@ -135,13 +135,63 @@ public class MainController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+	
+	// setting 누르면 setting 화면으로 이동
+		public void ChangeSetting() {
+			try {
+				Parent login = FXMLLoader.load(getClass().getResource("/layout/Setting.fxml"));
+				Scene scene = new Scene(login);
+				Stage primaryStage = (Stage) Setting.getScene().getWindow();
+				scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+				primaryStage.setScene(scene);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 
+	// 코멘트
 	public void commentH() {
 		try {
 			Alert alert = new Alert(AlertType.CONFIRMATION);
 			alert.setTitle("개발자 코멘트");
-			alert.setHeaderText("나그냥울어야겠당");
-			alert.setContentText("질질짤게요그냥너무힘들엇구어쩌구이렇게살아도되나싶구어쩌구");
+			alert.setHeaderText("10103 박하영");
+			alert.setContentText("세상에... 피곤하다 아직도 목요일이라니");
+			alert.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void commentG() {
+		try {
+			Alert alert = new Alert(AlertType.CONFIRMATION);
+			alert.setTitle("개발자 코멘트");
+			alert.setHeaderText("10111 김건우");
+			alert.setContentText("코멘트를 입력하세요");
+			alert.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void commentKH() {
+		try {
+			Alert alert = new Alert(AlertType.CONFIRMATION);
+			alert.setTitle("개발자 코멘트");
+			alert.setHeaderText("10115 김환");
+			alert.setContentText("코멘트를 입력하세요");
+			alert.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void commentY() {
+		try {
+			Alert alert = new Alert(AlertType.CONFIRMATION);
+			alert.setTitle("개발자 코멘트");
+			alert.setHeaderText("10105 임수연");
+			alert.setContentText("코멘트를 입력하세요");
 			alert.show();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -334,18 +384,19 @@ public class MainController implements Initializable {
 		}
 	}
 	
+	// 게임 불러오기 눌렀을 때
 	public void LoadGame() {
 		try {
 			Parent login = FXMLLoader.load(getClass().getResource("/layout/LoadGame.fxml"));
 			Scene scene = new Scene(login);
-			Stage primaryStage = (Stage) NewGame.getScene().getWindow();
+			Stage primaryStage = (Stage) LoadGame.getScene().getWindow();
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 			primaryStage.setScene(scene);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	
 	
 }
