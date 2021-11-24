@@ -211,7 +211,7 @@ public class BattleController {
 			System.out.println(j);
 
 		} catch (Exception e) {
-			System.out.println("�삤瑜�1");
+			System.out.println("오류1");
 		}
 		try {
 			if (type.equals("lang")) {
@@ -399,14 +399,13 @@ public class BattleController {
 		} else if (battle.equals("battle")) {
 			String s = lang.getName();
 			String e = enemy.getName();
-			list.add("'諛곗씤�쁺'�쓽 " + s + "��(�뒗) " + e + "�뿉寃� \n" + lang.getSkills()[langSkill].getName()
-					+ "�쓣(瑜�) �궗�슜�뻽�떎.");
-			list.add(s + "��(�뒗) " + e + "�뿉寃� " + lang.getSkills()[langSkill].getDmg() + "�뜲誘몄�瑜� �엯�삍�떎.");
-			list.add(e + "��(�뒗) " + s + "�뿉寃� \n" + enemy.getSkills()[enemySkill].getName() + "�쓣(瑜�) �궗�슜�뻽�떎.");
-			list.add(e + "��(�뒗) " + s + "�뿉寃� " + enemy.getSkills()[enemySkill].getDmg() + "�뜲誘몄�瑜� �엯�삍�떎.");
+			list.add("'배인영'의 " + s + "은(는) " + e + "에게 \n" + lang.getSkills()[langSkill].getName() + "을(를) 사용했다.");
+			list.add(s + "은(는) " + e + "에게 " + lang.getSkills()[langSkill].getDmg() + "데미지를 입혔다.");
+			list.add(e + "은(는) " + s + "에게 \n" + enemy.getSkills()[enemySkill].getName() + "을(를) 사용했다.");
+			list.add(e + "은(는) " + s + "에게 " + enemy.getSkills()[enemySkill].getDmg() + "데미지를 입혔다.");
 		} else if (battle.equals("end")) {
 			if (rstGame.equals("win")) {
-				list.add("'諛곗씤�쁺'�� " + enemy.getName() + "�쓣 �벐�윭�듃�졇�떎.");
+				list.add("'배인영'은 " + enemy.getName() + "을 쓰러트렸다.");
 			}
 		}
 
