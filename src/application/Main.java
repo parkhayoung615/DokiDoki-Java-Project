@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Font;
 
 
 public class Main extends Application {
@@ -34,4 +33,3 @@ public class Main extends Application {
 		launch(args);
 	}
 }
-
