@@ -199,6 +199,9 @@ public class BattleController {
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, langId);
 				pstmt.setInt(2, langId);
+				if (langName.equals("JavaScript")) {
+					langName = "Js";
+				}
 				String id = langName + "_0" + i;
 				System.out.println(id);
 				pstmt.setString(3, id);
@@ -231,7 +234,8 @@ public class BattleController {
 				skillButtons[2].setText(lang.getSkills()[2].getName());
 				skillButtons[3].setText(lang.getSkills()[3].getName());
 				System.out.println(12121);
-				Hp2.setText("HP : " + maxHP + " / " + maxHP);
+				Hp2.setText("HP : " + lang.getHp() + " / " + maxHP);
+				name2.setText(name);
 				setBar("lang");
 
 			} else if (type.equals("enemy")) {
@@ -245,7 +249,8 @@ public class BattleController {
 					enemy.setHp(enemys[langNum].getHp());
 				}
 				enemyImg.setImage(new Image("/imgs/200x200(px)/" + name + ".png"));
-				Hp1.setText("HP : " + maxHP + " / " + maxHP);
+				Hp1.setText("HP : " + enemy.getHp() + " / " + maxHP);
+				name1.setText(name);
 				setBar("enemy");
 			}
 		} catch (Exception e) {
