@@ -208,7 +208,6 @@ public class BattleController {
 					System.out.println(rs.getString("s.name"));
 					j++;
 				}
-
 			}
 			System.out.println(j);
 
