@@ -196,7 +196,7 @@ public class MainController implements Initializable {
 	}
 
 	public void test() {
-		Mario.setImage(new Image("/imgs/avatar/yong1.png"));
+		Mario.setImage(new Image("/imgs/avatar/bae2.png"));
 //		Mario.setImage(new Image("./imgs/200x200(px)/TypeScript.png"));
 
 		Mario.setScaleY(1.2);
