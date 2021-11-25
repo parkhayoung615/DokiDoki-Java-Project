@@ -33,7 +33,7 @@ import javafx.stage.Stage;
 import util.JDBCUtil;
 
 public class MainController implements Initializable {
-	
+
 	MediaPlayer mp; // 음악재생 라이브러리
 	Media m = null; // 음악 소스
 
@@ -82,7 +82,6 @@ public class MainController implements Initializable {
 	private ImageView imageView;
 	@FXML
 	private Button buttonPlay;
-	
 
 	private boolean booEnd;
 
@@ -125,7 +124,7 @@ public class MainController implements Initializable {
 			Stage primaryStage = (Stage) StartBtn.getScene().getWindow();
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 			primaryStage.setScene(scene);
-			
+
 //			AudioInputStream ais = AudioSystem.getAudioInputStream(new File("/resourse/Cursor3.ogg"));
 //			Clip clip = AudioSystem.getClip();
 //			clip.stop();
@@ -148,19 +147,19 @@ public class MainController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	
+
 	// setting 누르면 setting 화면으로 이동
-		public void ChangeSetting() {
-			try {
-				Parent login = FXMLLoader.load(getClass().getResource("/layout/Setting.fxml"));
-				Scene scene = new Scene(login);
-				Stage primaryStage = (Stage) Setting.getScene().getWindow();
-				scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-				primaryStage.setScene(scene);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+	public void ChangeSetting() {
+		try {
+			Parent login = FXMLLoader.load(getClass().getResource("/layout/Setting.fxml"));
+			Scene scene = new Scene(login);
+			Stage primaryStage = (Stage) Setting.getScene().getWindow();
+			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+			primaryStage.setScene(scene);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+	}
 
 	// 코멘트
 	public void commentH() {
@@ -174,7 +173,7 @@ public class MainController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void commentG() {
 		try {
 			Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -186,7 +185,7 @@ public class MainController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void commentKH() {
 		try {
 			Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -198,7 +197,7 @@ public class MainController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void commentY() {
 		try {
 			Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -245,7 +244,7 @@ public class MainController implements Initializable {
 					Stage primaryStage = (Stage) loginBtn.getScene().getWindow();
 					scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 					primaryStage.setScene(scene);
-					
+
 					m = new Media(getClass().getResource("/resourse/Index.mp3").toString());
 					mp = new MediaPlayer(m);
 					Runnable onEnd = new Runnable() {
@@ -255,9 +254,10 @@ public class MainController implements Initializable {
 							mp.play();
 							mp.setOnEndOfMedia(this);
 						}
-					}; 
+					};
 					mp.setOnEndOfMedia(onEnd);
-					mp.play();
+//					mp.play();
+//					소리 너무 큼!!
 
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -352,10 +352,15 @@ public class MainController implements Initializable {
 		// 비디오가 끝났을 경우의 처리
 		// booEnd 변수에 true 를 넣어 재생 버튼을 눌렀을 때
 		// 처음부터 실행 할것인지를 결정 하게 한다.
-		mediaPlayer.setOnEndOfMedia(() -> { booEnd = true;
-		loginBtn.setDisable(false); }); mediaPlayer.setOnStopped(() -> {
-		mediaPlayer.seek(mediaPlayer.getStartTime()); loginBtn.setDisable(false); });
-		
+		mediaPlayer.setOnEndOfMedia(() -> {
+			booEnd = true;
+			loginBtn.setDisable(false);
+		});
+		mediaPlayer.setOnStopped(() -> {
+			mediaPlayer.seek(mediaPlayer.getStartTime());
+			loginBtn.setDisable(false);
+		});
+
 		// 버튼 ActionEvent 처리
 		loginBtn.setOnAction(event -> {
 			// 플레이 버튼을 눌렀을때
@@ -365,10 +370,10 @@ public class MainController implements Initializable {
 			// 끝이 아니라는 것을 알려준다.
 			if (booEnd) {
 				mediaPlayer.stop();
-				 mediaPlayer.seek(mediaPlayer.getStartTime());
+				mediaPlayer.seek(mediaPlayer.getStartTime());
 			}
-			 mediaPlayer.play();
-			 booEnd = false;
+			mediaPlayer.play();
+			booEnd = false;
 		});
 	}
 
@@ -386,12 +391,12 @@ public class MainController implements Initializable {
 			Stage primaryStage = (Stage) NewGame.getScene().getWindow();
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 			primaryStage.setScene(scene);
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	// 게임 불러오기 눌렀을 때
 	public void LoadGame() {
 		try {

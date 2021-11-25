@@ -269,7 +269,7 @@ public class BattleController {
 				enemyList.add(rs.getInt("a.object_id"));
 				System.out.println(rs.getInt("a.object_id"));
 			}
-		} catch (Exception e) { 
+		} catch (Exception e) {
 			// TODO: handle exception
 		}
 	}
@@ -313,7 +313,7 @@ public class BattleController {
 			if (enemy.getHp() > 0) {
 				lang.setHp(lang.getHp() - enemy.getSkills()[enemySkill].getDmg());
 			}
-			
+
 			System.out.println(enemy.getHp());
 			if (lang.getHp() <= 0 && enemy.getHp() <= 0) {
 				lang.setHp(0);
@@ -415,7 +415,7 @@ public class BattleController {
 			String s = lang.getName();
 			String e = enemy.getName();
 			list.add("'배인영'의 " + s + "은(는) " + e + "에게 \n" + lang.getSkills()[langSkill].getName() + "을(를) 사용했다.");
-			list.add(s + "은(는) " + e + "에게 " + lang.getSkills()[langSkill].getDmg() + "데미지를 입혔다.");			
+			list.add(s + "은(는) " + e + "에게 " + lang.getSkills()[langSkill].getDmg() + "데미지를 입혔다.");
 			if (!rstGame.equals("turnWin")) {
 				list.add(e + "은(는) " + s + "에게 \n" + enemy.getSkills()[enemySkill].getName() + "을(를) 사용했다.");
 				list.add(e + "은(는) " + s + "에게 " + enemy.getSkills()[enemySkill].getDmg() + "데미지를 입혔다.");
@@ -498,7 +498,7 @@ public class BattleController {
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
-				} else if (rstGame.equals("turnTie")){
+				} else if (rstGame.equals("turnTie")) {
 				} else {
 					asBtn(BtnRun);
 					asBtn(BtnChg);
@@ -531,7 +531,7 @@ public class BattleController {
 
 		}
 	}
-	
+
 	@FXML
 	public void langsel1() {
 		if (langs[0].getHp() > 0 && !langs[0].getName().equals("null")) {
@@ -767,6 +767,7 @@ public class BattleController {
 		disLabel();
 
 	}
+
 	public String getloc() {
 		return loc;
 	}

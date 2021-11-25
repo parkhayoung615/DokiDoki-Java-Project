@@ -1,13 +1,13 @@
 package battle;
 
-public class Language{
-	
+public class Language {
+
 	private String name;
 	private int id;
 	private int hp;
 	private int maxHp;
 	private Skill[] skills = new Skill[4];
-	
+
 	public Language(String name, int id, int hp, int maxhp, Skill[] skills) {
 		this.name = name;
 		this.id = id;
@@ -15,23 +15,17 @@ public class Language{
 		this.skills = skills;
 		this.maxHp = maxhp;
 	}
-	
-	
-	
+
 	public String getName() {
 		return name;
 	}
-
-
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
-
-
 	public Language() {
-		
+
 	}
 
 	public int getId() {
@@ -57,13 +51,13 @@ public class Language{
 	public void setSkills(Skill[] skills) {
 		this.skills = skills;
 	}
+
 	public int getMaxHp() {
 		return maxHp;
 	}
+
 	public void setMaxHp(int maxHp) {
 		this.maxHp = maxHp;
 	}
-	
-	
-	
+
 }
