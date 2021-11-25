@@ -326,12 +326,14 @@ public class BattleController {
 			} else {
 
 			}
+			System.out.println(1);
 			langs[langIdx].setHp(lang.getHp());
 			enemys[enemyIdx].setHp(enemy.getHp());
 			setBar("lang");
 			setBar("enemy");
 			Hp1.setText("HP : " + enemy.getHp() + " / " + enemy.getMaxHp());
 			Hp2.setText("HP : " + lang.getHp() + " / " + lang.getMaxHp());
+			System.out.println(2);
 			chat("battle");
 
 		} catch (Exception e) {
@@ -437,7 +439,7 @@ public class BattleController {
 		BtnChat.setDisable(false);
 		BtnChat.setVisible(true);
 		Txt.setText("");
-
+		System.out.println(1);
 		chatLoad(battle);
 
 	}
@@ -481,11 +483,11 @@ public class BattleController {
 
 			} else if (rstGame.equals("turnLose")) {
 				if (langs[0].getHp() <= 0 && langs[1].getHp() <= 0 && langs[2].getHp() <= 0 && langs[3].getHp() <= 0
-						&& langs[4].getHp() <= 0 && langs[5].getHp() <= 0 && langs[6].getHp() <= 0) {
+						&& langs[4].getHp() <= 0 && langs[5].getHp() <= 0) {
 					try {
 						Parent over = FXMLLoader.load(getClass().getResource("/layout/Gover.fxml"));
 						Scene scene = new Scene(over);
-						Stage primaryStage = (Stage) BtnChat.getScene().getWindow();
+						Stage primaryStage = (Stage) langImg.getScene().getWindow();
 						scene.getStylesheets()
 								.add(getClass().getResource("/application/application.css").toExternalForm());
 						primaryStage.setScene(scene);
@@ -493,7 +495,6 @@ public class BattleController {
 						e.printStackTrace();
 					}
 				} else if (rstGame.equals("turnTie")){
-					
 				} else {
 					asBtn(BtnRun);
 					asBtn(BtnChg);
