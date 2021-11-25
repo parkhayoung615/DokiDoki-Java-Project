@@ -1,10 +1,15 @@
 package layout;
 
+import java.io.File;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 
 import java.util.ResourceBundle;
 
@@ -28,6 +33,9 @@ import javafx.stage.Stage;
 import util.JDBCUtil;
 
 public class MainController implements Initializable {
+	
+	MediaPlayer mp; // 음악재생 라이브러리
+	Media m = null; // 음악 소스
 
 	@FXML
 	private Button StartBtn;
@@ -80,7 +88,6 @@ public class MainController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -118,6 +125,12 @@ public class MainController implements Initializable {
 			Stage primaryStage = (Stage) StartBtn.getScene().getWindow();
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 			primaryStage.setScene(scene);
+			
+//			AudioInputStream ais = AudioSystem.getAudioInputStream(new File("/resourse/Cursor3.ogg"));
+//			Clip clip = AudioSystem.getClip();
+//			clip.stop();
+//			clip.open(ais);
+//			clip.start();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -226,15 +239,25 @@ public class MainController implements Initializable {
 			ResultSet rs = null;
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				// login에서 loading으로 화면 전환*****
 				try {
 					Parent login = FXMLLoader.load(getClass().getResource("/layout/Index.fxml"));
 					Scene scene = new Scene(login);
 					Stage primaryStage = (Stage) loginBtn.getScene().getWindow();
 					scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 					primaryStage.setScene(scene);
-
-					// loadMp4(); // loadMp4 실행(미디어뷰)
+					
+					m = new Media(getClass().getResource("/resourse/Index.mp3").toString());
+					mp = new MediaPlayer(m);
+					Runnable onEnd = new Runnable() {
+						public void run() {
+							mp.dispose();
+							mp = new MediaPlayer(m);
+							mp.play();
+							mp.setOnEndOfMedia(this);
+						}
+					}; 
+					mp.setOnEndOfMedia(onEnd);
+					mp.play();
 
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -304,28 +327,21 @@ public class MainController implements Initializable {
 		// 미디어 객체를 소스 폴더의 video.mp4를 이용해만들어 줍니다.
 		// 미디어 플레이어에 사용할 파일을 정해 줍니다.
 		Media media = new Media(getClass().getResource("/resource/loading.mp4").toString());
-
 		// 미디어 플레이어 생성 및 미디어 뷰에 설정
 		MediaPlayer mediaPlayer = new MediaPlayer(media);
 		mediaView.setMediaPlayer(mediaPlayer);
-
 		// 해당 상태가 되면 실행할 Runnable 설정
 		mediaPlayer.setOnReady(new Runnable() {
-
 			// 화면이 동영상이 실행 되는 쓰레드 사용합니다.
 			@Override
 			public void run() {
-
 				// 시작시 플레이 버튼만 활성화 하고
 				// 나머지는 비활성화 함.
 				loginBtn.setDisable(false);
-
 			}
 		});
-
 		// 플레이 되고 있을 경우의 버튼 활성 비활성의 상태
 		// 아래의 경우도 똑 같은 경우입니다.
-
 		mediaPlayer.setOnPlaying(() -> {
 			loginBtn.setDisable(true);
 		});
@@ -333,20 +349,15 @@ public class MainController implements Initializable {
 		mediaPlayer.setOnPaused(() -> {
 			loginBtn.setDisable(false);
 		});
-
 		// 비디오가 끝났을 경우의 처리
 		// booEnd 변수에 true 를 넣어 재생 버튼을 눌렀을 때
-		// 처음 부터 실행 할것인지를 결정 하게 한다.
-
-		
+		// 처음부터 실행 할것인지를 결정 하게 한다.
 		mediaPlayer.setOnEndOfMedia(() -> { booEnd = true;
 		loginBtn.setDisable(false); }); mediaPlayer.setOnStopped(() -> {
 		mediaPlayer.seek(mediaPlayer.getStartTime()); loginBtn.setDisable(false); });
 		
-
 		// 버튼 ActionEvent 처리
 		loginBtn.setOnAction(event -> {
-
 			// 플레이 버튼을 눌렀을때
 			// 동영상이 끝날상태 즉 booEnd 에 true 가 들어 가있을 경우에는
 			// 종료하고 처음으로 재생시점을 이동한다.
@@ -355,14 +366,11 @@ public class MainController implements Initializable {
 			if (booEnd) {
 				mediaPlayer.stop();
 				 mediaPlayer.seek(mediaPlayer.getStartTime());
-
 			}
 			 mediaPlayer.play();
 			 booEnd = false;
 		});
-
 	}
-	
 
 	// 창 닫기
 	public void closeProgram() { // 현재의 스테이지를 받아서 close를 해주어야 함
@@ -371,7 +379,6 @@ public class MainController implements Initializable {
 	}
 
 //		게임 시작 (새 게임 버튼 눌렀을 때부터)
-
 	public void StartGame() {
 		try {
 			Parent login = FXMLLoader.load(getClass().getResource("/layout/StartGame/Start_Narration.fxml"));
@@ -379,6 +386,7 @@ public class MainController implements Initializable {
 			Stage primaryStage = (Stage) NewGame.getScene().getWindow();
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 			primaryStage.setScene(scene);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -396,7 +404,4 @@ public class MainController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-
-	
-	
 }
