@@ -61,8 +61,8 @@ public class MainController implements Initializable {
 			loc = "Start";
 			Mario.setX(655);
 			Mario.setY(250);
-			animation.play();
-			animation.setOffsetY(96);
+			Mario.setViewport(new Rectangle2D(48, 96, 48, 48));
+			
 		}
 		
 
