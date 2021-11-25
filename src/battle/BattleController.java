@@ -131,7 +131,7 @@ public class BattleController {
 		loadLang("12");
 		int k = 0;
 		for (Integer a : langList) {
-			loadBattle(a, "lang");
+			loadBattle(a, "lang", k);
 			Language langh = new Language(lang.getName(), lang.getId(), lang.getHp(), lang.getMaxHp(),
 					lang.getSkills());
 			langs[k] = langh;
@@ -140,14 +140,14 @@ public class BattleController {
 		System.out.println(langs[0].getHp() + langs[1].getName() + langs[2].getName() + langs[3].getName());
 		k = 0;
 		for (Integer a : enemyList) {
-			loadBattle(a, "enemy");
+			loadBattle(a, "enemy", k);
 			Language enemyh = new Language(enemy.getName(), enemy.getId(), enemy.getHp(), enemy.getMaxHp(),
 					enemy.getSkills());
 			enemys[k] = enemyh;
 			k++;
 		}
-		loadBattle(langs[0].getId(), "lang");
-		loadBattle(enemys[0].getId(), "enemy");
+		loadBattle(langs[0].getId(), "lang", 0);
+		loadBattle(enemys[0].getId(), "enemy", 0);
 		rstGame = "game";
 	}
 
@@ -165,7 +165,7 @@ public class BattleController {
 	private int langSkill;
 	private String rstGame = null;
 
-	public void loadBattle(int langId, String type, int hp) {
+	public void loadBattle(int langId, String type, int langNum) {
 		JDBCUtil db = new JDBCUtil();
 		Connection con = db.getConnection();
 		PreparedStatement pstmt = null;
@@ -217,9 +217,13 @@ public class BattleController {
 			if (type.equals("lang")) {
 				lang.setSkills(skills);
 				lang.setId(langId);
-				lang.setHp(maxHP);
 				lang.setMaxHp(maxHP);
 				lang.setName(name);
+				if (langs[langNum].getName().equals("null")) {
+					lang.setHp(maxHP);
+				} else {
+					lang.setHp(langs[langNum].getHp());
+				}
 				langImg.setImage(new Image("/imgs/200x200(px)/" + name + ".png"));
 				skillButtons[0].setText(lang.getSkills()[0].getName());
 				skillButtons[1].setText(lang.getSkills()[1].getName());
@@ -232,9 +236,13 @@ public class BattleController {
 			} else if (type.equals("enemy")) {
 				enemy.setSkills(skills);
 				enemy.setId(langId);
-				enemy.setHp(maxHP);
 				enemy.setMaxHp(maxHP);
 				enemy.setName(name);
+				if (enemys[langNum].getName().equals("null")) {
+					enemy.setHp(maxHP);
+				} else {
+					enemy.setHp(enemys[langNum].getHp());
+				}
 				enemyImg.setImage(new Image("/imgs/200x200(px)/" + name + ".png"));
 				Hp1.setText("HP : " + maxHP + " / " + maxHP);
 				setBar("enemy");
@@ -259,7 +267,7 @@ public class BattleController {
 				enemyList.add(rs.getInt("a.object_id"));
 				System.out.println(rs.getInt("a.object_id"));
 			}
-		} catch (Exception e) {
+		} catch (Exception e) { 
 			// TODO: handle exception
 		}
 	}
@@ -504,7 +512,7 @@ public class BattleController {
 
 	public void nextEnemy() {
 		if (!enemys[enemyIdx].getName().equals("null") && enemys[enemyIdx].getHp() > 0) {
-			loadBattle(enemys[enemyIdx].getId(), "enemy");
+			loadBattle(enemys[enemyIdx].getId(), "enemy", enemyIdx);
 		} else {
 			try {
 				Parent win = FXMLLoader.load(getClass().getResource("/test/TestLayout.fxml"));
@@ -538,7 +546,7 @@ public class BattleController {
 			disLabel();
 			myLangs.setVisible(false);
 			myLangs.setDisable(true);
-			loadBattle(langs[0].getId(), "lang");
+			loadBattle(langs[0].getId(), "lang", 0);
 		}
 
 	}
@@ -562,7 +570,7 @@ public class BattleController {
 			disLabel();
 			myLangs.setVisible(false);
 			myLangs.setDisable(true);
-			loadBattle(langs[1].getId(), "lang");
+			loadBattle(langs[1].getId(), "lang", 1);
 		}
 
 	}
@@ -586,7 +594,7 @@ public class BattleController {
 			disLabel();
 			myLangs.setVisible(false);
 			myLangs.setDisable(true);
-			loadBattle(langs[2].getId(), "lang");
+			loadBattle(langs[2].getId(), "lang", 2);
 		}
 	}
 
@@ -609,7 +617,7 @@ public class BattleController {
 			disLabel();
 			myLangs.setVisible(false);
 			myLangs.setDisable(true);
-			loadBattle(langs[3].getId(), "lang");
+			loadBattle(langs[3].getId(), "lang", 3);
 		}
 	}
 
@@ -632,7 +640,7 @@ public class BattleController {
 			disLabel();
 			myLangs.setVisible(false);
 			myLangs.setDisable(true);
-			loadBattle(langs[4].getId(), "lang");
+			loadBattle(langs[4].getId(), "lang", 4);
 		}
 	}
 
@@ -655,7 +663,7 @@ public class BattleController {
 			disLabel();
 			myLangs.setVisible(false);
 			myLangs.setDisable(true);
-			loadBattle(langs[5].getId(), "lang");
+			loadBattle(langs[5].getId(), "lang", 5);
 		}
 	}
 
