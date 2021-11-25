@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
+import battle.BattleController;
 import test.SpriteAnimation;
 import block.Block;
 import block.MoveStage;
@@ -37,16 +38,33 @@ public class MainController implements Initializable {
 
 	Pass pass = new Pass();
 	MoveStage s = new MoveStage();
+	BattleController btc = new BattleController();
+	
 
 	private int width;
 	private int height;
 	private String view = null;
+	static String loc = "Start";
+	
+	public void setloc(String l) {
+		loc = l;
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		test();
-		Mario.setX(550);
-		Mario.setY(600);
+		if (loc.equals("Start")) {
+			Mario.setX(550);
+			Mario.setY(600);
+		} else if (loc.equals("s01")) {
+			view = "right";
+			loc = "Start";
+			Mario.setX(655);
+			Mario.setY(250);
+			animation.play();
+			animation.setOffsetY(96);
+		}
+		
 
 		Mario.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
@@ -163,6 +181,7 @@ public class MainController implements Initializable {
 				Stage primaryStage = (Stage) Mario.getScene().getWindow();
 				primaryStage.setScene(scene);
 			} else if (b.getType() == 3 && view == "right") {
+				loc = "s01";
 				Parent sN = FXMLLoader.load(getClass().getResource("/battle/BattleLayout.fxml"));
 				Scene scene = new Scene(sN);
 				Stage primaryStage = (Stage) Mario.getScene().getWindow();

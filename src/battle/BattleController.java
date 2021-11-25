@@ -19,6 +19,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import test.MainController;
 import javafx.scene.control.Alert.AlertType;
 import util.JDBCUtil;
 
@@ -125,6 +126,7 @@ public class BattleController {
 
 	@FXML
 	public void initialize() {
+		loc = "s01";
 		chat("start");
 		loadAll();
 		loadEnemy("S-01");
@@ -151,6 +153,7 @@ public class BattleController {
 		rstGame = "game";
 	}
 
+	private String loc = null;
 	private int langIdx = 0;
 	private int enemyIdx = 0;
 	private int idx = 0;
@@ -169,7 +172,6 @@ public class BattleController {
 		JDBCUtil db = new JDBCUtil();
 		Connection con = db.getConnection();
 		PreparedStatement pstmt = null;
-		Alert alert = new Alert(AlertType.WARNING);
 		String sql = "SELECT * FROM `object` WHERE `id` = ?";
 		ResultSet rs = null;
 		Skill[] skills = new Skill[4];
@@ -484,6 +486,8 @@ public class BattleController {
 			} else if (rstGame.equals("turnLose")) {
 				if (langs[0].getHp() <= 0 && langs[1].getHp() <= 0 && langs[2].getHp() <= 0 && langs[3].getHp() <= 0
 						&& langs[4].getHp() <= 0 && langs[5].getHp() <= 0) {
+					MainController mc = new MainController();
+					mc.setloc(loc);
 					try {
 						Parent over = FXMLLoader.load(getClass().getResource("/layout/Gover.fxml"));
 						Scene scene = new Scene(over);
@@ -527,7 +531,7 @@ public class BattleController {
 
 		}
 	}
-
+	
 	@FXML
 	public void langsel1() {
 		if (langs[0].getHp() > 0 && !langs[0].getName().equals("null")) {
@@ -762,6 +766,9 @@ public class BattleController {
 		disBtn(BtnChat);
 		disLabel();
 
+	}
+	public String getloc() {
+		return loc;
 	}
 
 	public void disBtn(Button Btn) {
