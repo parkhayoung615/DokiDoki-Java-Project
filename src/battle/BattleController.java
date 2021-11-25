@@ -165,7 +165,7 @@ public class BattleController {
 	private int langSkill;
 	private String rstGame = null;
 
-	public void loadBattle(int langId, String type) {
+	public void loadBattle(int langId, String type, int hp) {
 		JDBCUtil db = new JDBCUtil();
 		Connection con = db.getConnection();
 		PreparedStatement pstmt = null;
