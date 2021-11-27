@@ -12,11 +12,8 @@ public class Main extends Application {
 		try {
 			// UTF-8 로 개발
 			FXMLLoader loader = new FXMLLoader();
-<<<<<<< Updated upstream
 			loader.setLocation(getClass().getResource("/layout/map/BasicMap.fxml"));
-=======
 			loader.setLocation(getClass().getResource("/layout/Start.fxml"));
->>>>>>> Stashed changes
 			// Start -> Login -> (로딩) -> Index
 			AnchorPane ap = (AnchorPane) loader.load();
 			Scene scene = new Scene(ap, 1100, 900);
