@@ -64,12 +64,12 @@ public class MainController implements Initializable {
 			Mario.setY(250);
 			Mario.setViewport(new Rectangle2D(48, 96, 48, 48));
 			
-		} else if (loc.equals("Bto3")) {
+		} else if (loc.equals("Dto3")) {
 			Mario.setX(160);
 			Mario.setY(485);
 			Mario.setViewport(new Rectangle2D(48, 96, 48, 48));
 			view = "right";
-		} else if (loc.equals("Dto3")) {
+		} else if (loc.equals("Bto3")) {
 			Mario.setX(160);
 			Mario.setY(235);
 			Mario.setViewport(new Rectangle2D(48, 96, 48, 48));
@@ -264,15 +264,15 @@ public class MainController implements Initializable {
 				scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 				primaryStage.setScene(scene);
 			} else if (b.getType() == 101) {
-				chgMap("Bto3", "3level");
-				
-			} else if (b.getType() == 99) {
-				chgMap("3toB", "BasicMap");
-				
-			} else if (b.getType() == 102) {
 				chgMap("Dto3", "3level");
 				
 			} else if (b.getType() == 103) {
+				chgMap("3toB", "BasicMap");
+				
+			} else if (b.getType() == 102) {
+				chgMap("Bto3", "3level");
+				
+			} else if (b.getType() == 99) {
 				chgMap("3toD", "DeepMap");
 				
 			} else if (b.getType() == 104) {
