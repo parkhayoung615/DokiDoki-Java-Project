@@ -46,63 +46,76 @@
 	-fx-background-color: transparent;
 }
 
+
+/* 뒷 배경 검정색 처리 */
+
 #Level1Back {
 	-fx-background-image: url('/imgs/BackImg/Map012.png');
 	-fx-background-size: cover;
 	-fx-background-position: center center;
+	-fx-background-color: #000;
 }
 
 #Level2Back {
 	-fx-background-image: url('/imgs/BackImg/Map006.png');
 	-fx-background-size: cover;
 	-fx-background-position: center center;
+	-fx-background-color: #000;
 }
 
 #Level3Back {
 	-fx-background-image: url('/imgs/BackImg/Map007.png');
 	-fx-background-size: cover;
 	-fx-background-position: center center;
+	-fx-background-color: #000;
 }
 
 #BasicBack {
 	-fx-background-image: url('/imgs/BackImg/Map003.png');
 	-fx-background-size: cover;
 	-fx-background-position: center center;
+	-fx-background-color: #000;
 }
 #StartIllustBack {
 	-fx-background-image: url('/imgs/Start.jpg');
 	-fx-background-size: cover;
 	-fx-background-position: center center;
+	-fx-background-color: #000;
 }
 
 #DeepBack {
 	-fx-background-image: url('/imgs/BackImg/Map001.png');
 	-fx-background-size: cover;
 	-fx-background-position: center center;
+	-fx-background-color: #000;
 }
 
 #SkillsLBack {
 	-fx-background-image: url('/imgs/BackImg/Map011.png');
 	-fx-background-size: cover;
 	-fx-background-position: center center;
+	-fx-background-color: #000;
 }
 
 #SkillsMBack {
 	-fx-background-image: url('/imgs/BackImg/Map008.png');
 	-fx-background-size: cover;
 	-fx-background-position: center center;
+	-fx-background-color: #000;
 }
 
 #SkillsRBack {
 	-fx-background-image: url('/imgs/BackImg/Map002.png');
 	-fx-background-size: cover;
 	-fx-background-position: center center;
+	-fx-background-color: #000;
 }
 
 #SkillsHWBack {
 	-fx-background-image: url('/imgs/BackImg/Map010.png');
 	-fx-background-size: cover;
 	-fx-background-position: center center;
+	-fx-background-color: #000;
 }
 
 #StartMapBack {

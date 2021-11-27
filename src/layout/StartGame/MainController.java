@@ -178,16 +178,27 @@ public class MainController implements Initializable {
 	
 //	스크래치 골랐ㅇ르 때
 	public void SelectObjScratch() {
-		try {
-			Parent login = FXMLLoader.load(getClass().getResource("/layout/StartGame/SelectAfter.fxml"));
-			Scene scene = new Scene(login);
-			Stage primaryStage = (Stage) ScratchBtn.getScene().getWindow();
-			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			chatLoad("StartS");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		JDBCUtil db = new JDBCUtil();
+		Connection con = db.getConnection();
+		PreparedStatement pstmt = null;
+		//String sql = "INSERT INTO `user_object`(`id`, `object_id`, `user_id`) VALUES ('[value-1]','14','[value-3]')";
+		//try {
+			//pstmt = con.prepareStatement(sql);
+			//pstmt.setString(1, inputJoinId);
+			//pstmt.setString(2, inputJoinName);
+			//pstmt.executeUpdate();
+			try {
+				Parent login = FXMLLoader.load(getClass().getResource("/layout/StartGame/SelectAfter.fxml"));
+				Scene scene = new Scene(login);
+				Stage primaryStage = (Stage) ScratchBtn.getScene().getWindow();
+				scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+				primaryStage.setScene(scene);
+				chatLoad("StartS");
+			} catch (Exception e) {
+				
+			}
+		//} catch (Exception e) {
+		//}
 	}
 	
 	
