@@ -45,7 +45,7 @@ public class MainController implements Initializable {
 	private int height;
 	private String view = null;
 	static String loc = "Start";
-	private String map = "2level";
+	private String map = "BasicMap";
 	
 	public void setloc(String l) {
 		loc = l;
@@ -64,6 +64,9 @@ public class MainController implements Initializable {
 			Mario.setY(250);
 			Mario.setViewport(new Rectangle2D(48, 96, 48, 48));
 			
+		} else if (loc.equals("test")) {
+			Mario.setX(550);
+			Mario.setY(450);
 		}
 		
 
@@ -204,7 +207,7 @@ public class MainController implements Initializable {
 		Mario.setScaleX(1.2);
 		animation = new SpriteAnimation(Mario, Duration.millis(500), 3, 4, 0, 0, 48, 48);
 
-		if (map.equals("shop")) {
+		if (map.equals("shop") || map.equals("BasicMap")) {
 			Mario2.setImage(new Image("/imgs/avatar/h2.png"));
 			Mario2.setScaleX(1.2);
 			Mario2.setScaleY(1.2);
