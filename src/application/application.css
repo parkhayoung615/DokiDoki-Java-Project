@@ -118,7 +118,21 @@
 	-fx-background-position: center center;
 }
 
-#MinBack {
+#StartSelectBack {
+	-fx-background-color: #000;
+}
+
+#EntryBtn {
+	-fx-background-color: rgb(37.0, 102.0, 128.0);
+	-fx-text-fill: #fff;
+}
+
+#ScratchBtn {
+	-fx-background-color: rgb(199.0, 60.0, 49.0);
+	-fx-text-fill: #fff;
+}
+
+#MinBack, #AfterBack {
 	-fx-background-color: #000;
 	-fx-background-image: url('/imgs/battle/Min.png');
 	-fx-background-size: cover;

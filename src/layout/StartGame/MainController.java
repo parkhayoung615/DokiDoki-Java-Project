@@ -27,11 +27,16 @@ public class MainController implements Initializable {
 	private Label NarraLabel;
 	@FXML
 	private Button Next;
-	
+
 	@FXML
 	private Button NarBtn;
 	@FXML
 	private Label NarLabel;
+
+	@FXML
+	private Button EntryBtn;
+	@FXML
+	private Button ScratchBtn;
 
 	private int idx = 0;
 	private ArrayList<String> list = new ArrayList<String>();
@@ -39,8 +44,8 @@ public class MainController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		chatLoad("StartNRS1");
-		chatLoad02("StartNRS2");
 	}
+
 	@FXML
 	public void next1() {
 		try {
@@ -49,6 +54,7 @@ public class MainController implements Initializable {
 			Stage primaryStage = (Stage) Next.getScene().getWindow();
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 			primaryStage.setScene(scene);
+			chatLoad02("StartNRS2");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -58,7 +64,7 @@ public class MainController implements Initializable {
 		JDBCUtil db = new JDBCUtil();
 		Connection con = db.getConnection();
 		PreparedStatement pstmt = null;
-		String sql = "SELECT * FROM script s WHERE s.id LIKE ?";
+		String sql = "SELECT s.script_data FROM script s WHERE s.id LIKE ?";
 		ResultSet rs = null;
 		try {
 			pstmt = con.prepareStatement(sql);
@@ -93,18 +99,19 @@ public class MainController implements Initializable {
 			}
 		}
 	}
-	
+
+//	일러스트 이후 ...
 	public void chatLoad02(String point) {
 		JDBCUtil db = new JDBCUtil();
 		Connection con = db.getConnection();
 		PreparedStatement pstmt = null;
-		String sql = "SELECT * FROM script s WHERE s.id LIKE ?";
+		String sql = "SELECT s.script_data FROM script s WHERE s.id LIKE LIKE ?";
 		ResultSet rs = null;
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, "%" + point + "%");
 			rs = pstmt.executeQuery();
-			System.out.println(1);
+			System.out.println(2);
 			while (rs.next()) {
 				list.add(rs.getString("s.script_data"));
 			}
@@ -122,7 +129,7 @@ public class MainController implements Initializable {
 			idx = 0;
 			list.clear();
 			try {
-				Parent login = FXMLLoader.load(getClass().getResource("/layout/StartGame/Start_illustration.fxml"));
+				Parent login = FXMLLoader.load(getClass().getResource("/layout/StartGame/Select.fxml"));
 				Scene scene = new Scene(login);
 				Stage primaryStage = (Stage) NarBtn.getScene().getWindow();
 				scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
@@ -132,6 +139,5 @@ public class MainController implements Initializable {
 			}
 		}
 	}
-	
 
 }
