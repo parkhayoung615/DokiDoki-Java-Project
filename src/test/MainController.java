@@ -45,6 +45,7 @@ public class MainController implements Initializable {
 	private int height;
 	private String view = null;
 	static String loc = "Start";
+	private String map = "2level";
 	
 	public void setloc(String l) {
 		loc = l;
@@ -85,14 +86,14 @@ public class MainController implements Initializable {
 	public void moveMario(KeyEvent event) {
 		KeyCode keyCode = event.getCode();
 		if (keyCode.equals(KeyCode.RIGHT)) {
-			if (!s.getPassBlock(pass.blockGet(Mario.getX() + 48, Mario.getY() + 48, 22), "shop").getPass()
-					&& !s.getPassBlock(pass.blockGet(Mario.getX() + 48, Mario.getY() + 25, 22), "shop").getPass()
+			if (!s.getPassBlock(pass.blockGet(Mario.getX() + 48, Mario.getY() + 48, 22), map).getPass()
+					&& !s.getPassBlock(pass.blockGet(Mario.getX() + 48, Mario.getY() + 25, 22), map).getPass()
 					&& Mario.getX() + 0 <= 1100) {
 				Mario.setX(Mario.getX() + 5);
 
 			}
-			if (!s.getPassBlock(pass.blockGet(Mario.getX() + 48, Mario.getY() + 48, 22), "shop").getPass()
-					&& !s.getPassBlock(pass.blockGet(Mario.getX() + 48, Mario.getY() + 25, 22), "shop").getPass()
+			if (!s.getPassBlock(pass.blockGet(Mario.getX() + 48, Mario.getY() + 48, 22), map).getPass()
+					&& !s.getPassBlock(pass.blockGet(Mario.getX() + 48, Mario.getY() + 25, 22), map).getPass()
 					&& Mario.getX() + 0 <= 1100) {
 				Mario.setX(Mario.getX() + 5);
 
@@ -101,14 +102,14 @@ public class MainController implements Initializable {
 			animation.setOffsetY(96);
 			view = "right";
 		} else if (keyCode.equals(KeyCode.LEFT)) {
-			if (!s.getPassBlock(pass.blockGet(Mario.getX() - 5, Mario.getY() + 48, 22), "shop").getPass()
-					&& !s.getPassBlock(pass.blockGet(Mario.getX() - 5, Mario.getY() + 25, 22), "shop").getPass()
+			if (!s.getPassBlock(pass.blockGet(Mario.getX() - 5, Mario.getY() + 48, 22), map).getPass()
+					&& !s.getPassBlock(pass.blockGet(Mario.getX() - 5, Mario.getY() + 25, 22), map).getPass()
 					&& Mario.getX() - 0 >= 0) {
 				Mario.setX(Mario.getX() - 5);
 
 			}
-			if (!s.getPassBlock(pass.blockGet(Mario.getX() - 5, Mario.getY() + 48, 22), "shop").getPass()
-					&& !s.getPassBlock(pass.blockGet(Mario.getX() - 5, Mario.getY() + 25, 22), "shop").getPass()
+			if (!s.getPassBlock(pass.blockGet(Mario.getX() - 5, Mario.getY() + 48, 22), map).getPass()
+					&& !s.getPassBlock(pass.blockGet(Mario.getX() - 5, Mario.getY() + 25, 22), map).getPass()
 					&& Mario.getX() - 0 >= 0) {
 				Mario.setX(Mario.getX() - 5);
 
@@ -118,14 +119,14 @@ public class MainController implements Initializable {
 			view = "left";
 
 		} else if (keyCode.equals(KeyCode.UP)) {
-			if (!s.getPassBlock(pass.blockGet(Mario.getX() + 38, Mario.getY() + 20, 22), "shop").getPass()
-					&& !s.getPassBlock(pass.blockGet(Mario.getX() + 0, Mario.getY() + 20, 22), "shop").getPass()
+			if (!s.getPassBlock(pass.blockGet(Mario.getX() + 38, Mario.getY() + 20, 22), map).getPass()
+					&& !s.getPassBlock(pass.blockGet(Mario.getX() + 0, Mario.getY() + 20, 22), map).getPass()
 					&& Mario.getY() - 5 >= 0) {
 				Mario.setY(Mario.getY() - 5);
 
 			}
-			if (!s.getPassBlock(pass.blockGet(Mario.getX() + 38, Mario.getY() + 20, 22), "shop").getPass()
-					&& !s.getPassBlock(pass.blockGet(Mario.getX() + 0, Mario.getY() + 20, 22), "shop").getPass()
+			if (!s.getPassBlock(pass.blockGet(Mario.getX() + 38, Mario.getY() + 20, 22), map).getPass()
+					&& !s.getPassBlock(pass.blockGet(Mario.getX() + 0, Mario.getY() + 20, 22), map).getPass()
 					&& Mario.getY() - 5 >= 0) {
 				Mario.setY(Mario.getY() - 5);
 
@@ -134,14 +135,14 @@ public class MainController implements Initializable {
 			animation.setOffsetY(144);
 			view = "up";
 		} else if (keyCode.equals(KeyCode.DOWN)) {
-			if (!s.getPassBlock(pass.blockGet(Mario.getX() + 38, Mario.getY() + 55, 22), "shop").getPass()
-					&& !s.getPassBlock(pass.blockGet(Mario.getX() + 0, Mario.getY() + 55, 22), "shop").getPass()
+			if (!s.getPassBlock(pass.blockGet(Mario.getX() + 38, Mario.getY() + 55, 22), map).getPass()
+					&& !s.getPassBlock(pass.blockGet(Mario.getX() + 0, Mario.getY() + 55, 22), map).getPass()
 					&& Mario.getY() + 48 < 900) {
 				Mario.setY(Mario.getY() + 5);
 
 			}
-			if (!s.getPassBlock(pass.blockGet(Mario.getX() + 38, Mario.getY() + 55, 22), "shop").getPass()
-					&& !s.getPassBlock(pass.blockGet(Mario.getX() + 0, Mario.getY() + 55, 22), "shop").getPass()
+			if (!s.getPassBlock(pass.blockGet(Mario.getX() + 38, Mario.getY() + 55, 22), map).getPass()
+					&& !s.getPassBlock(pass.blockGet(Mario.getX() + 0, Mario.getY() + 55, 22), map).getPass()
 					&& Mario.getY() + 48 < 900) {
 				Mario.setY(Mario.getY() + 5);
 
@@ -151,7 +152,7 @@ public class MainController implements Initializable {
 			animation.setOffsetY(0);
 			view = "down";
 		} else if (keyCode.equals(KeyCode.SPACE)) {
-			mapMove(s.getPassBlock(pass.blockGet(Mario.getX(), Mario.getY() + 25, 22), "shop"));
+			mapMove(s.getPassBlock(pass.blockGet(Mario.getX(), Mario.getY() + 25, 22), map));
 		} else if (keyCode.equals(KeyCode.I)) {
 			System.out.println("인벤토리창 이동");
 			GoInventory();
@@ -203,10 +204,13 @@ public class MainController implements Initializable {
 		Mario.setScaleX(1.2);
 		animation = new SpriteAnimation(Mario, Duration.millis(500), 3, 4, 0, 0, 48, 48);
 
-		Mario2.setImage(new Image("/imgs/avatar/h2.png"));
-		Mario2.setScaleX(1.2);
-		Mario2.setScaleY(1.2);
-		Mario2.setViewport(new Rectangle2D(48, 48, 48, 48));
+		if (map.equals("shop")) {
+			Mario2.setImage(new Image("/imgs/avatar/h2.png"));
+			Mario2.setScaleX(1.2);
+			Mario2.setScaleY(1.2);
+			Mario2.setViewport(new Rectangle2D(48, 48, 48, 48));
+		}
+		
 
 	}
 
