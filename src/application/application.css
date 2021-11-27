@@ -138,3 +138,10 @@
 	-fx-background-size: cover;
 	-fx-background-position: center center;
 }
+
+#NarBtn, #NarraStartBtn {
+	-fx-background-image: url('/imgs/Script.png');
+	-fx-background-size: cover;
+	-fx-background-position: center center;
+	
+}

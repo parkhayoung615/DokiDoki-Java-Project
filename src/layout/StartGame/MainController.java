@@ -29,11 +29,6 @@ public class MainController implements Initializable {
 	private Button Next;
 
 	@FXML
-	private Button NarBtn;
-	@FXML
-	private Label NarLabel;
-
-	@FXML
 	private Button EntryBtn;
 	@FXML
 	private Button ScratchBtn;
@@ -44,20 +39,6 @@ public class MainController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		chatLoad("StartNRS1");
-	}
-
-	@FXML
-	public void next1() {
-		try {
-			Parent login = FXMLLoader.load(getClass().getResource("/layout/StartGame/Start_Min.fxml"));
-			Scene scene = new Scene(login);
-			Stage primaryStage = (Stage) Next.getScene().getWindow();
-			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			chatLoad02("StartNRS2");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 
 	public void chatLoad(String point) {
@@ -74,12 +55,10 @@ public class MainController implements Initializable {
 			while (rs.next()) {
 				list.add(rs.getString("s.script_data"));
 			}
-
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 	}
-
+	
 	@FXML
 	public void nextChat() {
 		if (idx < list.size()) {
@@ -99,31 +78,27 @@ public class MainController implements Initializable {
 			}
 		}
 	}
-
-//	일러스트 이후 ...
-	public void chatLoad02(String point) {
-		JDBCUtil db = new JDBCUtil();
-		Connection con = db.getConnection();
-		PreparedStatement pstmt = null;
-		String sql = "SELECT s.script_data FROM script s WHERE s.id LIKE LIKE ?";
-		ResultSet rs = null;
+	
+//	일러스트 넘기기
+	@FXML
+	public void next1() {
 		try {
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, "%" + point + "%");
-			rs = pstmt.executeQuery();
-			System.out.println(2);
-			while (rs.next()) {
-				list.add(rs.getString("s.script_data"));
-			}
+			Parent login = FXMLLoader.load(getClass().getResource("/layout/StartGame/Start_Min.fxml"));
+			Scene scene = new Scene(login);
+			Stage primaryStage = (Stage) Next.getScene().getWindow();
+			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+			primaryStage.setScene(scene);
+			chatLoad("StartNRS2");
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 
+// 고르는 화면으로 넘ㄴ어가기
 	@FXML
 	public void nextChat02() {
 		if (idx < list.size()) {
-			NarLabel.setText(list.get(idx));
+			NarraLabel.setText(list.get(idx));
 			idx++;
 		} else {
 			idx = 0;
@@ -131,7 +106,104 @@ public class MainController implements Initializable {
 			try {
 				Parent login = FXMLLoader.load(getClass().getResource("/layout/StartGame/Select.fxml"));
 				Scene scene = new Scene(login);
-				Stage primaryStage = (Stage) NarBtn.getScene().getWindow();
+				Stage primaryStage = (Stage) NarraStartBtn.getScene().getWindow();
+				scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+				primaryStage.setScene(scene);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+
+//
+////	일러스트 이후 ...
+//	public void chatLoad02(String point) {
+//		JDBCUtil db = new JDBCUtil();
+//		Connection con = db.getConnection();
+//		PreparedStatement pstmt = null;
+//		String sql = "SELECT s.script_data FROM script s WHERE s.id LIKE LIKE ?";
+//		ResultSet rs = null;
+//		try {
+//			pstmt = con.prepareStatement(sql);
+//			pstmt.setString(1, "%" + point + "%");
+//			rs = pstmt.executeQuery();
+//			System.out.println(2);
+//			while (rs.next()) {
+//				list.add(rs.getString("s.script_data"));
+//			}
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
+//	}
+// 
+//	
+//	
+//	public void chatLoad03(String point) {
+//		JDBCUtil db = new JDBCUtil();
+//		Connection con = db.getConnection();
+//		PreparedStatement pstmt = null;
+//		String sql = "SELECT s.script_data FROM script s WHERE s.id LIKE LIKE ?";
+//		ResultSet rs = null;
+//		try {
+//			pstmt = con.prepareStatement(sql);
+//			pstmt.setString(1, "%" + point + "%");
+//			rs = pstmt.executeQuery();
+//			System.out.println(2);
+//			while (rs.next()) {
+//				list.add(rs.getString("s.script_data"));
+//			}
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
+//	}
+
+	
+	
+
+	
+//	엔트리 골랐을 때
+	public void SelectObjEntry() {
+		try {
+			Parent login = FXMLLoader.load(getClass().getResource("/layout/StartGame/SelectAfter.fxml"));
+			Scene scene = new Scene(login);
+			Stage primaryStage = (Stage) EntryBtn.getScene().getWindow();
+			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+			primaryStage.setScene(scene);
+			chatLoad("StartE");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+//	스크래치 골랐ㅇ르 때
+	public void SelectObjScratch() {
+		try {
+			Parent login = FXMLLoader.load(getClass().getResource("/layout/StartGame/SelectAfter.fxml"));
+			Scene scene = new Scene(login);
+			Stage primaryStage = (Stage) ScratchBtn.getScene().getWindow();
+			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+			primaryStage.setScene(scene);
+			chatLoad("StartS");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	// 게임 화면으로 넘어가기
+	@FXML
+	public void nextChat03() {
+		if (idx < list.size()) {
+			NarraLabel.setText(list.get(idx));
+			idx++;
+		} else {
+			idx = 0;
+			list.clear();
+			try {
+				Parent login = FXMLLoader.load(getClass().getResource("/layout/map/BasicMap.fxml"));
+				Scene scene = new Scene(login);
+				Stage primaryStage = (Stage) NarraStartBtn.getScene().getWindow();
 				scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 				primaryStage.setScene(scene);
 			} catch (Exception e) {
