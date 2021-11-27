@@ -54,6 +54,8 @@ public class MainController implements Initializable {
 	@FXML
 	private Button EndProgram;
 	@FXML
+	private Button EndSave;
+	@FXML
 	private Button commentH;
 	@FXML
 	private Button commentG;
@@ -381,6 +383,22 @@ public class MainController implements Initializable {
 		Stage pop = (Stage) EndProgram.getScene().getWindow(); // 버튼을 통해서 현재 스테이지를 알아냄
 		pop.close();
 	}
+	
+	public void EndSave() {
+		try {
+			Parent login = FXMLLoader.load(getClass().getResource("/layout/map/Basic.fxml"));
+			Scene scene = new Scene(login);
+			Stage primaryStage = (Stage) EndSave.getScene().getWindow();
+			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+			primaryStage.setScene(scene);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	
+	
 
 //		게임 시작 (새 게임 버튼 눌렀을 때부터)
 	public void StartGame() {

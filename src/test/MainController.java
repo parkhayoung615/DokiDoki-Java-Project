@@ -252,7 +252,7 @@ public class MainController implements Initializable {
 	public void mapMove(Block b) {
 		try {
 			if (b.getType() == 100 && view == "up") {
-				Parent sN = FXMLLoader.load(getClass().getResource("/layout/Login.fxml"));
+				Parent sN = FXMLLoader.load(getClass().getResource("/layout/Save.fxml"));
 				Scene scene = new Scene(sN);
 				Stage primaryStage = (Stage) Mario.getScene().getWindow();
 				primaryStage.setScene(scene);
@@ -327,7 +327,7 @@ public class MainController implements Initializable {
 		animation = new SpriteAnimation(Mario, Duration.millis(500), 3, 4, 0, 0, 48, 48);
 
 		if (map.equals("shop") || map.equals("BasicMap")) {
-			Mario2.setImage(new Image("/imgs/avatar/h2.png"));
+			Mario2.setImage(new Image("/imgs/avatar/Min1.png"));
 			Mario2.setScaleX(1.2);
 			Mario2.setScaleY(1.2);
 			Mario2.setViewport(new Rectangle2D(48, 48, 48, 48));

@@ -8,24 +8,31 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="900.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="battle.BattleController">
+<AnchorPane fx:id="BattleBack" prefHeight="900.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="battle.BattleController">
    <children>
-      <Pane layoutX="16.0" layoutY="524.0" prefHeight="315.0" prefWidth="1069.0" style="-fx-background-color: gray;">
+      <Pane layoutX="-4.0" layoutY="585.0" prefHeight="315.0" prefWidth="1215.0" style="-fx-background-color: #cccccc;">
          <children>
-            <Label fx:id="Txt" layoutX="14.0" layoutY="126.0" prefHeight="63.0" prefWidth="990.0" text="테스트2" textFill="WHITE">
+            <Label fx:id="Txt" layoutX="45.0" layoutY="91.0" prefHeight="154.0" prefWidth="990.0" text="테스트2">
                <font>
-                  <Font name="System Bold" size="31.0" />
+                  <Font name="System Bold" size="25.0" />
                </font>
             </Label>
-            <Button fx:id="Btn2" layoutX="535.0" layoutY="28.0" mnemonicParsing="false" onAction="#skillTw" prefHeight="72.0" prefWidth="223.0" text="버튼2" />
-            <Button fx:id="Btn4" layoutX="535.0" layoutY="132.0" mnemonicParsing="false" onAction="#skillF" prefHeight="72.0" prefWidth="223.0" text="버튼4" />
-            <Button fx:id="Btn3" layoutX="253.0" layoutY="132.0" mnemonicParsing="false" onAction="#skillT" prefHeight="72.0" prefWidth="223.0" text="버튼3" />
-            <Button fx:id="Btn1" layoutX="253.0" layoutY="28.0" mnemonicParsing="false" onAction="#skillO" prefHeight="72.0" prefWidth="223.0" text="버튼1" />
-            <Button fx:id="BtnBattle" layoutX="293.0" layoutY="56.0" mnemonicParsing="false" onAction="#gobattle" prefHeight="126.0" prefWidth="432.0" text="싸운다" />
-            <Button fx:id="BtnBag" layoutX="293.0" layoutY="220.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="108.0" text="가방" />
-            <Button fx:id="BtnRun" layoutX="455.0" layoutY="238.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="108.0" text="도망간다" />
-            <Button fx:id="BtnChg" layoutX="617.0" layoutY="220.0" mnemonicParsing="false" onAction="#loadMyLangs" prefHeight="63.0" prefWidth="108.0" text="포켓몬" />
-            <Button fx:id="BtnChat" mnemonicParsing="false" onAction="#nextChat" prefHeight="315.0" prefWidth="1069.0" styleClass="btn" />
+            <Button fx:id="Btn2" layoutX="682.0" layoutY="28.0" mnemonicParsing="false" onAction="#skillTw" prefHeight="72.0" prefWidth="270.0" text="버튼2" />
+            <Button fx:id="Btn4" layoutX="682.0" layoutY="132.0" mnemonicParsing="false" onAction="#skillF" prefHeight="72.0" prefWidth="270.0" text="버튼4" />
+            <Button fx:id="Btn3" layoutX="270.0" layoutY="132.0" mnemonicParsing="false" onAction="#skillT" prefHeight="72.0" prefWidth="270.0" text="버튼3" />
+            <Button fx:id="Btn1" layoutX="270.0" layoutY="28.0" mnemonicParsing="false" onAction="#skillO" prefHeight="72.0" prefWidth="270.0" text="버튼1" />
+            <Button fx:id="BtnBag" layoutX="340.0" layoutY="221.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="130.0" text="가방">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+            <Button fx:id="BtnRun" layoutX="543.0" layoutY="238.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="130.0" text="도망간다">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+            <Button fx:id="BtnChg" layoutX="752.0" layoutY="221.0" mnemonicParsing="false" onAction="#loadMyLangs" prefHeight="63.0" prefWidth="130.0" text="포켓몬">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
             <Pane fx:id="myLangs" disable="true" layoutX="288.0" layoutY="9.0" prefHeight="298.0" prefWidth="759.0" visible="false">
                <children>
                   <Pane fx:id="lang1" disable="true" layoutX="14.0" layoutY="14.0" prefHeight="63.0" prefWidth="223.0" visible="false">
@@ -79,23 +86,40 @@
                   <Button layoutX="605.0" layoutY="241.0" mnemonicParsing="false" onAction="#backBattle" prefHeight="43.0" prefWidth="140.0" text="돌아가기" />
                </children>
             </Pane>
+            <Button fx:id="BtnBattle" layoutX="338.0" layoutY="41.0" mnemonicParsing="false" onAction="#gobattle" prefHeight="154.0" prefWidth="535.0" text="싸운다">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Button>
+            <Button fx:id="BtnChat" layoutX="1.0" layoutY="1.0" mnemonicParsing="false" onAction="#nextChat" prefHeight="315.0" prefWidth="1215.0" styleClass="btn" />
          </children>
       </Pane>
-      <Pane layoutX="718.0" layoutY="347.0" prefHeight="154.0" prefWidth="332.0" style="-fx-background-color: lightgray;">
+      <Pane layoutX="700.0" layoutY="373.0" prefHeight="154.0" prefWidth="410.0" style="-fx-background-color: lightgray;">
          <children>
-            <ProgressBar fx:id="hpBar2" layoutX="104.0" layoutY="68.0" prefWidth="200.0" progress="0.0" />
-            <Label fx:id="Hp2" layoutX="150.0" layoutY="86.0" prefHeight="22.0" prefWidth="108.0" text="HP : 0" />
-            <Label fx:id="name2" layoutX="196.0" layoutY="38.0" prefHeight="22.0" prefWidth="108.0" text="이름" />
+            <ProgressBar fx:id="hpBar2" layoutX="104.0" layoutY="68.0" prefHeight="18.0" prefWidth="270.0" progress="0.0" />
+            <Label fx:id="Hp2" layoutX="266.0" layoutY="95.0" prefHeight="22.0" prefWidth="108.0" text="HP : 0">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+            <Label fx:id="name2" layoutX="29.0" layoutY="27.0" prefHeight="22.0" prefWidth="108.0" text="이름">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font></Label>
          </children>
       </Pane>
-      <Pane layoutX="16.0" layoutY="37.0" prefHeight="154.0" prefWidth="332.0" style="-fx-background-color: lightgray;">
+      <Pane layoutX="16.0" layoutY="37.0" prefHeight="154.0" prefWidth="410.0" style="-fx-background-color: lightgray;">
          <children>
-            <ProgressBar fx:id="hpBar1" layoutX="48.0" layoutY="66.0" prefWidth="200.0" progress="0.0" style="-fx-accent: red;" />
-            <Label fx:id="Hp1" layoutX="94.0" layoutY="84.0" prefHeight="22.0" prefWidth="108.0" text="HP : 0" />
-            <Label fx:id="name1" layoutX="48.0" layoutY="31.0" prefHeight="22.0" prefWidth="108.0" text="이름" />
+            <ProgressBar fx:id="hpBar1" layoutX="40.0" layoutY="68.0" prefWidth="270.0" progress="0.0" style="-fx-accent: red;" />
+            <Label fx:id="Hp1" layoutX="48.0" layoutY="95.0" prefHeight="22.0" prefWidth="108.0" text="HP : 0">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+            <Label fx:id="name1" layoutX="40.0" layoutY="31.0" prefHeight="22.0" prefWidth="108.0" text="이름">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
          </children>
       </Pane>
-      <ImageView fx:id="langImg" fitHeight="200.0" fitWidth="200.0" layoutX="148.0" layoutY="301.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="enemyImg" fitHeight="200.0" fitWidth="200.0" layoutX="718.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="langImg" fitHeight="261.0" fitWidth="261.0" layoutX="188.0" layoutY="303.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="enemyImg" fitHeight="200.0" fitWidth="200.0" layoutX="753.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

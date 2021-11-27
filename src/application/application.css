@@ -158,3 +158,51 @@
 	-fx-background-position: center center;
 	
 }
+
+
+/* 배틀 화면 css */
+
+#BattleBack {
+	-fx-background-image: url('/imgs/Battle1.png');
+	-fx-background-size: cover;
+	-fx-background-position: center center;
+}
+
+#BtnBattle {
+	-fx-background-color: #c73e3a;
+	-fx-text-fill: #fff;
+	-fx-border-color: #9b4d49;
+	-fx-border-width: 5px;
+}
+
+#BtnBag {
+	-fx-background-color: #8b6415;
+	-fx-text-fill: #fff;
+	-fx-border-color: #ae8b41;
+	-fx-border-width: 10px;
+}
+
+#BtnRun {
+	-fx-background-color: #0c3b63;
+	-fx-text-fill: #fff;
+	-fx-border-color: #296b87;
+	-fx-border-width: 10px;
+}
+
+#BtnChg {
+	-fx-background-color: #377215;
+	-fx-text-fill: #fff;
+	-fx-border-color: #589a37;
+	-fx-border-width: 10px;
+}
+
+#Btn1, #Btn2, #Btn3, #Btn4 {
+	-fx-background-color: #bfb1c5;
+	-fx-border-color: #faf5fb;
+	-fx-border-width: 3px;
+}
+#SaveBack {
+	-fx-background-image: url('/imgs/Save.png');
+	-fx-background-size: cover;
+	-fx-background-position: center center;
+}
