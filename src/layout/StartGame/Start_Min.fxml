@@ -6,15 +6,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="NarrationBack" prefHeight="900.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="layout.StartGame.MainController">
+<AnchorPane fx:id="MinBack" prefHeight="900.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="layout.StartGame.MainController">
    <children>
-      <Button fx:id="NarraStartBtn" layoutY="687.0" mnemonicParsing="false" onAction="#nextChat" prefHeight="221.0" prefWidth="1100.0" />
+      <Button fx:id="NarBtn" layoutY="687.0" mnemonicParsing="false" onAction="#nextChat02" prefHeight="221.0" prefWidth="1100.0" />
       <Label fx:id="NStartName" layoutX="263.0" layoutY="708.0" text="???">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="NarraLabel" layoutX="263.0" layoutY="773.0">
+      <Label fx:id="NarLabel" layoutX="263.0" layoutY="773.0">
          <font>
             <Font size="24.0" />
          </font>
