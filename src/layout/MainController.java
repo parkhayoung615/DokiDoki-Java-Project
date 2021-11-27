@@ -75,7 +75,6 @@ public class MainController implements Initializable {
 	private TextField joinId;
 	@FXML
 	private PasswordField joinPw;
-
 	@FXML
 	private MediaView mediaView;
 	@FXML

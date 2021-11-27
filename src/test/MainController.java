@@ -45,7 +45,7 @@ public class MainController implements Initializable {
 	private int height;
 	private String view = null;
 	static String loc = "Start";
-	private String map = "BasicMap";
+	static String map = "BasicMap";
 	
 	public void setloc(String l) {
 		loc = l;
@@ -64,11 +64,88 @@ public class MainController implements Initializable {
 			Mario.setY(250);
 			Mario.setViewport(new Rectangle2D(48, 96, 48, 48));
 			
-		} else if (loc.equals("test")) {
-			Mario.setX(550);
-			Mario.setY(450);
+		} else if (loc.equals("Bto3")) {
+			Mario.setX(160);
+			Mario.setY(485);
+			Mario.setViewport(new Rectangle2D(48, 96, 48, 48));
+			view = "right";
+		} else if (loc.equals("Dto3")) {
+			Mario.setX(160);
+			Mario.setY(235);
+			Mario.setViewport(new Rectangle2D(48, 96, 48, 48));
+			view = "right";
+		} else if (loc.equals("3toD")) {
+			Mario.setX(945);
+			Mario.setY(305);
+			Mario.setViewport(new Rectangle2D(48, 48, 48, 48));
+			view = "left";
+		} else if (loc.equals("3toB")) {
+			Mario.setX(220);
+			Mario.setY(260);
+			Mario.setViewport(new Rectangle2D(48, 96, 48, 48));
+			view = "right";
+		} else if (loc.equals("3to2")) {
+			Mario.setX(300);
+			Mario.setY(785);
+			Mario.setViewport(new Rectangle2D(48, 144, 48, 48));
+			view = "up";
+		} else if (loc.equals("2to3")) {
+			Mario.setX(700);
+			Mario.setY(785);
+			Mario.setViewport(new Rectangle2D(48, 144, 48, 48));
+			view = "up";
+		} else if (loc.equals("2to1")) {
+			Mario.setX(700);
+			Mario.setY(55);
+			Mario.setViewport(new Rectangle2D(48, 0, 48, 48));
+			view = "down";
+		} else if (loc.equals("1to2")) {
+			Mario.setX(700);
+			Mario.setY(785);
+			Mario.setViewport(new Rectangle2D(48, 144, 48, 48));
+			view = "up";
+		} else if (loc.equals("2tos")) {
+			Mario.setX(280);
+			Mario.setY(600);
+			Mario.setViewport(new Rectangle2D(48, 144, 48, 48));
+			view = "up";
+		} else if (loc.equals("sto2")) {
+			Mario.setX(160);
+			Mario.setY(435);
+			Mario.setViewport(new Rectangle2D(48, 96, 48, 48));
+			view = "right";
+		} else if (loc.equals("stoL")) {
+			Mario.setX(695);
+			Mario.setY(660);
+			Mario.setViewport(new Rectangle2D(48, 48, 48, 48));
+			view = "left";
+		} else if (loc.equals("Ltos")) {
+			Mario.setX(110);
+			Mario.setY(440);
+			Mario.setViewport(new Rectangle2D(48, 96, 48, 48));
+			view = "right";
+		} else if (loc.equals("stoM")) {
+			Mario.setX(250);
+			Mario.setY(735);
+			Mario.setViewport(new Rectangle2D(48, 144, 48, 48));
+			view = "up";
+		} else if (loc.equals("Mtos")) {
+			Mario.setX(280);
+			Mario.setY(335);
+			Mario.setViewport(new Rectangle2D(48, 0, 48, 48));
+			view = "down";
+		} else if (loc.equals("stoR")) {
+			Mario.setX(160);
+			Mario.setY(540);
+			Mario.setViewport(new Rectangle2D(48, 96, 48, 48));
+			view = "right";
+		} else if (loc.equals("Rtos")) {
+			Mario.setX(945);
+			Mario.setY(435);
+			Mario.setViewport(new Rectangle2D(48, 48, 48, 48));
+			view = "left";
 		}
-		
+ 		
 
 		Mario.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
@@ -179,11 +256,6 @@ public class MainController implements Initializable {
 				Scene scene = new Scene(sN);
 				Stage primaryStage = (Stage) Mario.getScene().getWindow();
 				primaryStage.setScene(scene);
-			} else if (b.getType() == 101) {
-				Parent sN = FXMLLoader.load(getClass().getResource("/battle/BattleLayout.fxml"));
-				Scene scene = new Scene(sN);
-				Stage primaryStage = (Stage) Mario.getScene().getWindow();
-				primaryStage.setScene(scene);
 			} else if (b.getType() == 3 && view == "right") {
 				loc = "s01";
 				Parent sN = FXMLLoader.load(getClass().getResource("/battle/BattleLayout.fxml"));
@@ -191,6 +263,53 @@ public class MainController implements Initializable {
 				Stage primaryStage = (Stage) Mario.getScene().getWindow();
 				scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 				primaryStage.setScene(scene);
+			} else if (b.getType() == 101) {
+				chgMap("Bto3", "3level");
+				
+			} else if (b.getType() == 99) {
+				chgMap("3toB", "BasicMap");
+				
+			} else if (b.getType() == 102) {
+				chgMap("Dto3", "3level");
+				
+			} else if (b.getType() == 103) {
+				chgMap("3toD", "DeepMap");
+				
+			} else if (b.getType() == 104) {
+				chgMap("3to2", "2level");
+				
+			} else if (b.getType() == 105) {
+				chgMap("2to3", "3level");
+				
+			} else if (b.getType() == 106) {
+				chgMap("2to1", "1level");
+				
+			} else if (b.getType() == 107) {
+				chgMap("1to2", "2level");
+				
+			} else if (b.getType() == 108) {
+				chgMap("2tos", "SkillsHW");
+				
+			} else if (b.getType() == 109) {
+				chgMap("stoL", "SkillsL");
+				
+			} else if (b.getType() == 110) {
+				chgMap("sto2", "2level");
+				
+			} else if (b.getType() == 111) {
+				chgMap("Ltos", "SkillsHW");
+				
+			} else if (b.getType() == 112) {
+				chgMap("stoM", "SkillsM");
+				
+			} else if (b.getType() == 113) {
+				chgMap("Mtos", "SkillsHW");
+				
+			} else if (b.getType() == 114) {
+				chgMap("stoR", "SkillsR");
+				
+			} else if (b.getType() == 115) {
+				chgMap("Rtos", "SkillsHW");
 			}
 
 		} catch (Exception e) {
@@ -253,6 +372,19 @@ public class MainController implements Initializable {
 			stage.show(); // popup.show(primaryStage, anchorX, anchorY); 지정된 좌표에서 실행
 		} catch (Exception e) {
 
+		}
+	}
+	public void chgMap(String l, String m) {
+		try {
+			loc = l;
+			map = m;
+			Parent sN = FXMLLoader.load(getClass().getResource("/layout/map/" + m + ".fxml"));
+			Scene scene = new Scene(sN);
+			Stage primaryStage = (Stage) Mario.getScene().getWindow();
+			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+			primaryStage.setScene(scene);
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 	}
 

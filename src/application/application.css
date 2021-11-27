@@ -47,7 +47,7 @@
 }
 
 #Level1Back {
-	-fx-background-image: url('/imgs/BackImg/Map007.png');
+	-fx-background-image: url('/imgs/BackImg/Map012.png');
 	-fx-background-size: cover;
 	-fx-background-position: center center;
 }
@@ -59,7 +59,7 @@
 }
 
 #Level3Back {
-	-fx-background-image: url('/imgs/BackImg/Map012.png');
+	-fx-background-image: url('/imgs/BackImg/Map007.png');
 	-fx-background-size: cover;
 	-fx-background-position: center center;
 }
