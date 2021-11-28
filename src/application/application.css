@@ -171,34 +171,34 @@
 	-fx-background-color: #c73e3a;
 	-fx-text-fill: #fff;
 	-fx-border-color: #9b4d49;
-	-fx-border-width: 5px;
+	-fx-border-width: 5.0px;
 }
 
 #BtnBag {
 	-fx-background-color: #8b6415;
 	-fx-text-fill: #fff;
 	-fx-border-color: #ae8b41;
-	-fx-border-width: 10px;
+	-fx-border-width: 10.0px;
 }
 
 #BtnRun {
 	-fx-background-color: #0c3b63;
 	-fx-text-fill: #fff;
 	-fx-border-color: #296b87;
-	-fx-border-width: 10px;
+	-fx-border-width: 10.0px;
 }
 
 #BtnChg {
 	-fx-background-color: #377215;
 	-fx-text-fill: #fff;
 	-fx-border-color: #589a37;
-	-fx-border-width: 10px;
+	-fx-border-width: 10.0px;
 }
 
 #Btn1, #Btn2, #Btn3, #Btn4 {
 	-fx-background-color: #bfb1c5;
 	-fx-border-color: #faf5fb;
-	-fx-border-width: 3px;
+	-fx-border-width: 3.0px;
 }
 #SaveBack {
 	-fx-background-image: url('/imgs/Save.png');
