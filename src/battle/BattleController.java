@@ -23,7 +23,7 @@ import test.MainController;
 import javafx.scene.control.Alert.AlertType;
 import util.BattleTimer;
 import util.JDBCUtil;
-import util.UserInfo;
+//import util.UserInfo;
 
 public class BattleController {
 
@@ -129,12 +129,11 @@ public class BattleController {
 	private ImageView enemyavatar;
 	private static String enemyName;
 	private static String enemyMap;
-	
-	
+
 	@FXML
 	public void initialize() {
 		if (enemyName.equals("S-01")) {
-			enemyavatar.setImage(new Image("/imgs/battle/h.png"));	
+			enemyavatar.setImage(new Image("/imgs/battle/h.png"));
 		} else if (enemyName.equals("S-02")) {
 			enemyavatar.setImage(new Image("/imgs/battle/Hayoung.png"));
 		} else if (enemyName.equals("S-03")) {
@@ -146,12 +145,12 @@ public class BattleController {
 		} else if (enemyName.equals("T-01")) {
 			enemyavatar.setImage(new Image("/imgs/battle/yong.png"));
 		}
-		
+
 		BattleTimer aab = new BattleTimer();
 		aab.setimg(enemyavatar, langavatar, langImg, enemyImg);
 		Thread t = new Thread(new BattleTimer());
 		t.start();
-		
+
 		loc = "s01";
 		chat("start");
 		loadAll();
@@ -195,7 +194,6 @@ public class BattleController {
 	private int langSkill;
 	private String rstGame = null;
 
-	
 	public void loadBattle(int langId, String type, int langNum) {
 		JDBCUtil db = new JDBCUtil();
 		Connection con = db.getConnection();
@@ -421,7 +419,7 @@ public class BattleController {
 			if (i < 6) {
 				langs[i] = new Language("null", 1, 0, 0, skills);
 			}
-			
+
 			enemys[i] = new Language("null", 1, 0, 0, skills);
 
 		}
@@ -491,13 +489,11 @@ public class BattleController {
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-			
-			
+
 		}
-		
 
 	}
-	
+
 	@FXML
 	public void run() {
 		chat("run");
@@ -541,21 +537,43 @@ public class BattleController {
 				idx = 0;
 				list.clear();
 			} else if (rstGame.equals("win")) {
-				if (enemyName.equals("S-01")) {
-					UserInfo.setStage("S=02");
-				} else if (enemyName.equals("S-02")) {
-					UserInfo.setStage("S=03");
-				} else if (enemyName.equals("S-03")) {
-					UserInfo.setStage("S=04");
-				} else if (enemyName.equals("S-04")) {
-					UserInfo.setStage("S=05");
-				} else if (enemyName.equals("S-05")) {
-					UserInfo.setStage("T-01");
-				} else if (enemyName.equals("T-01")) {
-					UserInfo.setStage("CLEAR");
-				}
+//				if (enemyName.equals("S-01")) {
+//					UserInfo.setStage("S=02");
+//				} else if (enemyName.equals("S-02")) {
+//					UserInfo.setStage("S=03");
+//				} else if (enemyName.equals("S-03")) {
+//					UserInfo.setStage("S=04");
+//				} else if (enemyName.equals("S-04")) {
+//					UserInfo.setStage("S=05");
+//				} else if (enemyName.equals("S-05")) {
+//					UserInfo.setStage("T-01");
+//				} else if (enemyName.equals("T-01")) {
+//					UserInfo.setStage("CLEAR");
+//				}
 				try {
-					Parent win = FXMLLoader.load(getClass().getResource("/layout/map/"+ enemyMap +".fxml"));
+					Parent win = FXMLLoader.load(getClass().getResource("/layout/map/" + enemyMap + ".fxml"));
+					Scene scene = new Scene(win);
+					Stage primaryStage = (Stage) BtnChat.getScene().getWindow();
+					scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+					primaryStage.setScene(scene);
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+
+			} else if (rstGame.equals("win_ysh")) {
+				try {
+					Parent win = FXMLLoader.load(getClass().getResource("/layout/Submit.fxml"));
+					Scene scene = new Scene(win);
+					Stage primaryStage = (Stage) BtnChat.getScene().getWindow();
+					scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+					primaryStage.setScene(scene);
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+
+			} else if (rstGame.equals("Lose_ysh")) {
+				try {
+					Parent win = FXMLLoader.load(getClass().getResource("/layout/GOver_SYH.fxml"));
 					Scene scene = new Scene(win);
 					Stage primaryStage = (Stage) BtnChat.getScene().getWindow();
 					scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
@@ -576,7 +594,6 @@ public class BattleController {
 				idx = 0;
 				list.clear();
 				nextEnemy();
-				
 
 			} else if (rstGame.equals("turnLose")) {
 				if (langs[0].getHp() <= 0 && langs[1].getHp() <= 0 && langs[2].getHp() <= 0 && langs[3].getHp() <= 0
@@ -597,7 +614,7 @@ public class BattleController {
 				} else {
 					asBtn(BtnRun);
 					asBtn(BtnChg);
-					
+
 					disBtn(BtnChat);
 					disLabel();
 					idx = 0;
@@ -616,7 +633,6 @@ public class BattleController {
 		} else {
 			rstGame = "win";
 			chat("end");
-
 		}
 	}
 
@@ -870,7 +886,7 @@ public class BattleController {
 		Txt.setVisible(true);
 		Txt.setDisable(false);
 	}
-	
+
 	public static void setenemy(String name, String map) {
 		enemyName = name;
 		enemyMap = map;
