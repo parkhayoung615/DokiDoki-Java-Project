@@ -201,7 +201,7 @@ public class MainController implements Initializable {
 			Alert alert = new Alert(AlertType.CONFIRMATION);
 			alert.setTitle("개발자 코멘트");
 			alert.setHeaderText("10111 김건우");
-			alert.setContentText("코멘트를 입력하세요");
+			alert.setContentText("개발중단");
 			alert.show();
 		} catch (Exception e) {
 			e.printStackTrace();
