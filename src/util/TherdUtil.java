@@ -56,9 +56,7 @@ public class TherdUtil implements Runnable{
 				objs.add(rs.getString("o.object_id"));
 				avatarId = rs.getString("d.avatar_id");
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+		
 		
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		while(true) {
