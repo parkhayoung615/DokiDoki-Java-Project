@@ -46,6 +46,7 @@ public class MainController implements Initializable {
 	private String view = null;
 	static String loc = "Start";
 	static String map = "BasicMap";
+
 	
 	public void setloc(String l) {
 		loc = l;
@@ -344,6 +345,11 @@ public class MainController implements Initializable {
 			Mario2.setViewport(new Rectangle2D(48, 48, 48, 48));
 		} else if (map.equals("3level")) {
 			Mario2.setImage(new Image("/imgs/avatar/h2.png"));
+			Mario2.setScaleX(1.2);
+			Mario2.setScaleY(1.2);
+			Mario2.setViewport(new Rectangle2D(48, 0, 48, 48));
+		} else if (map.equals("DeepMap")) {
+			Mario2.setImage(new Image("/imgs/avatar/yong1.png"));
 			Mario2.setScaleX(1.2);
 			Mario2.setScaleY(1.2);
 			Mario2.setViewport(new Rectangle2D(48, 0, 48, 48));
