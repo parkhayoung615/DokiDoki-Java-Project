@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="SaveBack" prefHeight="900.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="layout.MainController">
+<AnchorPane fx:id="SaveBack" prefHeight="900.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="layout.MainController">
    <children>
       <Button fx:id="EndSave" layoutX="23.0" layoutY="840.0" mnemonicParsing="false" onAction="#EndSave" prefHeight="55.0" prefWidth="56.0" />
       <Pane fx:id="SavePane" layoutX="347.0" layoutY="199.0" prefHeight="502.0" prefWidth="406.0">
@@ -40,7 +40,7 @@
                   <Font size="26.0" />
                </font>
             </Label>
-            <Label layoutX="110.0" layoutY="413.0" text="저장은 이 컴퓨터에서밖에 못합니다" />
+            <Label layoutX="97.0" layoutY="415.0" text="저장은 이 컴퓨터에서만 할 수 있습니다." />
          </children>
       </Pane>
    </children>

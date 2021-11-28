@@ -349,7 +349,6 @@ public class MainController implements Initializable {
 				chgMap("Bto3", "3level");
 
 			} else if (b.getType() == 99) {
-//				다른 보스들을 깬 다음에 넘어가야댐
 				chgMap("3toD", "DeepMap");
 
 			} else if (b.getType() == 104) {

@@ -21,8 +21,10 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import test.MainController;
 import javafx.scene.control.Alert.AlertType;
+import util.AppUtil;
 import util.BattleTimer;
 import util.JDBCUtil;
+import util.UserInfo;
 
 public class BattleController {
 
@@ -38,8 +40,6 @@ public class BattleController {
 	private Button BtnBattle;
 	@FXML
 	private Button BtnChg;
-	@FXML
-	private Button BtnBag;
 	@FXML
 	private Button BtnRun;
 	@FXML
@@ -130,12 +130,11 @@ public class BattleController {
 	private ImageView enemyavatar;
 	private static String enemyName;
 	private static String enemyMap;
-	
-	
+
 	@FXML
 	public void initialize() {
 		if (enemyName.equals("S-01")) {
-			enemyavatar.setImage(new Image("/imgs/battle/h.png"));	
+			enemyavatar.setImage(new Image("/imgs/battle/h.png"));
 		} else if (enemyName.equals("S-02")) {
 			enemyavatar.setImage(new Image("/imgs/battle/Hayoung.png"));
 		} else if (enemyName.equals("S-03")) {
@@ -147,12 +146,12 @@ public class BattleController {
 		} else if (enemyName.equals("T-01")) {
 			enemyavatar.setImage(new Image("/imgs/battle/yong.png"));
 		}
-		
+
 		BattleTimer aab = new BattleTimer();
 		aab.setimg(enemyavatar, langavatar, langImg, enemyImg);
 		Thread t = new Thread(new BattleTimer());
 		t.start();
-		
+
 		loc = "s01";
 		chat("start");
 		loadAll();
@@ -196,7 +195,6 @@ public class BattleController {
 	private int langSkill;
 	private String rstGame = null;
 
-	
 	public void loadBattle(int langId, String type, int langNum) {
 		JDBCUtil db = new JDBCUtil();
 		Connection con = db.getConnection();
@@ -489,13 +487,11 @@ public class BattleController {
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-			
-			
+
 		}
-		
 
 	}
-	
+
 	@FXML
 	public void run() {
 		chat("run");
@@ -508,7 +504,6 @@ public class BattleController {
 		disBtn(Btn4);
 		disBtn(BtnBattle);
 		disBtn(BtnChg);
-		disBtn(BtnBag);
 		disBtn(BtnRun);
 		asLabel();
 		BtnChat.setDisable(false);
@@ -534,36 +529,59 @@ public class BattleController {
 				asBtn(BtnChat);
 				asBtn(BtnRun);
 				asBtn(BtnChg);
-				asBtn(BtnBag);
 				asBtn(BtnBattle);
 				disBtn(BtnChat);
 				disLabel();
 				idx = 0;
 				list.clear();
 			} else if (rstGame.equals("win")) {
-                if (enemyName.equals("T-01")) {
-                    try {
-                        Parent win = FXMLLoader.load(getClass().getResource("/layout/Clear.fxml"));
-                        Scene scene = new Scene(win);
-                        Stage primaryStage = (Stage) BtnChat.getScene().getWindow();
-                        scene.getStylesheets()
-                                .add(getClass().getResource("/application/application.css").toExternalForm());
-                        primaryStage.setScene(scene);
-                    } catch (Exception e) {
-                        // TODO: handle exception
-                    }
-                } else if (enemyName != "T-01") {
-                    try {
-                        Parent win = FXMLLoader.load(getClass().getResource("/layout/map/" + enemyMap + ".fxml"));
-                        Scene scene = new Scene(win);
-                        Stage primaryStage = (Stage) BtnChat.getScene().getWindow();
-                        scene.getStylesheets()
-                                .add(getClass().getResource("/application/application.css").toExternalForm());
-                        primaryStage.setScene(scene);
-                    } catch (Exception e) {
-                        // TODO: handle exception
-                    }
-                }
+				System.out.println(enemyName);
+				JDBCUtil db = new JDBCUtil();
+				Connection con = db.getConnection();
+				PreparedStatement pstmt = null;
+				String sql = null;
+				if (enemyName.equals("S-01")) {
+					UserInfo.setStage("S-02");
+					sql = "INSERT INTO `user_object`(`id`, `object_id`, `user_id`) VALUES '" + UserInfo.getUserId()
+							+ "_obj02', '2' , ?";
+				} else if (enemyName.equals("S-02")) {
+					UserInfo.setStage("S-03");
+					sql = "INSERT INTO `user_object`(`id`, `object_id`, `user_id`) VALUES '" + UserInfo.getUserId()
+							+ "_obj03', '5' , ?";
+				} else if (enemyName.equals("S-03")) {
+					UserInfo.setStage("S-04");
+					sql = "INSERT INTO `user_object`(`id`, `object_id`, `user_id`) VALUES '" + UserInfo.getUserId()
+							+ "_obj04', '11' , ?";
+				} else if (enemyName.equals("S-04")) {
+					UserInfo.setStage("S-05");
+					sql = "INSERT INTO `user_object`(`id`, `object_id`, `user_id`) VALUES '" + UserInfo.getUserId()
+							+ "_obj05', '9' , ?";
+				} else if (enemyName.equals("S-05")) {
+					UserInfo.setStage("T-01");
+					sql = "INSERT INTO `user_object`(`id`, `object_id`, `user_id`) VALUES '" + UserInfo.getUserId()
+							+ "_obj06', '13' , ?";
+				} else if (enemyName.equals("T-01")) {
+					UserInfo.setStage("CLEAR");
+				}
+				AppUtil util = new AppUtil();
+				util.alert("언어를 습득하였다.", null);
+				try {
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, UserInfo.getUserId());
+					pstmt.execute();
+
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				try {
+					Parent win = FXMLLoader.load(getClass().getResource("/layout/map/" + enemyMap + ".fxml"));
+					Scene scene = new Scene(win);
+					Stage primaryStage = (Stage) BtnChat.getScene().getWindow();
+					scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+					primaryStage.setScene(scene);
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
 
 			} else if (rstGame.equals("turnWin")) {
 				enemyIdx++;
@@ -571,14 +589,12 @@ public class BattleController {
 				asBtn(BtnChat);
 				asBtn(BtnRun);
 				asBtn(BtnChg);
-				asBtn(BtnBag);
 				asBtn(BtnBattle);
 				disBtn(BtnChat);
 				disLabel();
 				idx = 0;
 				list.clear();
 				nextEnemy();
-				
 
 			} else if (rstGame.equals("turnLose")) {
 				if (langs[0].getHp() <= 0 && langs[1].getHp() <= 0 && langs[2].getHp() <= 0 && langs[3].getHp() <= 0
@@ -599,7 +615,6 @@ public class BattleController {
 				} else {
 					asBtn(BtnRun);
 					asBtn(BtnChg);
-					asBtn(BtnBag);
 					disBtn(BtnChat);
 					disLabel();
 					idx = 0;
@@ -635,7 +650,6 @@ public class BattleController {
 			asBtn(BtnChat);
 			asBtn(BtnRun);
 			asBtn(BtnChg);
-			asBtn(BtnBag)	;
 			asBtn(BtnBattle);
 			disBtn(BtnChat);
 			disLabel();
@@ -659,7 +673,6 @@ public class BattleController {
 			asBtn(BtnChat);
 			asBtn(BtnRun);
 			asBtn(BtnChg);
-			asBtn(BtnBag);
 			asBtn(BtnBattle);
 			disBtn(BtnChat);
 			disLabel();
@@ -683,7 +696,6 @@ public class BattleController {
 			asBtn(BtnChat);
 			asBtn(BtnRun);
 			asBtn(BtnChg);
-			asBtn(BtnBag);
 			asBtn(BtnBattle);
 			disBtn(BtnChat);
 			disLabel();
@@ -706,7 +718,6 @@ public class BattleController {
 			asBtn(BtnChat);
 			asBtn(BtnRun);
 			asBtn(BtnChg);
-			asBtn(BtnBag);
 			asBtn(BtnBattle);
 			disBtn(BtnChat);
 			disLabel();
@@ -729,7 +740,6 @@ public class BattleController {
 			asBtn(BtnChat);
 			asBtn(BtnRun);
 			asBtn(BtnChg);
-			asBtn(BtnBag);
 			asBtn(BtnBattle);
 			disBtn(BtnChat);
 			disLabel();
@@ -752,7 +762,6 @@ public class BattleController {
 			asBtn(BtnChat);
 			asBtn(BtnRun);
 			asBtn(BtnChg);
-			asBtn(BtnBag);
 			asBtn(BtnBattle);
 			disBtn(BtnChat);
 			disLabel();
@@ -822,7 +831,6 @@ public class BattleController {
 		if (rstGame.equals("turnLose")) {
 			asBtn(BtnRun);
 			asBtn(BtnChg);
-			asBtn(BtnBag);
 			myLangs.setVisible(false);
 			myLangs.setDisable(true);
 		} else {
@@ -834,7 +842,6 @@ public class BattleController {
 			asBtn(BtnChat);
 			asBtn(BtnRun);
 			asBtn(BtnChg);
-			asBtn(BtnBag);
 			asBtn(BtnBattle);
 			disBtn(BtnChat);
 			disLabel();
@@ -851,7 +858,6 @@ public class BattleController {
 		disBtn(Btn4);
 		disBtn(BtnBattle);
 		disBtn(BtnChg);
-		disBtn(BtnBag);
 		disBtn(BtnRun);
 		disBtn(BtnChat);
 		disLabel();
@@ -881,7 +887,7 @@ public class BattleController {
 		Txt.setVisible(true);
 		Txt.setDisable(false);
 	}
-	
+
 	public static void setenemy(String name, String map) {
 		enemyName = name;
 		enemyMap = map;

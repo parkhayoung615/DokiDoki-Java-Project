@@ -30,7 +30,7 @@
 	-fx-background-position: center center;
 }
 
-#NewGame, #LoadGame, #Setting, #EndGame {
+#NewGame, #LoadGame, #EndGame {
 	-fx-border-style: none;
 	-fx-background-color: #000;
 	-fx-text-fill: #fff;

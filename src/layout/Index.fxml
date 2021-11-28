@@ -11,17 +11,12 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="LoadGame" layoutX="342.0" layoutY="821.0" mnemonicParsing="false" onAction="#LoadGame" prefHeight="38.0" prefWidth="158.0" text="게임 불러오기">
+      <Button fx:id="LoadGame" layoutX="471.0" layoutY="821.0" mnemonicParsing="false" onAction="#LoadGame" prefHeight="38.0" prefWidth="158.0" text="게임 불러오기">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
       <Button fx:id="EndGame" layoutX="888.0" layoutY="821.0" mnemonicParsing="false" onAction="#ChangeStart" prefHeight="38.0" prefWidth="158.0" text="게임 종료">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Button fx:id="Setting" layoutX="622.0" layoutY="821.0" mnemonicParsing="false" onAction="#ChangeSetting" prefHeight="38.0" prefWidth="158.0" text="설정">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

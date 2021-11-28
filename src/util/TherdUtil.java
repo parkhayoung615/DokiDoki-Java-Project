@@ -13,12 +13,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
-public class TherdUtil implements Runnable{
-	
+public class TherdUtil implements Runnable {
+
 	private static String userId;
 	private String objectId;
 	private String avatarId;
 	ArrayList<String> objs = new ArrayList<String>();
+
 	public void setUserId(String idd) {
 		userId = idd;
 	}
@@ -56,18 +57,19 @@ public class TherdUtil implements Runnable{
 				objs.add(rs.getString("o.object_id"));
 				avatarId = rs.getString("d.avatar_id");
 			}
-		
-		
-		Toolkit toolkit = Toolkit.getDefaultToolkit();
-		while(true) {
-//			toolkit.
-			try {
-				Thread.sleep(1000);
-			} catch (Exception e) {
-				// TODO: handle exception
-			}
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
-		//toolkit.set
 	}
-
 }
+		
+		
+//		Toolkit toolkit = Toolkit.getDefaultToolkit();
+//		while(true) {
+////			toolkit.
+//			try {
+//				Thread.sleep(1000);
+//			} catch (Exception e) {
+//				// TODO: handle exception
+//			}
+//		}
