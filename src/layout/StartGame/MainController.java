@@ -213,6 +213,23 @@ public class MainController implements Initializable {
 		}
 	}
 	
+	public void JavaScript() {
+		JDBCUtil db = new JDBCUtil();
+		Connection con = db.getConnection();
+		PreparedStatement pstmt = null;
+		String sql = "INSERT INTO `user_object`(`id`, `object_id`, `user_id`) VALUES (?,'5',?)";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, inputJoinId);
+			pstmt.setString(2, inputJoinName);
+			pstmt.executeUpdate();
+			util.AppUtil.alert("자바스크립트를 배우셨습니다.", null);
+			return;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
 	
 	// 게임 화면으로 넘어가기
 	@FXML

@@ -39,6 +39,8 @@ public class BattleController {
 	@FXML
 	private Button BtnChg;
 	@FXML
+	private Button BtnBag;
+	@FXML
 	private Button BtnRun;
 	@FXML
 	private Label Txt;
@@ -506,6 +508,7 @@ public class BattleController {
 		disBtn(Btn4);
 		disBtn(BtnBattle);
 		disBtn(BtnChg);
+		disBtn(BtnBag);
 		disBtn(BtnRun);
 		asLabel();
 		BtnChat.setDisable(false);
@@ -531,12 +534,14 @@ public class BattleController {
 				asBtn(BtnChat);
 				asBtn(BtnRun);
 				asBtn(BtnChg);
+				asBtn(BtnBag);
 				asBtn(BtnBattle);
 				disBtn(BtnChat);
 				disLabel();
 				idx = 0;
 				list.clear();
 			} else if (rstGame.equals("win")) {
+				
 				try {
 					Parent win = FXMLLoader.load(getClass().getResource("/layout/map/"+ enemyMap +".fxml"));
 					Scene scene = new Scene(win);
@@ -553,6 +558,7 @@ public class BattleController {
 				asBtn(BtnChat);
 				asBtn(BtnRun);
 				asBtn(BtnChg);
+				asBtn(BtnBag);
 				asBtn(BtnBattle);
 				disBtn(BtnChat);
 				disLabel();
@@ -580,7 +586,7 @@ public class BattleController {
 				} else {
 					asBtn(BtnRun);
 					asBtn(BtnChg);
-					
+					asBtn(BtnBag);
 					disBtn(BtnChat);
 					disLabel();
 					idx = 0;
@@ -616,6 +622,7 @@ public class BattleController {
 			asBtn(BtnChat);
 			asBtn(BtnRun);
 			asBtn(BtnChg);
+			asBtn(BtnBag)	;
 			asBtn(BtnBattle);
 			disBtn(BtnChat);
 			disLabel();
@@ -639,6 +646,7 @@ public class BattleController {
 			asBtn(BtnChat);
 			asBtn(BtnRun);
 			asBtn(BtnChg);
+			asBtn(BtnBag);
 			asBtn(BtnBattle);
 			disBtn(BtnChat);
 			disLabel();
@@ -662,6 +670,7 @@ public class BattleController {
 			asBtn(BtnChat);
 			asBtn(BtnRun);
 			asBtn(BtnChg);
+			asBtn(BtnBag);
 			asBtn(BtnBattle);
 			disBtn(BtnChat);
 			disLabel();
@@ -684,6 +693,7 @@ public class BattleController {
 			asBtn(BtnChat);
 			asBtn(BtnRun);
 			asBtn(BtnChg);
+			asBtn(BtnBag);
 			asBtn(BtnBattle);
 			disBtn(BtnChat);
 			disLabel();
@@ -706,6 +716,7 @@ public class BattleController {
 			asBtn(BtnChat);
 			asBtn(BtnRun);
 			asBtn(BtnChg);
+			asBtn(BtnBag);
 			asBtn(BtnBattle);
 			disBtn(BtnChat);
 			disLabel();
@@ -728,6 +739,7 @@ public class BattleController {
 			asBtn(BtnChat);
 			asBtn(BtnRun);
 			asBtn(BtnChg);
+			asBtn(BtnBag);
 			asBtn(BtnBattle);
 			disBtn(BtnChat);
 			disLabel();
@@ -797,6 +809,7 @@ public class BattleController {
 		if (rstGame.equals("turnLose")) {
 			asBtn(BtnRun);
 			asBtn(BtnChg);
+			asBtn(BtnBag);
 			myLangs.setVisible(false);
 			myLangs.setDisable(true);
 		} else {
@@ -808,6 +821,7 @@ public class BattleController {
 			asBtn(BtnChat);
 			asBtn(BtnRun);
 			asBtn(BtnChg);
+			asBtn(BtnBag);
 			asBtn(BtnBattle);
 			disBtn(BtnChat);
 			disLabel();
@@ -824,6 +838,7 @@ public class BattleController {
 		disBtn(Btn4);
 		disBtn(BtnBattle);
 		disBtn(BtnChg);
+		disBtn(BtnBag);
 		disBtn(BtnRun);
 		disBtn(BtnChat);
 		disLabel();

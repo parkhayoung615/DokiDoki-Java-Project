@@ -39,7 +39,6 @@ public class MainController implements Initializable {
 	Pass pass = new Pass();
 	MoveStage s = new MoveStage();
 	BattleController btc = new BattleController();
-	
 
 	private int width;
 	private int height;
@@ -47,7 +46,6 @@ public class MainController implements Initializable {
 	static String loc = "Start";
 	static String map = "BasicMap";
 
-	
 	public void setloc(String l) {
 		loc = l;
 	}
@@ -64,7 +62,7 @@ public class MainController implements Initializable {
 			Mario.setX(655);
 			Mario.setY(250);
 			Mario.setViewport(new Rectangle2D(48, 96, 48, 48));
-			
+
 		} else if (loc.equals("Dto3")) {
 			Mario.setX(160);
 			Mario.setY(485);
@@ -150,7 +148,6 @@ public class MainController implements Initializable {
 			Mario.setY(495);
 			Mario.setViewport(new Rectangle2D(48, 96, 48, 48));
 			view = "right";
-
 		} else if (loc.equals("BattleHU")) {
 			Mario.setX(455);
 			Mario.setY(445);
@@ -232,8 +229,6 @@ public class MainController implements Initializable {
 			Mario.setViewport(new Rectangle2D(48, 144, 48, 48));
 			view = "up";
 		}
-
- 		
 
 		Mario.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
@@ -321,15 +316,6 @@ public class MainController implements Initializable {
 			view = "down";
 		} else if (keyCode.equals(KeyCode.SPACE)) {
 			mapMove(s.getPassBlock(pass.blockGet(Mario.getX(), Mario.getY() + 25, 22), map));
-		} else if (keyCode.equals(KeyCode.I)) {
-			System.out.println("인벤토리창 이동");
-			GoInventory();
-		} else if (keyCode.equals(KeyCode.Q)) {
-			System.out.println("상점창 이동");
-			GoStore();
-		} else if (keyCode.equals(KeyCode.E)) {
-			System.out.println("도움말창 이동");
-			GoGuide();
 		}
 
 		System.out.println(Mario.getX() + " " + Mario.getY());
@@ -355,120 +341,120 @@ public class MainController implements Initializable {
 				primaryStage.setScene(scene);
 			} else if (b.getType() == 101) {
 				chgMap("Dto3", "3level");
-				
+
 			} else if (b.getType() == 103) {
 				chgMap("3toB", "BasicMap");
-				
+
 			} else if (b.getType() == 102) {
 				chgMap("Bto3", "3level");
-				
+
 			} else if (b.getType() == 99) {
 //				다른 보스들을 깬 다음에 넘어가야댐
 				chgMap("3toD", "DeepMap");
-				
+
 			} else if (b.getType() == 104) {
 				chgMap("3to2", "2level");
-				
+
 			} else if (b.getType() == 105) {
 				chgMap("2to3", "3level");
-				
+
 			} else if (b.getType() == 106) {
 				chgMap("2to1", "1level");
-				
+
 			} else if (b.getType() == 107) {
 				chgMap("1to2", "2level");
-				
+
 			} else if (b.getType() == 108) {
 				chgMap("2tos", "SkillsHW");
-				
+
 			} else if (b.getType() == 109) {
 				chgMap("stoL", "SkillsL");
-				
+
 			} else if (b.getType() == 110) {
 				chgMap("sto2", "2level");
-				
+
 			} else if (b.getType() == 111) {
 				chgMap("Ltos", "SkillsHW");
-				
+
 			} else if (b.getType() == 112) {
 				chgMap("stoM", "SkillsM");
-				
+
 			} else if (b.getType() == 113) {
 				chgMap("Mtos", "SkillsHW");
-				
+
 			} else if (b.getType() == 114) {
 				chgMap("stoR", "SkillsR");
-				
+
 			} else if (b.getType() == 115) {
 				chgMap("Rtos", "SkillsHW");
-				
+
 			} else if (b.getType() == 201 && view.equals("right")) {
 				btc.setenemy("S-01", "3level");
 				goBattle("BattleHL");
-				
+
 			} else if (b.getType() == 202 && view.equals("down")) {
 				btc.setenemy("S-01", "3level");
 				goBattle("BattleHU");
-				
+
 			} else if (b.getType() == 203 && view.equals("left")) {
 				btc.setenemy("S-01", "3level");
 				goBattle("BattleHR");
-				
+
 			} else if (b.getType() == 204 && view.equals("up")) {
 				btc.setenemy("S-01", "3level");
 				goBattle("BattleHD");
-				
 			} else if (b.getType() == 301 && view.equals("right")) {
 				btc.setenemy("T-01", "DeepMap");
 				goBattle("BattleYL");
-				
+
 			} else if (b.getType() == 302 && view.equals("up")) {
 				btc.setenemy("T-01", "DeepMap");
 				goBattle("BattleYD");
-				
+
 			} else if (b.getType() == 211 && view.equals("right")) {
 				btc.setenemy("S-03", "2level");
 				goBattle("BattleRL");
-				
+
 			} else if (b.getType() == 212 && view.equals("down")) {
 				btc.setenemy("S-03", "2level");
 				goBattle("BattleRU");
-				
+
 			} else if (b.getType() == 213 && view.equals("left")) {
 				btc.setenemy("S-03", "2level");
 				goBattle("BattleRR");
-				
+
 			} else if (b.getType() == 214 && view.equals("up")) {
 				btc.setenemy("S-03", "2level");
 				goBattle("BattleRD");
-				
+
 			} else if (b.getType() == 223 && view.equals("left")) {
 				btc.setenemy("S-05", "SkillsL");
 				goBattle("BattleYUR");
-				
+
 			} else if (b.getType() == 224 && view.equals("up")) {
 				btc.setenemy("S-05", "SkillsL");
 				goBattle("BattleYUD");
-				
+
 			} else if (b.getType() == 231 && view.equals("right")) {
 				btc.setenemy("S-04", "SkillsM");
 				goBattle("BattleYL");
-				
+
 			} else if (b.getType() == 232 && view.equals("up")) {
 				btc.setenemy("S-04", "SkillsM");
 				goBattle("BattleYD");
-				
+
 			} else if (b.getType() == 241 && view.equals("up")) {
 				btc.setenemy("S-02", "SkillsR");
 				goBattle("BattleHD");
-				
+
 			} else if (b.getType() == 242 && view.equals("left")) {
 				btc.setenemy("S-02", "SkillsR");
 				goBattle("BattleHR");
-				
+
 			} else if (b.getType() == 243 && view.equals("down")) {
 				btc.setenemy("S-02", "SkillsR");
 				goBattle("BattleHU");
+
 			}
 
 		} catch (Exception e) {
@@ -513,7 +499,7 @@ public class MainController implements Initializable {
 		} else if (map.equals("SkillsM")) {
 			Mario2.setImage(new Image("/imgs/avatar/su2.png"));
 			Mario2.setScaleX(1.2);
-			Mario2.setScaleY(1.2);		
+			Mario2.setScaleY(1.2);
 			Mario2.setViewport(new Rectangle2D(48, 0, 48, 48));
 		} else if (map.equals("SkillsR")) {
 			Mario2.setImage(new Image("/imgs/avatar/hy2.png"));
@@ -521,48 +507,9 @@ public class MainController implements Initializable {
 			Mario2.setScaleY(1.2);
 			Mario2.setViewport(new Rectangle2D(48, 0, 48, 48));
 		}
-		
 
 	}
 
-	public void GoInventory() {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("popup.fxml"));
-			Parent root = (Parent) loader.load();
-			Stage stage = new Stage();
-			stage.setTitle("Inventory");
-			stage.setScene(new Scene(root));
-			stage.show(); // popup.show(primaryStage, anchorX, anchorY); 지정된 좌표에서 실행
-		} catch (Exception e) {
-
-		}
-	}
-
-	public void GoStore() {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("popup1.fxml"));
-			Parent root = (Parent) loader.load();
-			Stage stage = new Stage();
-			stage.setTitle("Store");
-			stage.setScene(new Scene(root));
-			stage.show(); // popup.show(primaryStage, anchorX, anchorY); 지정된 좌표에서 실행
-		} catch (Exception e) {
-
-		}
-	}
-
-	public void GoGuide() {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("popup2.fxml"));
-			Parent root = (Parent) loader.load();
-			Stage stage = new Stage();
-			stage.setTitle("Guide");
-			stage.setScene(new Scene(root));
-			stage.show(); // popup.show(primaryStage, anchorX, anchorY); 지정된 좌표에서 실행
-		} catch (Exception e) {
-
-		}
-	}
 	public void chgMap(String l, String m) {
 		try {
 			loc = l;
@@ -576,7 +523,7 @@ public class MainController implements Initializable {
 			// TODO: handle exception
 		}
 	}
-	
+
 	public void goBattle(String l) {
 		loc = l;
 		try {
@@ -588,7 +535,7 @@ public class MainController implements Initializable {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
+
 	}
 
 }
