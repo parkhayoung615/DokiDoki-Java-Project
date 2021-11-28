@@ -23,7 +23,7 @@ import test.MainController;
 import javafx.scene.control.Alert.AlertType;
 import util.BattleTimer;
 import util.JDBCUtil;
-import util.UserInfo;
+//import util.UserInfo;
 
 public class BattleController {
 
@@ -541,19 +541,19 @@ public class BattleController {
 				idx = 0;
 				list.clear();
 			} else if (rstGame.equals("win")) {
-				if (enemyName.equals("S-01")) {
-					UserInfo.setStage("S=02");
-				} else if (enemyName.equals("S-02")) {
-					UserInfo.setStage("S=03");
-				} else if (enemyName.equals("S-03")) {
-					UserInfo.setStage("S=04");
-				} else if (enemyName.equals("S-04")) {
-					UserInfo.setStage("S=05");
-				} else if (enemyName.equals("S-05")) {
-					UserInfo.setStage("T-01");
-				} else if (enemyName.equals("T-01")) {
-					UserInfo.setStage("CLEAR");
-				}
+//				if (enemyName.equals("S-01")) {
+//					UserInfo.setStage("S=02");
+//				} else if (enemyName.equals("S-02")) {
+//					UserInfo.setStage("S=03");
+//				} else if (enemyName.equals("S-03")) {
+//					UserInfo.setStage("S=04");
+//				} else if (enemyName.equals("S-04")) {
+//					UserInfo.setStage("S=05");
+//				} else if (enemyName.equals("S-05")) {
+//					UserInfo.setStage("T-01");
+//				} else if (enemyName.equals("T-01")) {
+//					UserInfo.setStage("CLEAR");
+//				}
 				try {
 					Parent win = FXMLLoader.load(getClass().getResource("/layout/map/"+ enemyMap +".fxml"));
 					Scene scene = new Scene(win);
