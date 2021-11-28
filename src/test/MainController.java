@@ -70,8 +70,6 @@ public class MainController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
-		info.setStage("S-02");
 		txtPane.setDisable(true);
 		txtPane.setVisible(false);
 		test();
@@ -202,18 +200,18 @@ public class MainController implements Initializable {
 			Mario.setViewport(new Rectangle2D(48, 96, 48, 48));
 			view = "right";
 		} else if (loc.equals("BattleHU")) {
-			Mario.setX(455);
-			Mario.setY(445);
+			Mario.setX(300);
+			Mario.setY(245);
 			Mario.setViewport(new Rectangle2D(48, 0, 48, 48));
 			view = "down";
 		} else if (loc.equals("BattleHR")) {
-			Mario.setX(505);
-			Mario.setY(495);
+			Mario.setX(350);
+			Mario.setY(305);
 			Mario.setViewport(new Rectangle2D(48, 48, 48, 48));
 			view = "left";
 		} else if (loc.equals("BattleHD")) {
-			Mario.setX(455);
-			Mario.setY(545);
+			Mario.setX(300);
+			Mario.setY(325);
 			Mario.setViewport(new Rectangle2D(48, 144, 48, 48));
 			view = "up";
 		} else if (loc.equals("BattleYUR")) {
@@ -236,17 +234,17 @@ public class MainController implements Initializable {
 			Mario.setY(325);
 			Mario.setViewport(new Rectangle2D(48, 144, 48, 48));
 			view = "up";
-		} else if (loc.equals("BattleHD")) {
+		} else if (loc.equals("BattleHYD")) {
 			Mario.setX(300);
 			Mario.setY(325);
 			Mario.setViewport(new Rectangle2D(48, 144, 48, 48));
 			view = "up";
-		} else if (loc.equals("BattleHR")) {
+		} else if (loc.equals("BattleHYR")) {
 			Mario.setX(350);
 			Mario.setY(305);
 			Mario.setViewport(new Rectangle2D(48, 48, 48, 48));
 			view = "left";
-		} else if (loc.equals("BattleHD")) {
+		} else if (loc.equals("BattleHYD")) {
 			Mario.setX(300);
 			Mario.setY(245);
 			Mario.setViewport(new Rectangle2D(48, 144, 48, 48));
@@ -532,21 +530,21 @@ public class MainController implements Initializable {
 			} else if (b.getType() == 241 && view.equals("up")) {
 				if (info.getStage().equals("S-02")) {
 					btc.setenemy("S-02", "SkillsR");
-					goBattle("BattleHD");
+					goBattle("BattleHYD");
 				} else {
 					chat();
 				}
 			} else if (b.getType() == 242 && view.equals("left")) {
 				if (info.getStage().equals("S-02")) {
 					btc.setenemy("S-02", "SkillsR");
-					goBattle("BattleHR");
+					goBattle("BattleHYR");
 				} else {
 					chat();
 				}
 			} else if (b.getType() == 243 && view.equals("down")) {
 				if (info.getStage().equals("S-02")) {
 					btc.setenemy("S-02", "SkillsR");
-					goBattle("BattleHU");
+					goBattle("BattleHYU");
 				} else {
 					chat();
 				}

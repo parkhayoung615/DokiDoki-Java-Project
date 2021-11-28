@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 
 public class UserInfo implements Runnable{
 	private static String userId;
-	private static String stage;
+	private static String stage = "S-01";
 	
 	public static String getUserId() {
 		return userId;
