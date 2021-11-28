@@ -345,6 +345,7 @@ public class MainController implements Initializable {
 				primaryStage.setScene(scene);
 			} else if (b.getType() == 3 && view == "right") {
 				loc = "s01";
+				btc.setenemy("S-01", "BasicMap");
 				Parent sN = FXMLLoader.load(getClass().getResource("/battle/BattleLayout.fxml"));
 				Scene scene = new Scene(sN);
 				Stage primaryStage = (Stage) Mario.getScene().getWindow();

@@ -128,15 +128,28 @@ public class BattleController {
 	private ImageView langavatar;
 	@FXML
 	private ImageView enemyavatar;
-	public static String enemyName;
-	public static String enemyMap;
+	private static String enemyName;
+	private static String enemyMap;
 	
 	
 	@FXML
 	public void initialize() {
-		enemyavatar.setImage(new Image("/imgs/battle/Su.png"));
+		if (enemyName.equals("S-01")) {
+			enemyavatar.setImage(new Image("/imgs/battle/h.png"));	
+		} else if (enemyName.equals("S-02")) {
+			enemyavatar.setImage(new Image("/imgs/battle/Hayoung.png"));
+		} else if (enemyName.equals("S-03")) {
+			enemyavatar.setImage(new Image("/imgs/battle/Ryn.png"));
+		} else if (enemyName.equals("S-04")) {
+			enemyavatar.setImage(new Image("/imgs/battle/Su.png"));
+		} else if (enemyName.equals("S-05")) {
+			enemyavatar.setImage(new Image("/imgs/battle/young.png"));
+		} else if (enemyName.equals("T-01")) {
+			enemyavatar.setImage(new Image("/imgs/battle/yong.png"));
+		}
+		
 		BattleTimer aab = new BattleTimer();
-		aab.setimg(enemyavatar, langavatar);
+		aab.setimg(enemyavatar, langavatar, langImg, enemyImg);
 		Thread t = new Thread(new BattleTimer());
 		t.start();
 		
@@ -458,8 +471,33 @@ public class BattleController {
 					// TODO: handle exception
 				}
 			}
-		}
+		} else if (battle.equals("run")) {
+			JDBCUtil db = new JDBCUtil();
+			Connection con = db.getConnection();
+			PreparedStatement pstmt = null;
+			String sql = "SELECT * FROM `script` WHERE `char_id` = ? AND id LIKE '%R%' ORDER BY `id` DESC";
+			ResultSet rs = null;
+			try {
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, enemyName);
+				rs = pstmt.executeQuery();
+				while (rs.next()) {
+					list.add(rs.getString("script_data"));
+				}
 
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			
+			
+		}
+		
+
+	}
+	
+	@FXML
+	public void run() {
+		chat("run");
 	}
 
 	public void chat(String battle) {
@@ -525,6 +563,7 @@ public class BattleController {
 				idx = 0;
 				list.clear();
 				nextEnemy();
+				
 
 			} else if (rstGame.equals("turnLose")) {
 				if (langs[0].getHp() <= 0 && langs[1].getHp() <= 0 && langs[2].getHp() <= 0 && langs[3].getHp() <= 0
