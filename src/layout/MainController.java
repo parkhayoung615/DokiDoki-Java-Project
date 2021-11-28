@@ -31,6 +31,7 @@ import javafx.scene.media.MediaView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import util.JDBCUtil;
+import util.TherdUtil;
 
 public class MainController implements Initializable {
 
@@ -254,6 +255,10 @@ public class MainController implements Initializable {
 					Stage primaryStage = (Stage) loginBtn.getScene().getWindow();
 					scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 					primaryStage.setScene(scene);
+					
+					// 쓰레드에 로그인 정보 담기
+					Thread t = new Thread(new TherdUtil());
+					t.start();
 
 					m = new Media(getClass().getResource("/resourse/Index.mp3").toString());
 					mp = new MediaPlayer(m);
