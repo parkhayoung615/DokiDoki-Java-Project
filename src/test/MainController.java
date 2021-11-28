@@ -1,11 +1,14 @@
 package test;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import battle.BattleController;
 import test.SpriteAnimation;
+import util.AppUtil;
+import util.UserInfo;
 import block.Block;
 import block.MoveStage;
 import block.Pass;
@@ -16,6 +19,9 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -23,6 +29,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -35,6 +42,12 @@ public class MainController implements Initializable {
 	private ImageView Mario2;
 	@FXML
 	private GridPane testBack;
+	@FXML
+	private Label txtField;
+	@FXML
+	private Pane txtPane;
+	@FXML
+	private Button txtBtn;
 
 	Pass pass = new Pass();
 	MoveStage s = new MoveStage();
@@ -43,10 +56,12 @@ public class MainController implements Initializable {
 
 	private int width;
 	private int height;
+	private int idx = 0;
 	private String view = null;
 	static String loc = "Start";
 	static String map = "BasicMap";
-
+	ArrayList<String> list = new ArrayList<String>();
+	UserInfo info = new UserInfo();
 	
 	public void setloc(String l) {
 		loc = l;
@@ -54,6 +69,10 @@ public class MainController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		info.setStage("S-02");
+		txtPane.setDisable(true);
+		txtPane.setVisible(false);
 		test();
 		if (loc.equals("Start")) {
 			Mario.setX(550);
@@ -403,72 +422,125 @@ public class MainController implements Initializable {
 				chgMap("Rtos", "SkillsHW");
 				
 			} else if (b.getType() == 201 && view.equals("right")) {
-				btc.setenemy("S-01", "3level");
-				goBattle("BattleHL");
+				if (info.getStage().equals("S-01")) {
+					btc.setenemy("S-01", "3level");
+					goBattle("BattleHL");
+				} else {
+					chat();
+				}
 				
 			} else if (b.getType() == 202 && view.equals("down")) {
-				btc.setenemy("S-01", "3level");
-				goBattle("BattleHU");
-				
+				if (info.getStage().equals("S-01")) {
+					btc.setenemy("S-01", "3level");
+					goBattle("BattleHU");
+				} else {
+					chat();
+				}
 			} else if (b.getType() == 203 && view.equals("left")) {
-				btc.setenemy("S-01", "3level");
-				goBattle("BattleHR");
-				
+				if (info.getStage().equals("S-01")) {
+					btc.setenemy("S-01", "3level");
+					goBattle("BattleHR");
+				} else {
+					chat();
+				}
 			} else if (b.getType() == 204 && view.equals("up")) {
-				btc.setenemy("S-01", "3level");
-				goBattle("BattleHD");
-				
+				if (info.getStage().equals("S-01")) {
+					btc.setenemy("S-01", "3level");
+					goBattle("BattleHD");
+				} else {
+					chat();
+				}
 			} else if (b.getType() == 301 && view.equals("right")) {
-				btc.setenemy("T-01", "DeepMap");
-				goBattle("BattleYL");
-				
+				if (info.getStage().equals("T-01")) {
+					btc.setenemy("T-01", "DeepMap");
+					goBattle("BattleYL");
+				} else {
+					chat();
+				}
 			} else if (b.getType() == 302 && view.equals("up")) {
-				btc.setenemy("T-01", "DeepMap");
-				goBattle("BattleYD");
-				
+				if (info.getStage().equals("T-01")) {
+					btc.setenemy("T-01", "DeepMap");
+					goBattle("BattleYD");
+				} else {
+					chat();
+				}
 			} else if (b.getType() == 211 && view.equals("right")) {
-				btc.setenemy("S-03", "2level");
-				goBattle("BattleRL");
-				
+				if (info.getStage().equals("S-03")) {
+					btc.setenemy("S-03", "2level");
+					goBattle("BattleRL");
+				} else {
+					chat();
+				}
 			} else if (b.getType() == 212 && view.equals("down")) {
-				btc.setenemy("S-03", "2level");
-				goBattle("BattleRU");
-				
+				if (info.getStage().equals("S-03")) {
+					btc.setenemy("S-03", "2level");
+					goBattle("BattleRU");
+				} else {
+					chat();
+				}
 			} else if (b.getType() == 213 && view.equals("left")) {
-				btc.setenemy("S-03", "2level");
-				goBattle("BattleRR");
-				
+				if (info.getStage().equals("S-03")) {
+					btc.setenemy("S-03", "2level");
+					goBattle("BattleRR");
+				} else {
+					chat();
+				}
 			} else if (b.getType() == 214 && view.equals("up")) {
-				btc.setenemy("S-03", "2level");
-				goBattle("BattleRD");
-				
+				if (info.getStage().equals("S-03")) {
+					btc.setenemy("S-03", "2level");
+					goBattle("BattleRD");
+				} else {
+					chat();
+				}
 			} else if (b.getType() == 223 && view.equals("left")) {
-				btc.setenemy("S-05", "SkillsL");
-				goBattle("BattleYUR");
-				
+				if (info.getStage().equals("S-05")) {
+					btc.setenemy("S-05", "SkillsL");
+					goBattle("BattleYUR");
+				} else {
+					chat();
+				}
 			} else if (b.getType() == 224 && view.equals("up")) {
-				btc.setenemy("S-05", "SkillsL");
-				goBattle("BattleYUD");
-				
+				if (info.getStage().equals("S-05")) {
+					btc.setenemy("S-05", "SkillsL");
+					goBattle("BattleYUD");
+				} else {
+					chat();
+				}
 			} else if (b.getType() == 231 && view.equals("right")) {
-				btc.setenemy("S-04", "SkillsM");
-				goBattle("BattleYL");
-				
+				if (info.getStage().equals("S-04")) {
+					btc.setenemy("S-04", "SkillsM");
+					goBattle("BattleYL");
+				} else {
+					chat();
+				}
 			} else if (b.getType() == 232 && view.equals("up")) {
-				btc.setenemy("S-04", "SkillsM");
-				goBattle("BattleYD");
-				
+				if (info.getStage().equals("S-04")) {
+					btc.setenemy("S-04", "SkillsM");
+					goBattle("BattleYD");
+				} else {
+					chat();
+				}
 			} else if (b.getType() == 241 && view.equals("up")) {
-				btc.setenemy("S-02", "SkillsR");
-				goBattle("BattleHD");
-				
+				if (info.getStage().equals("S-02")) {
+					btc.setenemy("S-02", "SkillsR");
+					goBattle("BattleHD");
+				} else {
+					chat();
+				}
 			} else if (b.getType() == 242 && view.equals("left")) {
-				btc.setenemy("S-02", "SkillsR");
-				goBattle("BattleHR");
-				
+				if (info.getStage().equals("S-02")) {
+					btc.setenemy("S-02", "SkillsR");
+					goBattle("BattleHR");
+				} else {
+					chat();
+				}
 			} else if (b.getType() == 243 && view.equals("down")) {
-				btc.setenemy("S-02", "SkillsR");
-				goBattle("BattleHU");
+				if (info.getStage().equals("S-02")) {
+					btc.setenemy("S-02", "SkillsR");
+					goBattle("BattleHU");
+				} else {
+					chat();
+				}
 			}
 
 		} catch (Exception e) {
@@ -523,6 +595,37 @@ public class MainController implements Initializable {
 		}
 		
 
+	}
+	
+	public void chat() {
+		AppUtil util = new AppUtil();
+		if (info.getStage().equals("S-01")) {
+			util.alert("넌 김환과 싸울 차례야.", null);
+		} else if (info.getStage().equals("S-02")) {
+			util.alert("넌 박하영과 싸울 차례야.", null);
+		} else if (info.getStage().equals("S-03")) {
+			util.alert("넌 정예린과 싸울 차례야.", null);
+		} else if (info.getStage().equals("S-04")) {
+			util.alert("넌 정수민과 싸울 차례야.", null);
+		} else if (info.getStage().equals("S-05")) {
+			util.alert("넌 최영진과 싸울 차례야.", null);
+		} else if (info.getStage().equals("T-01")) {
+			util.alert("넌 용현쌤과 싸울 차례야.", null);
+		}
+ 
+	}
+	
+	@FXML
+	public void nextChat() {
+		if (idx < list.size()) {
+			txtField.setText(list.get(idx));
+			idx++;
+		} else {
+			idx = 0;
+			list.clear();
+			txtPane.setDisable(true);
+			txtPane.setVisible(false);
+		}
 	}
 
 	public void GoInventory() {
@@ -586,7 +689,7 @@ public class MainController implements Initializable {
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 			primaryStage.setScene(scene);
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println("ss");
 		}
 		
 	}
