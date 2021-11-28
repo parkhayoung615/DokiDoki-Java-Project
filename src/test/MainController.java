@@ -150,6 +150,21 @@ public class MainController implements Initializable {
 			Mario.setY(495);
 			Mario.setViewport(new Rectangle2D(48, 96, 48, 48));
 			view = "right";
+		} else if (loc.equals("BattleHU")) {
+			Mario.setX(455);
+			Mario.setY(445);
+			Mario.setViewport(new Rectangle2D(48, 0, 48, 48));
+			view = "down";
+		} else if (loc.equals("BattleHR")) {
+			Mario.setX(505);
+			Mario.setY(495);
+			Mario.setViewport(new Rectangle2D(48, 48, 48, 48));
+			view = "left";
+		} else if (loc.equals("BattleHD")) {
+			Mario.setX(455);
+			Mario.setY(545);
+			Mario.setViewport(new Rectangle2D(48, 144, 48, 48));
+			view = "up";
 		}
  		
 
@@ -321,6 +336,18 @@ public class MainController implements Initializable {
 			} else if (b.getType() == 201 && view.equals("right")) {
 				btc.setenemy("S-01", "3level");
 				goBattle("BattleH");
+				
+			} else if (b.getType() == 202 && view.equals("down")) {
+				btc.setenemy("S-01", "3level");
+				goBattle("BattleHU");
+				
+			} else if (b.getType() == 203 && view.equals("left")) {
+				btc.setenemy("S-01", "3level");
+				goBattle("BattleHR");
+				
+			} else if (b.getType() == 204 && view.equals("up")) {
+				btc.setenemy("S-01", "3level");
+				goBattle("BattleHD");
 				
 			}
 
