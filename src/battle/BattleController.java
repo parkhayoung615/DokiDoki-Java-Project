@@ -547,7 +547,18 @@ public class BattleController {
 					// TODO: handle exception
 				}
 
-			} else if (rstGame.equals("turnWin")) {
+			} else if (rstGame.equals("win_ysh")) {
+					try {
+						Parent win = FXMLLoader.load(getClass().getResource("/layout/Submit.fxml"));
+						Scene scene = new Scene(win);
+						Stage primaryStage = (Stage) BtnChat.getScene().getWindow();
+						scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+						primaryStage.setScene(scene);
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
+
+				} else if (rstGame.equals("turnWin")) {
 				enemyIdx++;
 				rstGame = "game";
 				asBtn(BtnChat);
@@ -599,7 +610,6 @@ public class BattleController {
 		} else {
 			rstGame = "win";
 			chat("end");
-
 		}
 	}
 
