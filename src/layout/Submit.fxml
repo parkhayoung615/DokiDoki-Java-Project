@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="SubmitBack" prefHeight="900.0" prefWidth="1100.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="layout.MainController">
+   <children>
+      <Button fx:id="SubmitBtn" layoutX="666.0" layoutY="698.0" mnemonicParsing="false" onAction="#SubChg" prefHeight="61.0" prefWidth="286.0" text="제출하기">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

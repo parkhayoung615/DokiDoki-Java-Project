@@ -22,11 +22,7 @@
             <Button fx:id="Btn4" layoutX="682.0" layoutY="132.0" mnemonicParsing="false" onAction="#skillF" prefHeight="72.0" prefWidth="270.0" text="버튼4" />
             <Button fx:id="Btn3" layoutX="270.0" layoutY="132.0" mnemonicParsing="false" onAction="#skillT" prefHeight="72.0" prefWidth="270.0" text="버튼3" />
             <Button fx:id="Btn1" layoutX="270.0" layoutY="28.0" mnemonicParsing="false" onAction="#skillO" prefHeight="72.0" prefWidth="270.0" text="버튼1" />
-            <Button fx:id="BtnBag" layoutX="340.0" layoutY="221.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="130.0" text="가방">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font></Button>
-            <Button fx:id="BtnRun" layoutX="543.0" layoutY="238.0" mnemonicParsing="false" onAction="#run" prefHeight="63.0" prefWidth="130.0" text="도망간다">
+            <Button fx:id="BtnRun" layoutX="340.0" layoutY="221.0" mnemonicParsing="false" onAction="#run" prefHeight="63.0" prefWidth="130.0" text="도망간다">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
@@ -91,7 +87,7 @@
                <font>
                   <Font name="System Bold" size="18.0" />
                </font></Button>
-            <Button fx:id="BtnChat" layoutX="1.0" layoutY="1.0" mnemonicParsing="false" onAction="#nextChat" prefHeight="315.0" prefWidth="1215.0" styleClass="btn" />
+            <Button fx:id="BtnChat" layoutX="-2.0" layoutY="1.0" mnemonicParsing="false" onAction="#nextChat" prefHeight="315.0" prefWidth="1215.0" styleClass="btn" />
          </children>
       </Pane>
       <Pane layoutX="700.0" layoutY="373.0" prefHeight="154.0" prefWidth="410.0" style="-fx-background-color: lightgray;">

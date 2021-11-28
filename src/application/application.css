@@ -218,3 +218,13 @@
 #user_date {
 	-fx-background-color: #eee;
 }
+
+#ClearBack {
+	-fx-background-image: url('/imgs/Right.png');
+	-fx-background-size: cover;
+	-fx-background-position: center center;
+}
+
+#SubmitBack {
+	-fx-background-color: #000;
+}

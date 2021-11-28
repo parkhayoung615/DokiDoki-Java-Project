@@ -67,7 +67,7 @@ public class TherdUtil implements Runnable{
 				// TODO: handle exception
 			}
 		}
-		toolkit.set
+		//toolkit.set
 	}
 
 }

@@ -74,6 +74,8 @@ public class MainController implements Initializable {
 	@FXML
 	private Button EndGame;
 	@FXML
+	private Button SubmitBtn;
+	@FXML
 	private TextField userId;
 	@FXML
 	private PasswordField userPw;
@@ -266,8 +268,8 @@ public class MainController implements Initializable {
 					primaryStage.setScene(scene);
 					
 					// 쓰레드에 로그인 정보 담기
-					Thread t = new Thread(new TherdUtil(loginId));
-					t.start();
+					//Thread t = new Thread(new TherdUtil(loginId));
+					//t.start();
 
 					m = new Media(getClass().getResource("/resourse/Index.mp3").toString());
 					mp = new MediaPlayer(m);
@@ -454,6 +456,18 @@ public class MainController implements Initializable {
 			Parent login = FXMLLoader.load(getClass().getResource("/layout/LoadGame.fxml"));
 			Scene scene = new Scene(login);
 			Stage primaryStage = (Stage) LoadGame.getScene().getWindow();
+			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+			primaryStage.setScene(scene);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void SubChg() {
+		try {
+			Parent login = FXMLLoader.load(getClass().getResource("/layout/Clear.fxml"));
+			Scene scene = new Scene(login);
+			Stage primaryStage = (Stage) SubmitBtn.getScene().getWindow();
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 			primaryStage.setScene(scene);
 		} catch (Exception e) {
