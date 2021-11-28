@@ -85,6 +85,15 @@ public class MainController implements Initializable {
 	private Button buttonPlay;
 
 	private boolean booEnd;
+	
+	@FXML
+	private Button SaveBtn;
+	@FXML
+	private Label userIDDate;
+	@FXML
+	private Label userObjDate;
+	@FXML
+	private Label userBossDate;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
