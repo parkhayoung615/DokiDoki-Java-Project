@@ -35,10 +35,21 @@ public class MainController implements Initializable {
 
 	private int idx = 0;
 	private ArrayList<String> list = new ArrayList<String>();
+	static int chatNum = 0;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		chatLoad("StartNRS1");
+		if (chatNum == 0) {
+			chatLoad("StartNRS1");
+			chatNum++;
+		} else if (chatNum == 1) {
+			chatLoad("StartNRS2");
+		} else if (chatNum == 2) {
+			chatLoad("StartS");
+		} else if (chatNum == 3) {
+			chatLoad("StartE");
+		}
+		
 	}
 
 	public void chatLoad(String point) {
@@ -88,7 +99,7 @@ public class MainController implements Initializable {
 			Stage primaryStage = (Stage) Next.getScene().getWindow();
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 			primaryStage.setScene(scene);
-			chatLoad("StartNRS2");
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -164,13 +175,13 @@ public class MainController implements Initializable {
 	
 //	엔트리 골랐을 때
 	public void SelectObjEntry() {
+		chatNum += 2;
 		try {
 			Parent login = FXMLLoader.load(getClass().getResource("/layout/StartGame/SelectAfter.fxml"));
 			Scene scene = new Scene(login);
 			Stage primaryStage = (Stage) EntryBtn.getScene().getWindow();
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 			primaryStage.setScene(scene);
-			chatLoad("StartE");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -178,27 +189,28 @@ public class MainController implements Initializable {
 	
 //	스크래치 골랐ㅇ르 때
 	public void SelectObjScratch() {
-		JDBCUtil db = new JDBCUtil();
-		Connection con = db.getConnection();
-		PreparedStatement pstmt = null;
-		//String sql = "INSERT INTO `user_object`(`id`, `object_id`, `user_id`) VALUES ('[value-1]','14','[value-3]')";
-		//try {
-			//pstmt = con.prepareStatement(sql);
-			//pstmt.setString(1, inputJoinId);
-			//pstmt.setString(2, inputJoinName);
-			//pstmt.executeUpdate();
-			try {
+		chatNum++;
+//		JDBCUtil db = new JDBCUtil();
+//		Connection con = db.getConnection();
+//		PreparedStatement pstmt = null;
+//		String sql = "INSERT INTO `user_object`(`id`, `object_id`, `user_id`) VALUES (?,'14',?)";
+		try {
+//			pstmt = con.prepareStatement(sql);
+//			pstmt.setString(1, inputJoinId);
+//			pstmt.setString(2, inputJoinName);
+//			pstmt.executeUpdate();
+//			try {
 				Parent login = FXMLLoader.load(getClass().getResource("/layout/StartGame/SelectAfter.fxml"));
 				Scene scene = new Scene(login);
 				Stage primaryStage = (Stage) ScratchBtn.getScene().getWindow();
 				scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 				primaryStage.setScene(scene);
 				chatLoad("StartS");
-			} catch (Exception e) {
-				
-			}
-		//} catch (Exception e) {
-		//}
+//			} catch (Exception e) {
+//				
+//			}
+		} catch (Exception e) {
+		}
 	}
 	
 	

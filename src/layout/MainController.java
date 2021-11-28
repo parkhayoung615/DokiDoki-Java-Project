@@ -31,6 +31,7 @@ import javafx.scene.media.MediaView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import util.JDBCUtil;
+import util.TherdUtil;
 
 public class MainController implements Initializable {
 
@@ -153,6 +154,7 @@ public class MainController implements Initializable {
 			Stage primaryStage = (Stage) EndGame.getScene().getWindow();
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 			primaryStage.setScene(scene);
+//			mp.stop();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -240,6 +242,7 @@ public class MainController implements Initializable {
 		}
 
 		String sql = "SELECT `id`, `password` FROM `user` WHERE `id` = ? AND `password` = ?";
+//		SELECT u.id, u.password, d.avatar_id, o.object_id FROM user u, data d, user_object o  WHERE u.id = 12 AND u.password = 1234 AND u.id = o.user_id LIKE o.id = '%12%'
 
 		try {
 			pstmt = con.prepareStatement(sql);
@@ -254,6 +257,10 @@ public class MainController implements Initializable {
 					Stage primaryStage = (Stage) loginBtn.getScene().getWindow();
 					scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 					primaryStage.setScene(scene);
+					
+					// 쓰레드에 로그인 정보 담기
+					Thread t = new Thread(new TherdUtil(loginId, "user_Boss", "user_obj"));
+					t.start();
 
 					m = new Media(getClass().getResource("/resourse/Index.mp3").toString());
 					mp = new MediaPlayer(m);
@@ -266,7 +273,7 @@ public class MainController implements Initializable {
 						}
 					};
 					mp.setOnEndOfMedia(onEnd);
-//					mp.play();
+					mp.play();
 //					소리 너무 큼!!
 
 				} catch (Exception e) {
@@ -391,6 +398,7 @@ public class MainController implements Initializable {
 	public void closeProgram() { // 현재의 스테이지를 받아서 close를 해주어야 함
 		Stage pop = (Stage) EndProgram.getScene().getWindow(); // 버튼을 통해서 현재 스테이지를 알아냄
 		pop.close();
+		mp.stop();
 	}
 	
 	public void EndSave() {
@@ -406,8 +414,6 @@ public class MainController implements Initializable {
 		}
 	}
 
-	
-	
 
 //		게임 시작 (새 게임 버튼 눌렀을 때부터)
 	public void StartGame() {
@@ -417,7 +423,7 @@ public class MainController implements Initializable {
 			Stage primaryStage = (Stage) NewGame.getScene().getWindow();
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 			primaryStage.setScene(scene);
-
+			mp.stop();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
