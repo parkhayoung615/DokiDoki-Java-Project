@@ -76,6 +76,8 @@ public class MainController implements Initializable {
 	@FXML
 	private Button SubmitBtn;
 	@FXML
+	private Button chgClear;
+	@FXML
 	private TextField userId;
 	@FXML
 	private PasswordField userPw;
@@ -468,6 +470,19 @@ public class MainController implements Initializable {
 			Parent login = FXMLLoader.load(getClass().getResource("/layout/Clear.fxml"));
 			Scene scene = new Scene(login);
 			Stage primaryStage = (Stage) SubmitBtn.getScene().getWindow();
+			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+			primaryStage.setScene(scene);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public void clearChg() {
+		try {
+			Parent login = FXMLLoader.load(getClass().getResource("/layout/Clear2.fxml"));
+			Scene scene = new Scene(login);
+			Stage primaryStage = (Stage) chgClear.getScene().getWindow();
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 			primaryStage.setScene(scene);
 		} catch (Exception e) {

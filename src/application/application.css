@@ -219,7 +219,7 @@
 	-fx-background-color: #eee;
 }
 
-#ClearBack {
+#ClearBack, #Clear2Back {
 	-fx-background-image: url('/imgs/Right.png');
 	-fx-background-size: cover;
 	-fx-background-position: center center;
@@ -227,4 +227,13 @@
 
 #SubmitBack {
 	-fx-background-color: #000;
+}
+
+#chgClear {
+	-fx-background-color: #00ff0000;
+	-fx-border-style: none;
+}
+
+#ClearPane {
+	-fx-background-color: #eee;
 }
