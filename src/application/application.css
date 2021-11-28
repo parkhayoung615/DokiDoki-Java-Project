@@ -1,4 +1,3 @@
-/* 濡쒓렇�씤 �솕硫� */
 #ChangeLoginBtn, #loginBtn, #ChangeJoinBtn, #joinBtn {
 	-fx-background-color: #000;
 	-fx-text-fill: #fff;
@@ -8,7 +7,7 @@
 	-fx-background-color: #000;
 }
 
-/* Start �솕硫� */
+/* Start */
 #StartBack {
 	-fx-background-image: url('/imgs/Start.png');
 	-fx-background-size: cover;
@@ -47,7 +46,7 @@
 }
 
 
-/* 뒷 배경 검정색 처리 */
+/* �뮮 諛곌꼍 寃��젙�깋 泥섎━ */
 
 #Level1Back {
 	-fx-background-image: url('/imgs/BackImg/Map012.png');
@@ -160,7 +159,7 @@
 }
 
 
-/* 배틀 화면 css */
+/* 諛고� �솕硫� css */
 
 #BattleBack {
 	-fx-background-image: url('/imgs/Battle1.png');
@@ -205,4 +204,17 @@
 	-fx-background-image: url('/imgs/Save.png');
 	-fx-background-size: cover;
 	-fx-background-position: center center;
+}
+
+#SaveBtn {
+	-fx-background-color: #000;
+	-fx-text-fill: #fff;
+}
+
+#SavePane {
+	-fx-background-color: #fff;
+}
+
+#user_date {
+	-fx-background-color: #eee;
 }
