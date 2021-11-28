@@ -225,7 +225,7 @@ public class MainController implements Initializable {
 			Alert alert = new Alert(AlertType.CONFIRMATION);
 			alert.setTitle("개발자 코멘트");
 			alert.setHeaderText("10105 임수연");
-			alert.setContentText("코멘트를 입력하세요");
+			alert.setContentText("불친절이 컨셉인 게임");
 			alert.show();
 		} catch (Exception e) {
 			e.printStackTrace();
