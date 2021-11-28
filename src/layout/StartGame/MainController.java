@@ -182,6 +182,7 @@ public class MainController implements Initializable {
 			Stage primaryStage = (Stage) EntryBtn.getScene().getWindow();
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 			primaryStage.setScene(scene);
+			chatNum = 0;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -206,6 +207,7 @@ public class MainController implements Initializable {
 				scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 				primaryStage.setScene(scene);
 				chatLoad("StartS");
+				chatNum = 0;
 //			} catch (Exception e) {
 //				
 //			}
