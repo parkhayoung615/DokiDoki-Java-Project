@@ -266,7 +266,7 @@ public class MainController implements Initializable {
 					primaryStage.setScene(scene);
 					
 					// 쓰레드에 로그인 정보 담기
-					Thread t = new Thread(new TherdUtil(loginId, "user_Boss", "user_obj"));
+					Thread t = new Thread(new TherdUtil(loginId));
 					t.start();
 
 					m = new Media(getClass().getResource("/resourse/Index.mp3").toString());

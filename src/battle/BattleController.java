@@ -157,6 +157,7 @@ public class BattleController {
 		chat("start");
 		loadAll();
 		loadEnemy(enemyName);
+		// 쓰레드 가져와서 바꿔야함
 		loadLang("12");
 		int k = 0;
 		for (Integer a : langList) {
