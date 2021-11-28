@@ -414,12 +414,11 @@ public class BattleController {
 			JDBCUtil db = new JDBCUtil();
 			Connection con = db.getConnection();
 			PreparedStatement pstmt = null;
-			String sql = "SELECT * FROM `script` WHERE `char_id` = ? AND id LIKE ? ORDER BY `id` DESCSS";
+			String sql = "SELECT * FROM `script` WHERE `char_id` = ? AND id LIKE '%M%' ORDER BY `id` DESC";
 			ResultSet rs = null;
 			try {
 				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, "1");
-				pstmt.setString(2, "test");
+				pstmt.setString(1, "S-01");
 				rs = pstmt.executeQuery();
 				while (rs.next()) {
 					list.add(rs.getString("script_data"));
@@ -440,6 +439,22 @@ public class BattleController {
 		} else if (battle.equals("end")) {
 			if (rstGame.equals("win")) {
 				list.add("'배인영'은 " + enemy.getName() + "을 쓰러트렸다.");
+				JDBCUtil db = new JDBCUtil();
+				Connection con = db.getConnection();
+				PreparedStatement pstmt = null;
+				String sql = "SELECT * FROM `script` WHERE `char_id` = ? AND id LIKE '%W%' ORDER BY `id` DESC";
+				ResultSet rs = null;
+				try {
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, "S-01");
+					rs = pstmt.executeQuery();
+					while (rs.next()) {
+						list.add(rs.getString("script_data"));
+					}
+
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
 			}
 		}
 
@@ -484,11 +499,19 @@ public class BattleController {
 				disLabel();
 				idx = 0;
 				list.clear();
-			} else if (rstGame.equals("end")) {
+			} else if (rstGame.equals("win")) {
+				try {
+					Parent win = FXMLLoader.load(getClass().getResource("/test/TestLayout.fxml"));
+					Scene scene = new Scene(win);
+					Stage primaryStage = (Stage) BtnChat.getScene().getWindow();
+					scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+					primaryStage.setScene(scene);
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
 
 			} else if (rstGame.equals("turnWin")) {
 				enemyIdx++;
-				nextEnemy();
 				rstGame = "game";
 				asBtn(BtnChat);
 				asBtn(BtnRun);
@@ -499,6 +522,7 @@ public class BattleController {
 				disLabel();
 				idx = 0;
 				list.clear();
+				nextEnemy();
 
 			} else if (rstGame.equals("turnLose")) {
 				if (langs[0].getHp() <= 0 && langs[1].getHp() <= 0 && langs[2].getHp() <= 0 && langs[3].getHp() <= 0
@@ -536,15 +560,8 @@ public class BattleController {
 		if (!enemys[enemyIdx].getName().equals("null") && enemys[enemyIdx].getHp() > 0) {
 			loadBattle(enemys[enemyIdx].getId(), "enemy", enemyIdx);
 		} else {
-			try {
-				Parent win = FXMLLoader.load(getClass().getResource("/test/TestLayout.fxml"));
-				Scene scene = new Scene(win);
-				Stage primaryStage = (Stage) BtnChat.getScene().getWindow();
-				scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-				primaryStage.setScene(scene);
-			} catch (Exception e) {
-				// TODO: handle exception
-			}
+			rstGame = "win";
+			chat("end");
 
 		}
 	}
