@@ -619,7 +619,6 @@ public class MainController implements Initializable {
 		} else if (info.getStage().equals("T-01")) {
 			util.alert("넌 용현쌤과 싸울 차례야.", null);
 		}
- 
 	}
 	
 	@FXML
