@@ -38,9 +38,9 @@ public class MainController implements Initializable {
 
 	MediaPlayer mp; // 음악재생 라이브러리
 	Media m = null; // 음악 소스
-
-//	//false: 음악 나오는 중
-//	public boolean mediaMute = false;
+	
+	//false: 음악 나오는 중
+	public boolean mediaMute = false;
 
 	@FXML
 	private Button StartBtn;
@@ -77,8 +77,6 @@ public class MainController implements Initializable {
 	@FXML
 	private Button SubmitBtn;
 	@FXML
-	private Button chgClear;
-	@FXML
 	private TextField userId;
 	@FXML
 	private PasswordField userPw;
@@ -94,7 +92,7 @@ public class MainController implements Initializable {
 	private Button buttonPlay;
 
 	private boolean booEnd;
-
+	
 	@FXML
 	private Button SaveBtn;
 	@FXML
@@ -104,64 +102,8 @@ public class MainController implements Initializable {
 	@FXML
 	private Label userBossDate;
 
-	@FXML
-	private Button ReStartBtn;
-	@FXML
-	private Button ReLoadBtn;
-	@FXML
-	private Button LifeEndBtn;
-
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-	}
-
-	public void EndLife() {
-		try {
-			m = new Media(getClass().getResource("/resourse/Doki.mp3").toString());
-			mp = new MediaPlayer(m);
-			Runnable onEnd = new Runnable() {
-				public void run() {
-					mp.dispose();
-					mp = new MediaPlayer(m);
-					mp.play();
-					mp.setOnEndOfMedia(this);
-				}
-			};
-			mp.setOnEndOfMedia(onEnd);
-			mp.play();
-
-			Parent login = FXMLLoader.load(getClass().getResource("/layout/Index3.fxml"));
-			Scene scene = new Scene(login);
-			Stage primaryStage = (Stage) LifeEndBtn.getScene().getWindow();
-			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-			primaryStage.setScene(scene);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void ReLoad() {
-		try {
-			Parent login = FXMLLoader.load(getClass().getResource("/layout/LoadGame.fxml"));
-			Scene scene = new Scene(login);
-			Stage primaryStage = (Stage) ReLoadBtn.getScene().getWindow();
-			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-			primaryStage.setScene(scene);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void ReStart() {
-		try {
-			Parent login = FXMLLoader.load(getClass().getResource("/layout/StartGame/Start_Narration.fxml"));
-			Scene scene = new Scene(login);
-			Stage primaryStage = (Stage) ReStartBtn.getScene().getWindow();
-			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-			primaryStage.setScene(scene);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 
 	// Start -> Login -> (로딩) -> Index
@@ -217,14 +159,10 @@ public class MainController implements Initializable {
 			Stage primaryStage = (Stage) EndGame.getScene().getWindow();
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 			primaryStage.setScene(scene);
-
-			// Index에서 나오던 음악 음소거
-			// mp.setMute(true);
-
-			if (mp.getOnPlaying() != null) {
-				mp.stop();
-			}
-
+			
+//			// Index에서 나오던 음악 음소거
+//			mp.setMute(true);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -249,7 +187,7 @@ public class MainController implements Initializable {
 			Alert alert = new Alert(AlertType.CONFIRMATION);
 			alert.setTitle("개발자 코멘트");
 			alert.setHeaderText("10103 박하영");
-			alert.setContentText("즐감 bit.ly/3HZxTeC");
+			alert.setContentText("세상에... 피곤하다 아직도 목요일이라니");
 			alert.show();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -261,7 +199,7 @@ public class MainController implements Initializable {
 			Alert alert = new Alert(AlertType.CONFIRMATION);
 			alert.setTitle("개발자 코멘트");
 			alert.setHeaderText("10111 김건우");
-			alert.setContentText("개발중단");
+			alert.setContentText("코멘트를 입력하세요");
 			alert.show();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -285,7 +223,7 @@ public class MainController implements Initializable {
 			Alert alert = new Alert(AlertType.CONFIRMATION);
 			alert.setTitle("개발자 코멘트");
 			alert.setHeaderText("10105 임수연");
-			alert.setContentText("불친절이 컨셉인 게임");
+			alert.setContentText("코멘트를 입력하세요");
 			alert.show();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -295,6 +233,7 @@ public class MainController implements Initializable {
 	// 로그인
 	public String userN;
 	public String AuserID;
+	
 
 	public void loginCheck() {
 		JDBCUtil db = new JDBCUtil();
@@ -339,6 +278,13 @@ public class MainController implements Initializable {
 					Stage primaryStage = (Stage) loginBtn.getScene().getWindow();
 					scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 					primaryStage.setScene(scene);
+<<<<<<< HEAD
+=======
+					
+					// 쓰레드에 로그인 정보 담기
+					//Thread t = new Thread(new TherdUtil(loginId));
+					//t.start();
+>>>>>>> parent of 0ccf50c (Merge branch 'main' of https://github.com/parkhayoung615/TeamJavaProject)
 
 					m = new Media(getClass().getResource("/resourse/Index.mp3").toString());
 					mp = new MediaPlayer(m);
@@ -352,6 +298,10 @@ public class MainController implements Initializable {
 					};
 					mp.setOnEndOfMedia(onEnd);
 					mp.play();
+<<<<<<< HEAD
+=======
+					
+>>>>>>> parent of 0ccf50c (Merge branch 'main' of https://github.com/parkhayoung615/TeamJavaProject)
 //					소리 너무 큼!!
 
 				} catch (Exception e) {
@@ -371,6 +321,8 @@ public class MainController implements Initializable {
 			alert.show();
 		}
 	}
+	
+	
 
 	// 회원가입
 	public void join() {
@@ -417,15 +369,70 @@ public class MainController implements Initializable {
 		}
 	}
 
+	// 로딩 소스 재생
+	public void loadMp4() {
+		// 미디어 객체를 소스 폴더의 video.mp4를 이용해만들어 줍니다.
+		// 미디어 플레이어에 사용할 파일을 정해 줍니다.
+		Media media = new Media(getClass().getResource("/resource/loading.mp4").toString());
+		// 미디어 플레이어 생성 및 미디어 뷰에 설정
+		MediaPlayer mediaPlayer = new MediaPlayer(media);
+		mediaView.setMediaPlayer(mediaPlayer);
+		// 해당 상태가 되면 실행할 Runnable 설정
+		mediaPlayer.setOnReady(new Runnable() {
+			// 화면이 동영상이 실행 되는 쓰레드 사용합니다.
+			@Override
+			public void run() {
+				// 시작시 플레이 버튼만 활성화 하고
+				// 나머지는 비활성화 함.
+				loginBtn.setDisable(false);
+			}
+		});
+		// 플레이 되고 있을 경우의 버튼 활성 비활성의 상태
+		// 아래의 경우도 똑 같은 경우입니다.
+		mediaPlayer.setOnPlaying(() -> {
+			loginBtn.setDisable(true);
+		});
+
+		mediaPlayer.setOnPaused(() -> {
+			loginBtn.setDisable(false);
+		});
+		// 비디오가 끝났을 경우의 처리
+		// booEnd 변수에 true 를 넣어 재생 버튼을 눌렀을 때
+		// 처음부터 실행 할것인지를 결정 하게 한다.
+		mediaPlayer.setOnEndOfMedia(() -> {
+			booEnd = true;
+			loginBtn.setDisable(false);
+		});
+		mediaPlayer.setOnStopped(() -> {
+			mediaPlayer.seek(mediaPlayer.getStartTime());
+			loginBtn.setDisable(false);
+		});
+
+		// 버튼 ActionEvent 처리
+		loginBtn.setOnAction(event -> {
+			// 플레이 버튼을 눌렀을때
+			// 동영상이 끝날상태 즉 booEnd 에 true 가 들어 가있을 경우에는
+			// 종료하고 처음으로 재생시점을 이동한다.
+			// 그리고 다시booEnd에 false 를 대입해 지금 동영상이
+			// 끝이 아니라는 것을 알려준다.
+			if (booEnd) {
+				mediaPlayer.stop();
+				mediaPlayer.seek(mediaPlayer.getStartTime());
+			}
+			mediaPlayer.play();
+			booEnd = false;
+		});
+	}
+
 	// 창 닫기
 	public void closeProgram() { // 현재의 스테이지를 받아서 close를 해주어야 함
 		Stage pop = (Stage) EndProgram.getScene().getWindow(); // 버튼을 통해서 현재 스테이지를 알아냄
 		pop.close();
-
+		
 //		// Index에서 나오던 음악 음소거
 //		mp.setMute(true);
 	}
-
+	
 	public void EndSave() {
 		try {
 			Parent login = FXMLLoader.load(getClass().getResource("/layout/map/BasicMap.fxml"));
@@ -439,6 +446,7 @@ public class MainController implements Initializable {
 		}
 	}
 
+
 //		게임 시작 (새 게임 버튼 눌렀을 때부터)
 	public void StartGame() {
 		try {
@@ -448,7 +456,14 @@ public class MainController implements Initializable {
 			Stage primaryStage = (Stage) NewGame.getScene().getWindow();
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 			primaryStage.setScene(scene);
-
+			
+			
+			// Index에서 나오던 음악 음소거
+			mediaMute = true;
+			if(mediaMute == true) {
+				mp.setMute(mediaMute);
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -466,24 +481,12 @@ public class MainController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-
+	
 	public void SubChg() {
 		try {
 			Parent login = FXMLLoader.load(getClass().getResource("/layout/Clear.fxml"));
 			Scene scene = new Scene(login);
 			Stage primaryStage = (Stage) SubmitBtn.getScene().getWindow();
-			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-			primaryStage.setScene(scene);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void clearChg() {
-		try {
-			Parent login = FXMLLoader.load(getClass().getResource("/layout/Clear2.fxml"));
-			Scene scene = new Scene(login);
-			Stage primaryStage = (Stage) chgClear.getScene().getWindow();
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 			primaryStage.setScene(scene);
 		} catch (Exception e) {

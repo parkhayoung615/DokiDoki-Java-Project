@@ -177,8 +177,11 @@ public class MainController implements Initializable {
 			Stage primaryStage = (Stage) EntryBtn.getScene().getWindow();
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 			primaryStage.setScene(scene);
+<<<<<<< HEAD
 			
 			chatNum = 0;
+=======
+>>>>>>> parent of 0ccf50c (Merge branch 'main' of https://github.com/parkhayoung615/TeamJavaProject)
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -206,12 +209,20 @@ public class MainController implements Initializable {
 				scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 				primaryStage.setScene(scene);
 				chatLoad("StartS");
+<<<<<<< HEAD
 				chatNum = 0;
 			} catch (Exception e) {
 				
 			}
 //		} catch (Exception e) {
 //		}
+=======
+//			} catch (Exception e) {
+//				
+//			}
+		} catch (Exception e) {
+		}
+>>>>>>> parent of 0ccf50c (Merge branch 'main' of https://github.com/parkhayoung615/TeamJavaProject)
 	}
 	
 	public void JavaScript() {
