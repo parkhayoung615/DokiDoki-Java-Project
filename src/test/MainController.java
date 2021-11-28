@@ -56,6 +56,7 @@ public class MainController implements Initializable {
 
 	private int width;
 	private int height;
+	private int testi = 0;
 	private int idx = 0;
 	private String view = null;
 	static String loc = "Start";
@@ -365,13 +366,21 @@ public class MainController implements Initializable {
 				scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 				primaryStage.setScene(scene);
 			} else if (b.getType() == 3 && view == "right") {
-				loc = "s01";
-				btc.setenemy("S-01", "BasicMap");
-				Parent sN = FXMLLoader.load(getClass().getResource("/battle/BattleLayout.fxml"));
-				Scene scene = new Scene(sN);
-				Stage primaryStage = (Stage) Mario.getScene().getWindow();
-				scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-				primaryStage.setScene(scene);
+				AppUtil util = new AppUtil();
+				if (testi == 0) {
+					util.alert("넌 박하영과 싸울 차례야.", null);
+					testi++;
+				} else if (testi == 1) {
+					util.alert("난 사실 박하영이야.", null);
+					loc = "s01";
+					btc.setenemy("S-02", "BasicMap");
+					Parent sN = FXMLLoader.load(getClass().getResource("/battle/BattleLayout.fxml"));
+					Scene scene = new Scene(sN);
+					Stage primaryStage = (Stage) Mario.getScene().getWindow();
+					scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+					primaryStage.setScene(scene);
+				}
+				
 			} else if (b.getType() == 101) {
 				chgMap("Dto3", "3level");
 				

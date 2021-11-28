@@ -237,3 +237,13 @@
 #ClearPane {
 	-fx-background-color: #eee;
 }
+
+#ReStartBtn, #ReLoadBtn, #LifeEndBtn {
+	-fx-background-color: #fff;
+}
+
+#Index4 {
+	-fx-background-image: url('/imgs/Index4.jpg');
+	-fx-background-size: cover;
+	-fx-background-position: center center;
+}
