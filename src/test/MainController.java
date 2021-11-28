@@ -145,7 +145,7 @@ public class MainController implements Initializable {
 			Mario.setY(435);
 			Mario.setViewport(new Rectangle2D(48, 48, 48, 48));
 			view = "left";
-		} else if (loc.equals("BattleH")) {
+		} else if (loc.equals("BattleHL")) {
 			Mario.setX(405);
 			Mario.setY(495);
 			Mario.setViewport(new Rectangle2D(48, 96, 48, 48));
@@ -163,6 +163,71 @@ public class MainController implements Initializable {
 		} else if (loc.equals("BattleHD")) {
 			Mario.setX(455);
 			Mario.setY(545);
+			Mario.setViewport(new Rectangle2D(48, 144, 48, 48));
+			view = "up";
+		} else if (loc.equals("BattleYL")) {
+			Mario.setX(155);
+			Mario.setY(245);
+			Mario.setViewport(new Rectangle2D(48, 96, 48, 48));
+			view = "right";
+		} else if (loc.equals("BattleYD")) {
+			Mario.setX(200);
+			Mario.setY(275);
+			Mario.setViewport(new Rectangle2D(48, 144, 48, 48));
+			view = "up";
+		} else if (loc.equals("BattleHL")) {
+			Mario.setX(405);
+			Mario.setY(495);
+			Mario.setViewport(new Rectangle2D(48, 96, 48, 48));
+			view = "right";
+		} else if (loc.equals("BattleHU")) {
+			Mario.setX(455);
+			Mario.setY(445);
+			Mario.setViewport(new Rectangle2D(48, 0, 48, 48));
+			view = "down";
+		} else if (loc.equals("BattleHR")) {
+			Mario.setX(505);
+			Mario.setY(495);
+			Mario.setViewport(new Rectangle2D(48, 48, 48, 48));
+			view = "left";
+		} else if (loc.equals("BattleHD")) {
+			Mario.setX(455);
+			Mario.setY(545);
+			Mario.setViewport(new Rectangle2D(48, 144, 48, 48));
+			view = "up";
+		} else if (loc.equals("BattleYUR")) {
+			Mario.setX(400);
+			Mario.setY(545);
+			Mario.setViewport(new Rectangle2D(48, 48, 48, 48));
+			view = "left";
+		} else if (loc.equals("BattleYUD")) {
+			Mario.setX(350);
+			Mario.setY(575);
+			Mario.setViewport(new Rectangle2D(48, 144, 48, 48));
+			view = "up";
+		} else if (loc.equals("BattleSL")) {
+			Mario.setX(655);
+			Mario.setY(295);
+			Mario.setViewport(new Rectangle2D(48, 96, 48, 48));
+			view = "right";
+		} else if (loc.equals("BattleSD")) {
+			Mario.setX(705);
+			Mario.setY(325);
+			Mario.setViewport(new Rectangle2D(48, 144, 48, 48));
+			view = "up";
+		} else if (loc.equals("BattleHD")) {
+			Mario.setX(300);
+			Mario.setY(325);
+			Mario.setViewport(new Rectangle2D(48, 144, 48, 48));
+			view = "up";
+		} else if (loc.equals("BattleHR")) {
+			Mario.setX(350);
+			Mario.setY(305);
+			Mario.setViewport(new Rectangle2D(48, 48, 48, 48));
+			view = "left";
+		} else if (loc.equals("BattleHD")) {
+			Mario.setX(300);
+			Mario.setY(245);
 			Mario.setViewport(new Rectangle2D(48, 144, 48, 48));
 			view = "up";
 		}
@@ -335,7 +400,7 @@ public class MainController implements Initializable {
 				
 			} else if (b.getType() == 201 && view.equals("right")) {
 				btc.setenemy("S-01", "3level");
-				goBattle("BattleH");
+				goBattle("BattleHL");
 				
 			} else if (b.getType() == 202 && view.equals("down")) {
 				btc.setenemy("S-01", "3level");
@@ -348,6 +413,58 @@ public class MainController implements Initializable {
 			} else if (b.getType() == 204 && view.equals("up")) {
 				btc.setenemy("S-01", "3level");
 				goBattle("BattleHD");
+				
+			} else if (b.getType() == 301 && view.equals("right")) {
+				btc.setenemy("T-01", "DeepMap");
+				goBattle("BattleYL");
+				
+			} else if (b.getType() == 302 && view.equals("up")) {
+				btc.setenemy("T-01", "DeepMap");
+				goBattle("BattleYD");
+				
+			} else if (b.getType() == 211 && view.equals("right")) {
+				btc.setenemy("S-03", "2level");
+				goBattle("BattleRL");
+				
+			} else if (b.getType() == 212 && view.equals("down")) {
+				btc.setenemy("S-03", "2level");
+				goBattle("BattleRU");
+				
+			} else if (b.getType() == 213 && view.equals("left")) {
+				btc.setenemy("S-03", "2level");
+				goBattle("BattleRR");
+				
+			} else if (b.getType() == 214 && view.equals("up")) {
+				btc.setenemy("S-03", "2level");
+				goBattle("BattleRD");
+				
+			} else if (b.getType() == 223 && view.equals("left")) {
+				btc.setenemy("S-05", "SkillsL");
+				goBattle("BattleYUR");
+				
+			} else if (b.getType() == 224 && view.equals("up")) {
+				btc.setenemy("S-05", "SkillsL");
+				goBattle("BattleYUD");
+				
+			} else if (b.getType() == 231 && view.equals("right")) {
+				btc.setenemy("S-04", "SkillsM");
+				goBattle("BattleYL");
+				
+			} else if (b.getType() == 232 && view.equals("up")) {
+				btc.setenemy("S-04", "SkillsM");
+				goBattle("BattleYD");
+				
+			} else if (b.getType() == 241 && view.equals("up")) {
+				btc.setenemy("S-02", "SkillsR");
+				goBattle("BattleHD");
+				
+			} else if (b.getType() == 242 && view.equals("left")) {
+				btc.setenemy("S-02", "SkillsR");
+				goBattle("BattleHR");
+				
+			} else if (b.getType() == 243 && view.equals("down")) {
+				btc.setenemy("S-02", "SkillsR");
+				goBattle("BattleHU");
 				
 			}
 
@@ -393,7 +510,7 @@ public class MainController implements Initializable {
 		} else if (map.equals("SkillsM")) {
 			Mario2.setImage(new Image("/imgs/avatar/su2.png"));
 			Mario2.setScaleX(1.2);
-			Mario2.setScaleY(1.2);
+			Mario2.setScaleY(1.2);		
 			Mario2.setViewport(new Rectangle2D(48, 0, 48, 48));
 		} else if (map.equals("SkillsR")) {
 			Mario2.setImage(new Image("/imgs/avatar/hy2.png"));

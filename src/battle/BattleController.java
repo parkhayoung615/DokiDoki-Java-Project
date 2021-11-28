@@ -581,7 +581,7 @@ public class BattleController {
 			asBtn(BtnChat);
 			asBtn(BtnRun);
 			asBtn(BtnChg);
-			asBtn(BtnBag);
+			asBtn(BtnBag)	;
 			asBtn(BtnBattle);
 			disBtn(BtnChat);
 			disLabel();
