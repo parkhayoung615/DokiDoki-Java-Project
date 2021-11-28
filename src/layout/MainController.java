@@ -37,6 +37,9 @@ public class MainController implements Initializable {
 
 	MediaPlayer mp; // 음악재생 라이브러리
 	Media m = null; // 음악 소스
+	
+	//false: 음악 나오는 중
+	public boolean mediaMute = false;
 
 	@FXML
 	private Button StartBtn;
@@ -154,7 +157,10 @@ public class MainController implements Initializable {
 			Stage primaryStage = (Stage) EndGame.getScene().getWindow();
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 			primaryStage.setScene(scene);
-//			mp.stop();
+			
+//			// Index에서 나오던 음악 음소거
+//			mp.setMute(true);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -225,6 +231,7 @@ public class MainController implements Initializable {
 	// 로그인
 	public String userN;
 	public String AuserID;
+	
 
 	public void loginCheck() {
 		JDBCUtil db = new JDBCUtil();
@@ -274,6 +281,7 @@ public class MainController implements Initializable {
 					};
 					mp.setOnEndOfMedia(onEnd);
 					mp.play();
+					
 //					소리 너무 큼!!
 
 				} catch (Exception e) {
@@ -293,6 +301,8 @@ public class MainController implements Initializable {
 			alert.show();
 		}
 	}
+	
+	
 
 	// 회원가입
 	public void join() {
@@ -398,7 +408,9 @@ public class MainController implements Initializable {
 	public void closeProgram() { // 현재의 스테이지를 받아서 close를 해주어야 함
 		Stage pop = (Stage) EndProgram.getScene().getWindow(); // 버튼을 통해서 현재 스테이지를 알아냄
 		pop.close();
-		mp.stop();
+		
+//		// Index에서 나오던 음악 음소거
+//		mp.setMute(true);
 	}
 	
 	public void EndSave() {
@@ -423,7 +435,14 @@ public class MainController implements Initializable {
 			Stage primaryStage = (Stage) NewGame.getScene().getWindow();
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 			primaryStage.setScene(scene);
-			mp.stop();
+			
+			
+			// Index에서 나오던 음악 음소거
+			mediaMute = true;
+			if(mediaMute == true) {
+				mp.setMute(mediaMute);
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
