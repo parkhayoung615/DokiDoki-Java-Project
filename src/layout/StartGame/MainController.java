@@ -18,7 +18,6 @@ import javafx.stage.Stage;
 import util.JDBCUtil;
 
 public class MainController implements Initializable {
-
 	@FXML
 	private Button NarraStartBtn;
 	@FXML
@@ -169,10 +168,6 @@ public class MainController implements Initializable {
 //		}
 //	}
 
-	
-	
-
-	
 //	엔트리 골랐을 때
 	public void SelectObjEntry() {
 		chatNum += 2;
@@ -182,6 +177,7 @@ public class MainController implements Initializable {
 			Stage primaryStage = (Stage) EntryBtn.getScene().getWindow();
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 			primaryStage.setScene(scene);
+			
 			chatNum = 0;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -190,17 +186,20 @@ public class MainController implements Initializable {
 	
 //	스크래치 골랐ㅇ르 때
 	public void SelectObjScratch() {
+		
 		chatNum++;
 //		JDBCUtil db = new JDBCUtil();
 //		Connection con = db.getConnection();
 //		PreparedStatement pstmt = null;
-//		String sql = "INSERT INTO `user_object`(`id`, `object_id`, `user_id`) VALUES (?,'14',?)";
-		try {
+//		String sql = "INSERT INTO `NowData`(`id`, `user_id`, `Boss_id`, `object_id`) VALUES (?,?,?,?)";
+//		try {
 //			pstmt = con.prepareStatement(sql);
-//			pstmt.setString(1, inputJoinId);
+//			pstmt.setInt(1, inputJoinId);
 //			pstmt.setString(2, inputJoinName);
+//			pstmt.setString(3, inputJoinId);
+//			pstmt.setInt(4, 14);
 //			pstmt.executeUpdate();
-//			try {
+			try {
 				Parent login = FXMLLoader.load(getClass().getResource("/layout/StartGame/SelectAfter.fxml"));
 				Scene scene = new Scene(login);
 				Stage primaryStage = (Stage) ScratchBtn.getScene().getWindow();
@@ -208,11 +207,11 @@ public class MainController implements Initializable {
 				primaryStage.setScene(scene);
 				chatLoad("StartS");
 				chatNum = 0;
-//			} catch (Exception e) {
-//				
-//			}
-		} catch (Exception e) {
-		}
+			} catch (Exception e) {
+				
+			}
+//		} catch (Exception e) {
+//		}
 	}
 	
 	public void JavaScript() {
@@ -222,8 +221,8 @@ public class MainController implements Initializable {
 		String sql = "INSERT INTO `user_object`(`id`, `object_id`, `user_id`) VALUES (?,'5',?)";
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, inputJoinId);
-			pstmt.setString(2, inputJoinName);
+//			pstmt.setString(1, inputJoinId);
+//			pstmt.setString(2, inputJoinName);
 			pstmt.executeUpdate();
 			util.AppUtil.alert("자바스크립트를 배우셨습니다.", null);
 			return;

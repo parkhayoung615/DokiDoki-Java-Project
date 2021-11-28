@@ -32,6 +32,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import util.JDBCUtil;
 import util.TherdUtil;
+import util.UserData;
 
 public class MainController implements Initializable {
 
@@ -112,7 +113,6 @@ public class MainController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
 	}
 
 	public void EndLife() {
@@ -322,15 +322,23 @@ public class MainController implements Initializable {
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				try {
+					sql = "INSERT INTO `NowData`(`id`, `user_id`, `Boss_id`, `object_id`) VALUES (?,?,?,?)";
+					try {
+						pstmt = con.prepareStatement(sql);
+						pstmt.setInt(1, 1);
+						pstmt.setString(2, loginId);
+						pstmt.setString(3, "");
+						pstmt.setString(4, "");
+						pstmt.executeUpdate();
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
+
 					Parent login = FXMLLoader.load(getClass().getResource("/layout/Index.fxml"));
 					Scene scene = new Scene(login);
 					Stage primaryStage = (Stage) loginBtn.getScene().getWindow();
 					scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 					primaryStage.setScene(scene);
-
-					// 쓰레드에 로그인 정보 담기
-					// Thread t = new Thread(new TherdUtil(loginId));
-					// t.start();
 
 					m = new Media(getClass().getResource("/resourse/Index.mp3").toString());
 					mp = new MediaPlayer(m);
@@ -344,7 +352,6 @@ public class MainController implements Initializable {
 					};
 					mp.setOnEndOfMedia(onEnd);
 					mp.play();
-
 //					소리 너무 큼!!
 
 				} catch (Exception e) {
@@ -388,24 +395,6 @@ public class MainController implements Initializable {
 			pstmt.setString(1, inputJoinId);
 			pstmt.setString(2, inputJoinPw);
 			pstmt.executeUpdate();
-			try {
-				db = new JDBCUtil();
-				con = db.getConnection();
-				pstmt = null;
-				sql = "INSERT INTO `data`(`id`, `user_id`, `date`, `last_map`) VALUES ?, ?, ?";
-				try {
-					pstmt = con.prepareStatement(sql);
-					pstmt.setString(1, userId.getText());
-					pstmt.setString(2, userId.getText());
-					pstmt.setString(3, "S-01");
-					pstmt.execute();
-
-				} catch (Exception e) {
-					// TODO: handle exception
-				}
-			} catch (Exception e) {
-				// TODO: handle exception
-			}
 			try {
 				Parent login = FXMLLoader.load(getClass().getResource("/layout/Login.fxml"));
 				Scene scene = new Scene(login);
@@ -453,6 +442,7 @@ public class MainController implements Initializable {
 //		게임 시작 (새 게임 버튼 눌렀을 때부터)
 	public void StartGame() {
 		try {
+
 			Parent login = FXMLLoader.load(getClass().getResource("/layout/StartGame/Start_Narration.fxml"));
 			Scene scene = new Scene(login);
 			Stage primaryStage = (Stage) NewGame.getScene().getWindow();

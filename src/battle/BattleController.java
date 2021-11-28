@@ -541,16 +541,29 @@ public class BattleController {
 				idx = 0;
 				list.clear();
 			} else if (rstGame.equals("win")) {
-				
-				try {
-					Parent win = FXMLLoader.load(getClass().getResource("/layout/map/"+ enemyMap +".fxml"));
-					Scene scene = new Scene(win);
-					Stage primaryStage = (Stage) BtnChat.getScene().getWindow();
-					scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-					primaryStage.setScene(scene);
-				} catch (Exception e) {
-					// TODO: handle exception
-				}
+                if (enemyName.equals("T-01")) {
+                    try {
+                        Parent win = FXMLLoader.load(getClass().getResource("/layout/Clear.fxml"));
+                        Scene scene = new Scene(win);
+                        Stage primaryStage = (Stage) BtnChat.getScene().getWindow();
+                        scene.getStylesheets()
+                                .add(getClass().getResource("/application/application.css").toExternalForm());
+                        primaryStage.setScene(scene);
+                    } catch (Exception e) {
+                        // TODO: handle exception
+                    }
+                } else if (enemyName != "T-01") {
+                    try {
+                        Parent win = FXMLLoader.load(getClass().getResource("/layout/map/" + enemyMap + ".fxml"));
+                        Scene scene = new Scene(win);
+                        Stage primaryStage = (Stage) BtnChat.getScene().getWindow();
+                        scene.getStylesheets()
+                                .add(getClass().getResource("/application/application.css").toExternalForm());
+                        primaryStage.setScene(scene);
+                    } catch (Exception e) {
+                        // TODO: handle exception
+                    }
+                }
 
 			} else if (rstGame.equals("turnWin")) {
 				enemyIdx++;
