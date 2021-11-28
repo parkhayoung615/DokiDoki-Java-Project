@@ -38,8 +38,8 @@ public class MainController implements Initializable {
 	MediaPlayer mp; // 음악재생 라이브러리
 	Media m = null; // 음악 소스
 	
-	//false: 음악 나오는 중
-	public boolean mediaMute = false;
+//	//false: 음악 나오는 중
+//	public boolean mediaMute = false;
 
 	@FXML
 	private Button StartBtn;
@@ -107,6 +107,7 @@ public class MainController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 
 	}
+	
 
 	// Start -> Login -> (로딩) -> Index
 	// 화면 전환
@@ -162,8 +163,14 @@ public class MainController implements Initializable {
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			
-//			// Index에서 나오던 음악 음소거
-//			mp.setMute(true);
+			// Index에서 나오던 음악 음소거
+			//mp.setMute(true);
+			
+			if (mp.getOnPlaying() != null) {
+				  mp.stop();
+				 }
+			
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -458,12 +465,6 @@ public class MainController implements Initializable {
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			
-			
-			// Index에서 나오던 음악 음소거
-			mediaMute = true;
-			if(mediaMute == true) {
-				mp.setMute(mediaMute);
-			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
