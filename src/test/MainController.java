@@ -353,6 +353,26 @@ public class MainController implements Initializable {
 			Mario2.setScaleX(1.2);
 			Mario2.setScaleY(1.2);
 			Mario2.setViewport(new Rectangle2D(48, 0, 48, 48));
+		} else if (map.equals("2level")) {
+			Mario2.setImage(new Image("/imgs/avatar/ryn2.png"));
+			Mario2.setScaleX(1.2);
+			Mario2.setScaleY(1.2);
+			Mario2.setViewport(new Rectangle2D(48, 0, 48, 48));
+		} else if (map.equals("SkillsL")) {
+			Mario2.setImage(new Image("/imgs/avatar/young2.png"));
+			Mario2.setScaleX(1.2);
+			Mario2.setScaleY(1.2);
+			Mario2.setViewport(new Rectangle2D(48, 0, 48, 48));
+		} else if (map.equals("SkillsM")) {
+			Mario2.setImage(new Image("/imgs/avatar/su2.png"));
+			Mario2.setScaleX(1.2);
+			Mario2.setScaleY(1.2);
+			Mario2.setViewport(new Rectangle2D(48, 0, 48, 48));
+		} else if (map.equals("SkillsR")) {
+			Mario2.setImage(new Image("/imgs/avatar/hy2.png"));
+			Mario2.setScaleX(1.2);
+			Mario2.setScaleY(1.2);
+			Mario2.setViewport(new Rectangle2D(48, 0, 48, 48));
 		}
 		
 
