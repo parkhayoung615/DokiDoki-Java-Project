@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -121,5 +122,11 @@
       </Pane>
       <ImageView fx:id="langImg" fitHeight="261.0" fitWidth="261.0" layoutX="188.0" layoutY="303.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="enemyImg" fitHeight="200.0" fitWidth="200.0" layoutX="753.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="langavatar" fitHeight="270.0" fitWidth="270.0" layoutX="71.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imgs/battle/Bae.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="enemyavatar" fitHeight="270.0" fitWidth="270.0" layoutX="896.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

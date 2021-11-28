@@ -21,6 +21,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import test.MainController;
 import javafx.scene.control.Alert.AlertType;
+import util.BattleTimer;
 import util.JDBCUtil;
 
 public class BattleController {
@@ -123,9 +124,20 @@ public class BattleController {
 	private Button langBtn5;
 	@FXML
 	private Button langBtn6;
-
+	@FXML
+	private ImageView langavatar;
+	@FXML
+	private ImageView enemyavatar;
+	
+	
 	@FXML
 	public void initialize() {
+		enemyavatar.setImage(new Image("/imgs/battle/Su.png"));
+		BattleTimer aab = new BattleTimer();
+		aab.setimg(enemyavatar, langavatar);
+		Thread t = new Thread(new BattleTimer());
+		t.start();
+		
 		loc = "s01";
 		chat("start");
 		loadAll();
@@ -168,6 +180,7 @@ public class BattleController {
 	private int langSkill;
 	private String rstGame = null;
 
+	
 	public void loadBattle(int langId, String type, int langNum) {
 		JDBCUtil db = new JDBCUtil();
 		Connection con = db.getConnection();
@@ -401,7 +414,7 @@ public class BattleController {
 			JDBCUtil db = new JDBCUtil();
 			Connection con = db.getConnection();
 			PreparedStatement pstmt = null;
-			String sql = "SELECT * FROM `script` WHERE `char_id` = ? AND `scene_id` = ? ORDER BY `id` DESC";
+			String sql = "SELECT * FROM `script` WHERE `char_id` = ? AND id LIKE ? ORDER BY `id` DESCSS";
 			ResultSet rs = null;
 			try {
 				pstmt = con.prepareStatement(sql);
