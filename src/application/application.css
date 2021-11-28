@@ -15,11 +15,11 @@
 	-fx-background-position: center center;
 }
 
-#StartBtn, #EndProgram, #commentH, #commentG, #commentK, #commentI {
+#StartBtn, #EndProgram, #commentH, #commentG, #commentK, #commentI, #EndSave {
 	-fx-background-color: #00ff0000;
 	-fx-border-style: none;
 }
-#EndProgram {
+#EndProgram, #EndSave {
 	-fx-background-image: url('/imgs/window.png');
 	-fx-background-size: cover;
 	-fx-background-position: center center;

@@ -128,6 +128,8 @@ public class BattleController {
 	private ImageView langavatar;
 	@FXML
 	private ImageView enemyavatar;
+	public static String enemyName;
+	public static String enemyMap;
 	
 	
 	@FXML
@@ -141,7 +143,7 @@ public class BattleController {
 		loc = "s01";
 		chat("start");
 		loadAll();
-		loadEnemy("S-01");
+		loadEnemy(enemyName);
 		loadLang("12");
 		int k = 0;
 		for (Integer a : langList) {
@@ -418,7 +420,7 @@ public class BattleController {
 			ResultSet rs = null;
 			try {
 				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, "S-01");
+				pstmt.setString(1, enemyName);
 				rs = pstmt.executeQuery();
 				while (rs.next()) {
 					list.add(rs.getString("script_data"));
@@ -446,7 +448,7 @@ public class BattleController {
 				ResultSet rs = null;
 				try {
 					pstmt = con.prepareStatement(sql);
-					pstmt.setString(1, "S-01");
+					pstmt.setString(1, enemyName);
 					rs = pstmt.executeQuery();
 					while (rs.next()) {
 						list.add(rs.getString("script_data"));
@@ -501,7 +503,7 @@ public class BattleController {
 				list.clear();
 			} else if (rstGame.equals("win")) {
 				try {
-					Parent win = FXMLLoader.load(getClass().getResource("/test/TestLayout.fxml"));
+					Parent win = FXMLLoader.load(getClass().getResource("/layout/map/"+ enemyMap +".fxml"));
 					Scene scene = new Scene(win);
 					Stage primaryStage = (Stage) BtnChat.getScene().getWindow();
 					scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
@@ -824,5 +826,10 @@ public class BattleController {
 	public void asLabel() {
 		Txt.setVisible(true);
 		Txt.setDisable(false);
+	}
+	
+	public static void setenemy(String name, String map) {
+		enemyName = name;
+		enemyMap = map;
 	}
 }

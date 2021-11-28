@@ -386,7 +386,7 @@ public class MainController implements Initializable {
 	
 	public void EndSave() {
 		try {
-			Parent login = FXMLLoader.load(getClass().getResource("/layout/map/Basic.fxml"));
+			Parent login = FXMLLoader.load(getClass().getResource("/layout/map/BasicMap.fxml"));
 			Scene scene = new Scene(login);
 			Stage primaryStage = (Stage) EndSave.getScene().getWindow();
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());

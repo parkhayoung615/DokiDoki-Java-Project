@@ -144,6 +144,11 @@ public class MainController implements Initializable {
 			Mario.setY(435);
 			Mario.setViewport(new Rectangle2D(48, 48, 48, 48));
 			view = "left";
+		} else if (loc.equals("BattleH")) {
+			Mario.setX(405);
+			Mario.setY(495);
+			Mario.setViewport(new Rectangle2D(48, 96, 48, 48));
+			view = "right";
 		}
  		
 
@@ -255,6 +260,7 @@ public class MainController implements Initializable {
 				Parent sN = FXMLLoader.load(getClass().getResource("/layout/Save.fxml"));
 				Scene scene = new Scene(sN);
 				Stage primaryStage = (Stage) Mario.getScene().getWindow();
+				scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 				primaryStage.setScene(scene);
 			} else if (b.getType() == 3 && view == "right") {
 				loc = "s01";
@@ -310,6 +316,11 @@ public class MainController implements Initializable {
 				
 			} else if (b.getType() == 115) {
 				chgMap("Rtos", "SkillsHW");
+				
+			} else if (b.getType() == 201 && view.equals("right")) {
+				btc.setenemy("S-01", "3level");
+				goBattle("BattleH");
+				
 			}
 
 		} catch (Exception e) {
@@ -331,6 +342,11 @@ public class MainController implements Initializable {
 			Mario2.setScaleX(1.2);
 			Mario2.setScaleY(1.2);
 			Mario2.setViewport(new Rectangle2D(48, 48, 48, 48));
+		} else if (map.equals("3level")) {
+			Mario2.setImage(new Image("/imgs/avatar/h2.png"));
+			Mario2.setScaleX(1.2);
+			Mario2.setScaleY(1.2);
+			Mario2.setViewport(new Rectangle2D(48, 0, 48, 48));
 		}
 		
 
@@ -386,6 +402,20 @@ public class MainController implements Initializable {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+	}
+	
+	public void goBattle(String l) {
+		loc = l;
+		try {
+			Parent sN = FXMLLoader.load(getClass().getResource("/battle/BattleLayout.fxml"));
+			Scene scene = new Scene(sN);
+			Stage primaryStage = (Stage) Mario.getScene().getWindow();
+			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+			primaryStage.setScene(scene);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 	}
 
 }
