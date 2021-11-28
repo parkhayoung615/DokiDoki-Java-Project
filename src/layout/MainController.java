@@ -332,6 +332,24 @@ public class MainController implements Initializable {
 			pstmt.setString(2, inputJoinPw);
 			pstmt.executeUpdate();
 			try {
+				db = new JDBCUtil();
+				con = db.getConnection();
+				pstmt = null;
+				sql = "INSERT INTO `data`(`id`, `user_id`, `date`, `last_map`) VALUES ?, ?, ?";
+				try {
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, userId.getText());
+					pstmt.setString(2, userId.getText());
+					pstmt.setString(3, "S-01");
+					pstmt.execute();
+					
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			try {
 				Parent login = FXMLLoader.load(getClass().getResource("/layout/Login.fxml"));
 				Scene scene = new Scene(login);
 				Stage primaryStage = (Stage) joinBtn.getScene().getWindow();

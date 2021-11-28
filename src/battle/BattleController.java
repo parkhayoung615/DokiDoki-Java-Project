@@ -23,6 +23,7 @@ import test.MainController;
 import javafx.scene.control.Alert.AlertType;
 import util.BattleTimer;
 import util.JDBCUtil;
+import util.UserInfo;
 
 public class BattleController {
 
@@ -184,7 +185,7 @@ public class BattleController {
 	private int enemyIdx = 0;
 	private int idx = 0;
 	private Language[] langs = new Language[6];
-	private Language[] enemys = new Language[6];
+	private Language[] enemys = new Language[12];
 	private Language lang = new Language();
 	private Language enemy = new Language();
 	private ArrayList<Integer> langList = new ArrayList<Integer>();
@@ -414,10 +415,13 @@ public class BattleController {
 	}
 
 	public void loadAll() {
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < 12; i++) {
 			Skill[] skills = { new Skill(null, null, 0), new Skill(null, null, 0), new Skill(null, null, 0),
 					new Skill(null, null, 0) };
-			langs[i] = new Language("null", 1, 0, 0, skills);
+			if (i < 6) {
+				langs[i] = new Language("null", 1, 0, 0, skills);
+			}
+			
 			enemys[i] = new Language("null", 1, 0, 0, skills);
 
 		}
@@ -537,6 +541,19 @@ public class BattleController {
 				idx = 0;
 				list.clear();
 			} else if (rstGame.equals("win")) {
+				if (enemyName.equals("S-01")) {
+					UserInfo.setStage("S=02");
+				} else if (enemyName.equals("S-02")) {
+					UserInfo.setStage("S=03");
+				} else if (enemyName.equals("S-03")) {
+					UserInfo.setStage("S=04");
+				} else if (enemyName.equals("S-04")) {
+					UserInfo.setStage("S=05");
+				} else if (enemyName.equals("S-05")) {
+					UserInfo.setStage("T-01");
+				} else if (enemyName.equals("T-01")) {
+					UserInfo.setStage("CLEAR");
+				}
 				try {
 					Parent win = FXMLLoader.load(getClass().getResource("/layout/map/"+ enemyMap +".fxml"));
 					Scene scene = new Scene(win);
