@@ -1,11 +1,15 @@
 package test;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import battle.BattleController;
 import test.SpriteAnimation;
+import util.JDBCUtil;
 import block.Block;
 import block.MoveStage;
 import block.Pass;
@@ -345,7 +349,6 @@ public class MainController implements Initializable {
 				primaryStage.setScene(scene);
 			} else if (b.getType() == 3 && view == "right") {
 				loc = "s01";
-				btc.setenemy("S-01", "BasicMap");
 				Parent sN = FXMLLoader.load(getClass().getResource("/battle/BattleLayout.fxml"));
 				Scene scene = new Scene(sN);
 				Stage primaryStage = (Stage) Mario.getScene().getWindow();
@@ -362,9 +365,19 @@ public class MainController implements Initializable {
 				
 			} else if (b.getType() == 99) {
 //				다른 보스들을 깬 다음에 넘어가야댐
-				if ()
-				chgMap("3toD", "DeepMap");
-				
+				JDBCUtil db = new JDBCUtil();
+				Connection con = db.getConnection();
+				PreparedStatement pstmt = null;
+				String sql = "SELECT COUNT(d.avatar_id) FROM data d, avatar a WHERE a.id = d.avatar_id)";
+				try {
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, loginId);
+					pstmt.setString(2, loginPw);
+					ResultSet rs = null;
+					rs = pstmt.executeQuery();
+					if (sql != null) {
+						chgMap("3toD", "DeepMap");	
+					}
 			} else if (b.getType() == 104) {
 				chgMap("3to2", "2level");
 				
