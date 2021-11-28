@@ -171,34 +171,34 @@
 	-fx-background-color: #c73e3a;
 	-fx-text-fill: #fff;
 	-fx-border-color: #9b4d49;
-	-fx-border-width: 5.0px;
+	-fx-border-width: 5px;
 }
 
 #BtnBag {
 	-fx-background-color: #8b6415;
 	-fx-text-fill: #fff;
 	-fx-border-color: #ae8b41;
-	-fx-border-width: 10.0px;
+	-fx-border-width: 10px;
 }
 
 #BtnRun {
 	-fx-background-color: #0c3b63;
 	-fx-text-fill: #fff;
 	-fx-border-color: #296b87;
-	-fx-border-width: 10.0px;
+	-fx-border-width: 10px;
 }
 
 #BtnChg {
 	-fx-background-color: #377215;
 	-fx-text-fill: #fff;
 	-fx-border-color: #589a37;
-	-fx-border-width: 10.0px;
+	-fx-border-width: 10px;
 }
 
 #Btn1, #Btn2, #Btn3, #Btn4 {
 	-fx-background-color: #bfb1c5;
 	-fx-border-color: #faf5fb;
-	-fx-border-width: 3.0px;
+	-fx-border-width: 3px;
 }
 #SaveBack {
 	-fx-background-image: url('/imgs/Save.png');
@@ -219,7 +219,7 @@
 	-fx-background-color: #eee;
 }
 
-#ClearBack, #Clear2Back {
+#ClearBack {
 	-fx-background-image: url('/imgs/Right.png');
 	-fx-background-size: cover;
 	-fx-background-position: center center;
@@ -227,23 +227,4 @@
 
 #SubmitBack {
 	-fx-background-color: #000;
-}
-
-#chgClear {
-	-fx-background-color: #00ff0000;
-	-fx-border-style: none;
-}
-
-#ClearPane {
-	-fx-background-color: #eee;
-}
-
-#ReStartBtn, #ReLoadBtn, #LifeEndBtn {
-	-fx-background-color: #fff;
-}
-
-#Index4 {
-	-fx-background-image: url('/imgs/Index4.jpg');
-	-fx-background-size: cover;
-	-fx-background-position: center center;
 }
