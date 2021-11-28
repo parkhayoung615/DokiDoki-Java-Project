@@ -150,6 +150,7 @@ public class MainController implements Initializable {
 			Mario.setY(495);
 			Mario.setViewport(new Rectangle2D(48, 96, 48, 48));
 			view = "right";
+<<<<<<< Updated upstream
 		} else if (loc.equals("BattleHU")) {
 			Mario.setX(455);
 			Mario.setY(445);
@@ -231,6 +232,9 @@ public class MainController implements Initializable {
 			Mario.setViewport(new Rectangle2D(48, 144, 48, 48));
 			view = "up";
 		}
+=======
+		} 
+>>>>>>> Stashed changes
  		
 
 		Mario.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -415,6 +419,7 @@ public class MainController implements Initializable {
 			} else if (b.getType() == 204 && view.equals("up")) {
 				btc.setenemy("S-01", "3level");
 				goBattle("BattleHD");
+<<<<<<< Updated upstream
 				
 			} else if (b.getType() == 301 && view.equals("right")) {
 				btc.setenemy("T-01", "DeepMap");
@@ -467,6 +472,8 @@ public class MainController implements Initializable {
 			} else if (b.getType() == 243 && view.equals("down")) {
 				btc.setenemy("S-02", "SkillsR");
 				goBattle("BattleHU");
+=======
+>>>>>>> Stashed changes
 				
 			}
 
