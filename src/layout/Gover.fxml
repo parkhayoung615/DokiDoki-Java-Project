@@ -13,7 +13,6 @@
          </image>
       </ImageView>
       <Button fx:id="ReStartBtn" layoutX="340.0" layoutY="592.0" mnemonicParsing="false" onAction="#ReStart" prefHeight="43.0" prefWidth="420.0" text="새로 시작하기" />
-      <Button fx:id="LifeEndBtn" layoutX="340.0" layoutY="748.0" mnemonicParsing="false" onAction="#EndLife" prefHeight="43.0" prefWidth="420.0" text="인생종료하기 ㅋㅋ 그걸 지냐" />
       <Button fx:id="ReLoadBtn" layoutX="340.0" layoutY="668.0" mnemonicParsing="false" onAction="#ReLoad" prefHeight="43.0" prefWidth="420.0" text="데이터 불러오기" />
    </children>
 </AnchorPane>

@@ -185,7 +185,7 @@ public class BattleController {
 	private int enemyIdx = 0;
 	private int idx = 0;
 	private Language[] langs = new Language[6];
-	private Language[] enemys = new Language[6];
+	private Language[] enemys = new Language[12];
 	private Language lang = new Language();
 	private Language enemy = new Language();
 	private ArrayList<Integer> langList = new ArrayList<Integer>();
@@ -414,10 +414,13 @@ public class BattleController {
 	}
 
 	public void loadAll() {
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < 12; i++) {
 			Skill[] skills = { new Skill(null, null, 0), new Skill(null, null, 0), new Skill(null, null, 0),
 					new Skill(null, null, 0) };
-			langs[i] = new Language("null", 1, 0, 0, skills);
+			if (i < 6) {
+				langs[i] = new Language("null", 1, 0, 0, skills);
+			}
+			
 			enemys[i] = new Language("null", 1, 0, 0, skills);
 
 		}
@@ -601,16 +604,31 @@ public class BattleController {
 						&& langs[4].getHp() <= 0 && langs[5].getHp() <= 0) {
 					MainController mc = new MainController();
 					mc.setloc(loc);
-					try {
-						Parent over = FXMLLoader.load(getClass().getResource("/layout/Gover.fxml"));
-						Scene scene = new Scene(over);
-						Stage primaryStage = (Stage) langImg.getScene().getWindow();
-						scene.getStylesheets()
-								.add(getClass().getResource("/application/application.css").toExternalForm());
-						primaryStage.setScene(scene);
-					} catch (Exception e) {
-						e.printStackTrace();
+					if (enemyName.equals("T-01")) {
+						try {
+							Parent over = FXMLLoader.load(getClass().getResource("/layout/GOver_SYH.fxml"));
+							Scene scene = new Scene(over);
+							Stage primaryStage = (Stage) langImg.getScene().getWindow();
+							scene.getStylesheets()
+									.add(getClass().getResource("/application/application.css").toExternalForm());
+							primaryStage.setScene(scene);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+						
+					} else {
+						try {
+							Parent over = FXMLLoader.load(getClass().getResource("/layout/Gover.fxml"));
+							Scene scene = new Scene(over);
+							Stage primaryStage = (Stage) langImg.getScene().getWindow();
+							scene.getStylesheets()
+									.add(getClass().getResource("/application/application.css").toExternalForm());
+							primaryStage.setScene(scene);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
 					}
+					
 				} else if (rstGame.equals("turnTie")) {
 				} else {
 					asBtn(BtnRun);

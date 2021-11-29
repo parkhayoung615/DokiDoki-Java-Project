@@ -11,11 +11,9 @@ public class JDBCUtil {
 			e.printStackTrace();
 		}
 		
-		// 일단 기능반 서버로 해둠 ...
-		// 나중에 바꾸든지 상의를 해야 할 듯
-		String connectionString = "jdbc:mysql://localhost/team_project";
-		String userId = "root";
-		String password = "";
+		String connectionString = "jdbc:mysql://www.yydhsoft.com/skills07";
+		String userId = "skills07";
+		String password = "1234";
 		
 		Connection con = null;
 		try {

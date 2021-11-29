@@ -36,10 +36,10 @@ import util.UserData;
 
 public class MainController implements Initializable {
 
-	MediaPlayer mp; // 음악재생 라이브러리
-	Media m = null; // 음악 소스
+	MediaPlayer mp; // �쓬�븙�옱�깮 �씪�씠釉뚮윭由�
+	Media m = null; // �쓬�븙 �냼�뒪
 	
-	//false: 음악 나오는 중
+	//false: �쓬�븙 �굹�삤�뒗 以�
 	public boolean mediaMute = false;
 
 	@FXML
@@ -109,35 +109,31 @@ public class MainController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-	}
-
-	// Start -> Login -> (로딩) -> Index
-	// 화면 전환
-	
-	public void EndLife() {
-		try {
-			m = new Media(getClass().getResource("/resourse/Doki.mp3").toString());
-			mp = new MediaPlayer(m);
-			Runnable onEnd = new Runnable() {
-				public void run() {
-					mp.dispose();
-					mp = new MediaPlayer(m);
-					mp.play();
-					mp.setOnEndOfMedia(this);
-				}
-			};
-			mp.setOnEndOfMedia(onEnd);
-			mp.play();
-
-			Parent login = FXMLLoader.load(getClass().getResource("/layout/Index3.fxml"));
-			Scene scene = new Scene(login);
-			Stage primaryStage = (Stage) LifeEndBtn.getScene().getWindow();
-			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
-			primaryStage.setScene(scene);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+	}	
+//	public void EndLife() {
+//		try {
+////			m = new Media(getClass().getResource("/resourse/Doki.mp3").toString());
+////			mp = new MediaPlayer(m);
+////			Runnable onEnd = new Runnable() {
+////				public void run() {
+////					mp.dispose();
+////					mp = new MediaPlayer(m);
+////					mp.play();
+////					mp.setOnEndOfMedia(this);
+////				}
+////			};
+////			mp.setOnEndOfMedia(onEnd);
+////			mp.play();
+//
+//			Parent login = FXMLLoader.load(getClass().getResource("/layout/Index3.fxml"));
+//			Scene scene = new Scene(login);
+//			Stage primaryStage = (Stage) LifeEndBtn.getScene().getWindow();
+//			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+//			primaryStage.setScene(scene);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 
 	public void ReLoad() {
 		try {
@@ -187,7 +183,7 @@ public class MainController implements Initializable {
 		}
 	}
 
-	// Start 화면에서 Login 화면으로 이동
+	// Start �솕硫댁뿉�꽌 Login �솕硫댁쑝濡� �씠�룞
 	public void StartChangeLogin() {
 		try {
 			Parent login = FXMLLoader.load(getClass().getResource("/layout/Login.fxml"));
@@ -206,7 +202,7 @@ public class MainController implements Initializable {
 		}
 	}
 
-	// EndGame 누르면 Start 화면으로 이동
+	// EndGame �늻瑜대㈃ Start �솕硫댁쑝濡� �씠�룞
 	public void ChangeStart() {
 		try {
 			Parent login = FXMLLoader.load(getClass().getResource("/layout/Start.fxml"));
@@ -215,7 +211,7 @@ public class MainController implements Initializable {
 			scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			
-//			// Index에서 나오던 음악 음소거
+//			// Index�뿉�꽌 �굹�삤�뜕 �쓬�븙 �쓬�냼嫄�
 //			mp.setMute(true);
 			
 		} catch (Exception e) {
@@ -223,13 +219,13 @@ public class MainController implements Initializable {
 		}
 	}
 
-	// 코멘트
+	// 肄붾찘�듃
 	public void commentH() {
 		try {
 			Alert alert = new Alert(AlertType.CONFIRMATION);
-			alert.setTitle("개발자 코멘트");
-			alert.setHeaderText("10103 박하영");
-			alert.setContentText("즐감 bit.ly/3HZxTeC");
+			alert.setTitle("媛쒕컻�옄 肄붾찘�듃");
+			alert.setHeaderText("10103 諛뺥븯�쁺");
+			alert.setContentText("利먭컧 bit.ly/3HZxTeC");
 			alert.show();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -239,9 +235,9 @@ public class MainController implements Initializable {
 	public void commentG() {
 		try {
 			Alert alert = new Alert(AlertType.CONFIRMATION);
-			alert.setTitle("개발자 코멘트");
-			alert.setHeaderText("10111 김건우");
-			alert.setContentText("개발중단");
+			alert.setTitle("媛쒕컻�옄 肄붾찘�듃");
+			alert.setHeaderText("10111 源�嫄댁슦");
+			alert.setContentText("媛쒕컻以묐떒");
 			alert.show();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -251,9 +247,9 @@ public class MainController implements Initializable {
 	public void commentKH() {
 		try {
 			Alert alert = new Alert(AlertType.CONFIRMATION);
-			alert.setTitle("개발자 코멘트");
-			alert.setHeaderText("10115 김환");
-			alert.setContentText("코멘트를 입력하세요");
+			alert.setTitle("媛쒕컻�옄 肄붾찘�듃");
+			alert.setHeaderText("10115 源��솚");
+			alert.setContentText("肄붾찘�듃瑜� �엯�젰�븯�꽭�슂");
 			alert.show();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -263,16 +259,16 @@ public class MainController implements Initializable {
 	public void commentY() {
 		try {
 			Alert alert = new Alert(AlertType.CONFIRMATION);
-			alert.setTitle("개발자 코멘트");
-			alert.setHeaderText("10105 임수연");
-			alert.setContentText("불친절이 컨셉인 게임");
+			alert.setTitle("媛쒕컻�옄 肄붾찘�듃");
+			alert.setHeaderText("10105 �엫�닔�뿰");
+			alert.setContentText("遺덉튇�젅�씠 而⑥뀎�씤 寃뚯엫");
 			alert.show();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	// 로그인
+	// 濡쒓렇�씤
 	public String userN;
 	public String AuserID;
 	
@@ -286,9 +282,9 @@ public class MainController implements Initializable {
 		Alert alert = new Alert(AlertType.WARNING);
 
 		if (loginId.isEmpty() && loginPw.isEmpty()) {
-			alert.setTitle("빈 값이 있습니다!");
+			alert.setTitle("鍮� 媛믪씠 �엳�뒿�땲�떎!");
 			alert.setHeaderText("Warning Dialog");
-			alert.setContentText("아이디와 비밀번호 입력에 오류가 있습니다!");
+			alert.setContentText("�븘�씠�뵒�� 鍮꾨�踰덊샇 �엯�젰�뿉 �삤瑜섍� �엳�뒿�땲�떎!");
 			alert.show();
 		}
 
@@ -321,7 +317,7 @@ public class MainController implements Initializable {
 					scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 					primaryStage.setScene(scene);
 					
-					// 쓰레드에 로그인 정보 담기
+					// �벐�젅�뱶�뿉 濡쒓렇�씤 �젙蹂� �떞湲�
 					//Thread t = new Thread(new TherdUtil(loginId));
 					//t.start();
 
@@ -338,29 +334,29 @@ public class MainController implements Initializable {
 					mp.setOnEndOfMedia(onEnd);
 					mp.play();
 
-//					소리 너무 큼!!
+//					�냼由� �꼫臾� �겮!!
 
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			} else {
-				alert.setTitle("오류가 있습니다!");
+				alert.setTitle("�삤瑜섍� �엳�뒿�땲�떎!");
 				alert.setHeaderText("Warning Dialog");
-				alert.setContentText("아이디와 비밀번호 입력에 오류가 있습니다!");
+				alert.setContentText("�븘�씠�뵒�� 鍮꾨�踰덊샇 �엯�젰�뿉 �삤瑜섍� �엳�뒿�땲�떎!");
 				alert.show();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			alert.setTitle("오류가 있습니다!");
+			alert.setTitle("�삤瑜섍� �엳�뒿�땲�떎!");
 			alert.setHeaderText("Warning Dialog");
-			alert.setContentText("아이디와 비밀번호 입력에 오류가 있습니다!");
+			alert.setContentText("�븘�씠�뵒�� 鍮꾨�踰덊샇 �엯�젰�뿉 �삤瑜섍� �엳�뒿�땲�떎!");
 			alert.show();
 		}
 	}
 	
 	
 
-	// 회원가입
+	// �쉶�썝媛��엯
 	public void join() {
 		JDBCUtil db = new JDBCUtil();
 		Connection con = db.getConnection();
@@ -370,9 +366,9 @@ public class MainController implements Initializable {
 		Alert alert = new Alert(AlertType.WARNING);
 
 		if (inputJoinId.isEmpty() && inputJoinPw.isEmpty()) {
-			alert.setTitle("빈 값이 있습니다!");
+			alert.setTitle("鍮� 媛믪씠 �엳�뒿�땲�떎!");
 			alert.setHeaderText("Warning Dialog");
-			alert.setContentText("입력에 오류가 있습니다!");
+			alert.setContentText("�엯�젰�뿉 �삤瑜섍� �엳�뒿�땲�떎!");
 			alert.show();
 		}
 
@@ -391,40 +387,40 @@ public class MainController implements Initializable {
 				primaryStage.setScene(scene);
 			} catch (Exception e) {
 				e.printStackTrace();
-				alert.setTitle("오류가 있습니다!");
+				alert.setTitle("�삤瑜섍� �엳�뒿�땲�떎!");
 				alert.setHeaderText("Warning Dialog");
-				alert.setContentText("입력에 오류가 있습니다!");
+				alert.setContentText("�엯�젰�뿉 �삤瑜섍� �엳�뒿�땲�떎!");
 				alert.show();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			alert.setTitle("오류가 있습니다!");
+			alert.setTitle("�삤瑜섍� �엳�뒿�땲�떎!");
 			alert.setHeaderText("Warning Dialog");
-			alert.setContentText("입력에 오류가 있습니다!");
+			alert.setContentText("�엯�젰�뿉 �삤瑜섍� �엳�뒿�땲�떎!");
 			alert.show();
 		}
 	}
 
-	// 로딩 소스 재생
+	// 濡쒕뵫 �냼�뒪 �옱�깮
 	public void loadMp4() {
-		// 미디어 객체를 소스 폴더의 video.mp4를 이용해만들어 줍니다.
-		// 미디어 플레이어에 사용할 파일을 정해 줍니다.
+		// 誘몃뵒�뼱 媛앹껜瑜� �냼�뒪 �뤃�뜑�쓽 video.mp4瑜� �씠�슜�빐留뚮뱾�뼱 以띾땲�떎.
+		// 誘몃뵒�뼱 �뵆�젅�씠�뼱�뿉 �궗�슜�븷 �뙆�씪�쓣 �젙�빐 以띾땲�떎.
 		Media media = new Media(getClass().getResource("/resource/loading.mp4").toString());
-		// 미디어 플레이어 생성 및 미디어 뷰에 설정
+		// 誘몃뵒�뼱 �뵆�젅�씠�뼱 �깮�꽦 諛� 誘몃뵒�뼱 酉곗뿉 �꽕�젙
 		MediaPlayer mediaPlayer = new MediaPlayer(media);
 		mediaView.setMediaPlayer(mediaPlayer);
-		// 해당 상태가 되면 실행할 Runnable 설정
+		// �빐�떦 �긽�깭媛� �릺硫� �떎�뻾�븷 Runnable �꽕�젙
 		mediaPlayer.setOnReady(new Runnable() {
-			// 화면이 동영상이 실행 되는 쓰레드 사용합니다.
+			// �솕硫댁씠 �룞�쁺�긽�씠 �떎�뻾 �릺�뒗 �벐�젅�뱶 �궗�슜�빀�땲�떎.
 			@Override
 			public void run() {
-				// 시작시 플레이 버튼만 활성화 하고
-				// 나머지는 비활성화 함.
+				// �떆�옉�떆 �뵆�젅�씠 踰꾪듉留� �솢�꽦�솕 �븯怨�
+				// �굹癒몄��뒗 鍮꾪솢�꽦�솕 �븿.
 				loginBtn.setDisable(false);
 			}
 		});
-		// 플레이 되고 있을 경우의 버튼 활성 비활성의 상태
-		// 아래의 경우도 똑 같은 경우입니다.
+		// �뵆�젅�씠 �릺怨� �엳�쓣 寃쎌슦�쓽 踰꾪듉 �솢�꽦 鍮꾪솢�꽦�쓽 �긽�깭
+		// �븘�옒�쓽 寃쎌슦�룄 �삊 媛숈� 寃쎌슦�엯�땲�떎.
 		mediaPlayer.setOnPlaying(() -> {
 			loginBtn.setDisable(true);
 		});
@@ -432,9 +428,9 @@ public class MainController implements Initializable {
 		mediaPlayer.setOnPaused(() -> {
 			loginBtn.setDisable(false);
 		});
-		// 비디오가 끝났을 경우의 처리
-		// booEnd 변수에 true 를 넣어 재생 버튼을 눌렀을 때
-		// 처음부터 실행 할것인지를 결정 하게 한다.
+		// 鍮꾨뵒�삤媛� �걹�궗�쓣 寃쎌슦�쓽 泥섎━
+		// booEnd 蹂��닔�뿉 true 瑜� �꽔�뼱 �옱�깮 踰꾪듉�쓣 �닃���쓣 �븣
+		// 泥섏쓬遺��꽣 �떎�뻾 �븷寃껋씤吏�瑜� 寃곗젙 �븯寃� �븳�떎.
 		mediaPlayer.setOnEndOfMedia(() -> {
 			booEnd = true;
 			loginBtn.setDisable(false);
@@ -444,13 +440,13 @@ public class MainController implements Initializable {
 			loginBtn.setDisable(false);
 		});
 
-		// 버튼 ActionEvent 처리
+		// 踰꾪듉 ActionEvent 泥섎━
 		loginBtn.setOnAction(event -> {
-			// 플레이 버튼을 눌렀을때
-			// 동영상이 끝날상태 즉 booEnd 에 true 가 들어 가있을 경우에는
-			// 종료하고 처음으로 재생시점을 이동한다.
-			// 그리고 다시booEnd에 false 를 대입해 지금 동영상이
-			// 끝이 아니라는 것을 알려준다.
+			// �뵆�젅�씠 踰꾪듉�쓣 �닃���쓣�븣
+			// �룞�쁺�긽�씠 �걹�궇�긽�깭 利� booEnd �뿉 true 媛� �뱾�뼱 媛��엳�쓣 寃쎌슦�뿉�뒗
+			// 醫낅즺�븯怨� 泥섏쓬�쑝濡� �옱�깮�떆�젏�쓣 �씠�룞�븳�떎.
+			// 洹몃━怨� �떎�떆booEnd�뿉 false 瑜� ���엯�빐 吏�湲� �룞�쁺�긽�씠
+			// �걹�씠 �븘�땲�씪�뒗 寃껋쓣 �븣�젮以��떎.
 			if (booEnd) {
 				mediaPlayer.stop();
 				mediaPlayer.seek(mediaPlayer.getStartTime());
@@ -460,12 +456,12 @@ public class MainController implements Initializable {
 		});
 	}
 
-	// 창 닫기
-	public void closeProgram() { // 현재의 스테이지를 받아서 close를 해주어야 함
-		Stage pop = (Stage) EndProgram.getScene().getWindow(); // 버튼을 통해서 현재 스테이지를 알아냄
+	// 李� �떕湲�
+	public void closeProgram() { // �쁽�옱�쓽 �뒪�뀒�씠吏�瑜� 諛쏆븘�꽌 close瑜� �빐二쇱뼱�빞 �븿
+		Stage pop = (Stage) EndProgram.getScene().getWindow(); // 踰꾪듉�쓣 �넻�빐�꽌 �쁽�옱 �뒪�뀒�씠吏�瑜� �븣�븘�깂
 		pop.close();
 		
-//		// Index에서 나오던 음악 음소거
+//		// Index�뿉�꽌 �굹�삤�뜕 �쓬�븙 �쓬�냼嫄�
 //		mp.setMute(true);
 	}
 	
@@ -483,7 +479,7 @@ public class MainController implements Initializable {
 	}
 
 
-//		게임 시작 (새 게임 버튼 눌렀을 때부터)
+//		寃뚯엫 �떆�옉 (�깉 寃뚯엫 踰꾪듉 �닃���쓣 �븣遺��꽣)
 	public void StartGame() {
 		try {
 
@@ -494,7 +490,7 @@ public class MainController implements Initializable {
 			primaryStage.setScene(scene);
 			
 			
-			// Index에서 나오던 음악 음소거
+			// Index�뿉�꽌 �굹�삤�뜕 �쓬�븙 �쓬�냼嫄�
 //			mediaMute = true;
 //			if(mediaMute == true) {
 //				mp.setMute(mediaMute);
@@ -505,7 +501,7 @@ public class MainController implements Initializable {
 		}
 	}
 
-	// 게임 불러오기 눌렀을 때
+	// 寃뚯엫 遺덈윭�삤湲� �닃���쓣 �븣
 	public void LoadGame() {
 		try {
 			Parent login = FXMLLoader.load(getClass().getResource("/layout/LoadGame.fxml"));
