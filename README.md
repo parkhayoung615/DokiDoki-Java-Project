@@ -9,7 +9,7 @@ DOKI DOKI Java Project!
   <h3>사용 기술</h3>
   <div align="center">
     <img src="https://img.shields.io/badge/JAVA-007396?style=for-the-badge&logo=java&logoColor=white">
-    <img src="https://img.shields.io/badge/MySQL-F80000?style=for-the-badge&logo=oracle&logoColor=white">
+    <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=oracle&logoColor=white">
     <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
   </div>
   
