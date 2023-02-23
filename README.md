@@ -1,7 +1,3 @@
-
-2021/10/22 ~ 2021/11/28
-DOKI DOKI Java Project!
-
 <div align="center">
   <h1>Team JavaFX Project</h1>
   학교 친구들과 선생님을 주인공으로 제작하여 만든 JavaFX 게임입니다!
