@@ -1,6 +1,8 @@
 <div align="center">
   <h1>Team JavaFX Project</h1>
   학교 친구들과 선생님을 주인공으로 제작하여 만든 JavaFX 게임입니다!
+  
+  <h2>Doki Doki Java Project</h2>
 
   <h3>사용 기술</h3>
   <div align="center">
